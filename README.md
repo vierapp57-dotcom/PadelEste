@@ -1,1 +1,3225 @@
-# PadelEste
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Padel Este - Tu Club. Reservá tu cancha online en Maldonado, Uruguay.">
+<title>Padel Este — Tu Club | Reservá tu cancha</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0A1628;
+  --navy-deep: #050B14;
+  --navy-soft: #142339;
+  --royal: #2563EB;
+  --sky: #38BDF8;
+  --yellow: #FDE047;
+  --yellow-deep: #FACC15;
+  --white: #FFFFFF;
+  --gray: #94A3B8;
+  --gray-soft: #CBD5E1;
+  --green: #22C55E;
+  --red: #EF4444;
+  --court-blue: #1E5FBF;
+  --shadow: 0 10px 40px rgba(0,0,0,0.3);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, h4 {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--sky);
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  border: 1px solid var(--sky);
+  border-radius: 100px;
+}
+
+.section-title {
+  font-size: clamp(40px, 6vw, 72px);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: var(--gray-soft);
+  max-width: 600px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-header { text-align: center; margin-bottom: 60px; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: var(--transition);
+  background: rgba(10, 22, 40, 0);
+  backdrop-filter: blur(0px);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: var(--royal);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-logo-icon::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  background: var(--yellow);
+  border-radius: 50%;
+  bottom: 4px; right: 4px;
+  box-shadow: inset -2px -2px 0 rgba(0,0,0,0.1);
+}
+
+.nav-logo-icon::before {
+  content: 'P';
+  color: white;
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--yellow);
+  transition: var(--transition);
+}
+
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--yellow); }
+
+.nav-cta {
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.nav-cta:hover { background: var(--white); transform: translateY(-2px); }
+
+.mobile-menu-btn { display: none; font-size: 28px; }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(37, 99, 235, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  z-index: 0;
+}
+
+.hero-court {
+  position: absolute;
+  right: -10%;
+  bottom: -10%;
+  width: 70%;
+  max-width: 800px;
+  opacity: 0.4;
+  transform: rotate(-15deg) perspective(1000px) rotateX(20deg);
+  z-index: 0;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.hero-badge .pulse-dot {
+  width: 8px; height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  position: relative;
+}
+
+.hero-badge .pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: var(--green);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.hero-title {
+  font-size: clamp(56px, 10vw, 130px);
+  line-height: 0.85;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-title .word {
+  display: block;
+  position: relative;
+}
+
+.hero-title .accent {
+  color: var(--yellow);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title .accent::after {
+  content: '';
+  position: absolute;
+  bottom: 8px; left: 0;
+  width: 100%; height: 8px;
+  background: var(--royal);
+  z-index: -1;
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--gray-soft);
+  max-width: 540px;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 20px 36px;
+  border-radius: 12px;
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(253, 224, 71, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: var(--white);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: 0;
+}
+
+.btn-primary:hover::before { width: 400px; height: 400px; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(253, 224, 71, 0.5); }
+.btn-primary > * { position: relative; z-index: 1; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  padding: 18px 30px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  border-color: var(--sky);
+  background: rgba(56, 189, 248, 0.1);
+  transform: translateY(-3px);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ HERO STATS ============ */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 80px;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.stat {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.stat:hover {
+  background: rgba(56, 189, 248, 0.08);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-family: 'Anton', sans-serif;
+  font-size: 48px;
+  color: var(--yellow);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============ LOGO HERO ============ */
+.hero-logo {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%) rotate(-8deg);
+  width: 340px;
+  z-index: 1;
+  opacity: 0.95;
+  animation: floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(-50%) rotate(-8deg); }
+  50% { transform: translateY(-55%) rotate(-6deg); }
+}
+
+@media (max-width: 1024px) {
+  .hero-logo { display: none; }
+}
+
+/* ============ CANCHAS ============ */
+.canchas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.cancha-card {
+  position: relative;
+  background: linear-gradient(145deg, var(--navy-soft) 0%, var(--navy) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.cancha-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.cancha-card:nth-child(2).visible { transition-delay: 0.15s; }
+
+.cancha-card:hover {
+  border-color: var(--sky);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(37, 99, 235, 0.25);
+}
+
+.cancha-image {
+  position: relative;
+  height: 280px;
+  background: linear-gradient(135deg, var(--court-blue) 0%, #0F3D87 100%);
+  overflow: hidden;
+}
+
+.cancha-image::before {
+  content: '';
+  position: absolute;
+  inset: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.cancha-image::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 30px; right: 30px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.cancha-court-lines {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 40%;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-bottom: none;
+}
+
+.cancha-court-lines::before, .cancha-court-lines::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cancha-court-lines::before { left: 0; }
+.cancha-court-lines::after { right: 0; }
+
+.cancha-badge {
+  position: absolute;
+  top: 20px; left: 20px;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(253, 224, 71, 0.4);
+}
+
+.cancha-number {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: 'Anton', sans-serif;
+  font-size: 100px;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 0.8;
+  z-index: 2;
+}
+
+.cancha-body {
+  padding: 32px;
+}
+
+.cancha-name {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.cancha-type {
+  font-size: 13px;
+  color: var(--sky);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.cancha-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.feature-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sky);
+}
+
+.cancha-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--yellow);
+  font-family: 'Anton', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.cancha-cta:hover { gap: 14px; }
+
+/* ============ RESERVAS ============ */
+#reservas {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+}
+
+.reservation-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 32px;
+  padding: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+}
+
+.steps-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.steps-progress::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 18px; right: 18px;
+  height: 2px;
+  background: rgba(56, 189, 248, 0.2);
+  z-index: 0;
+}
+
+.steps-progress::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  height: 2px;
+  background: var(--yellow);
+  z-index: 1;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.steps-progress.step-1::after { width: 0%; }
+.steps-progress.step-2::after { width: 33%; }
+.steps-progress.step-3::after { width: 66%; }
+.steps-progress.step-4::after { width: 100%; }
+
+.step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-circle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--navy-soft);
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 16px;
+  color: var(--gray);
+  transition: var(--transition);
+}
+
+.step.active .step-circle {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--navy);
+  box-shadow: 0 0 0 8px rgba(253, 224, 71, 0.15);
+}
+
+.step.completed .step-circle {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+
+.step-label {
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+}
+
+.step.active .step-label { color: var(--yellow); }
+.step.completed .step-label { color: var(--green); }
+
+.reservation-step {
+  display: none;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.reservation-step.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.step-subtitle {
+  color: var(--gray-soft);
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+/* CANCHA SELECTION */
+.cancha-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.cancha-option {
+  position: relative;
+  padding: 24px;
+  background: var(--navy-soft);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.cancha-option:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.cancha-option.selected {
+  border-color: var(--yellow);
+  background: rgba(253, 224, 71, 0.05);
+}
+
+.cancha-option.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 28px; height: 28px;
+  background: var(--yellow);
+  color: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.cancha-option-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.cancha-option-desc {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.cancha-option-icon {
+  width: 50px; height: 50px;
+  background: var(--royal);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.cancha-option-icon::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 3px;
+}
+
+.cancha-option-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 8px; right: 8px;
+  height: 2px;
+  background: rgba(255,255,255,0.4);
+}
+
+/* CALENDAR */
+.calendar {
+  background: var(--navy-soft);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-month {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.calendar-nav-btn {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 18px;
+}
+
+.calendar-nav-btn:hover {
+  background: rgba(253, 224, 71, 0.2);
+  color: var(--yellow);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar-day-label {
+  text-align: center;
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 0;
+  font-weight: 700;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.calendar-day:hover:not(.disabled):not(.empty) {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--sky);
+}
+
+.calendar-day.disabled {
+  color: rgba(255,255,255,0.15);
+  cursor: not-allowed;
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day.today {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--sky);
+  font-weight: 700;
+}
+
+.calendar-day.selected {
+  background: var(--yellow);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.calendar-day.selected::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--yellow);
+  border-radius: 12px;
+  opacity: 0.3;
+}
+
+/* TIME SLOTS */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.time-slot {
+  padding: 14px 8px;
+  background: var(--navy-soft);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+}
+
+.time-slot:hover:not(.occupied) {
+  border-color: var(--sky);
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.time-slot.selected {
+  background: var(--yellow);
+  color: var(--navy);
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 4px rgba(253, 224, 71, 0.2);
+}
+
+.time-slot.occupied {
+  background: rgba(239, 68, 68, 0.08);
+  color: rgba(239, 68, 68, 0.6);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.time-slot.occupied::before {
+  content: 'Ocupado';
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.time-slot.occupied:hover::before { opacity: 1; }
+
+.time-legend {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--gray-soft);
+}
+
+.legend-dot {
+  width: 14px; height: 14px;
+  border-radius: 4px;
+}
+
+.legend-dot.available { background: var(--navy-soft); border: 2px solid rgba(56,189,248,0.3); }
+.legend-dot.selected { background: var(--yellow); }
+.legend-dot.occupied { background: rgba(239, 68, 68, 0.2); border: 2px solid rgba(239,68,68,0.4); }
+
+/* FORM */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.form-group { display: flex; flex-direction: column; }
+.form-group.full { grid-column: 1 / -1; }
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-soft);
+  margin-bottom: 8px;
+}
+
+.form-input {
+  background: var(--navy-soft);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 15px;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--sky);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.form-input::placeholder { color: var(--gray); }
+
+.summary-box {
+  background: rgba(253, 224, 71, 0.05);
+  border: 1px solid rgba(253, 224, 71, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.summary-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--yellow);
+  letter-spacing: 0.05em;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px;
+}
+
+.summary-row:last-child { border: none; }
+
+.summary-label { color: var(--gray-soft); }
+.summary-value { font-weight: 700; }
+
+.step-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.btn-back {
+  background: transparent;
+  color: var(--gray-soft);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.btn-back:hover { color: var(--white); }
+
+.btn-next {
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-family: 'Anton', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-next:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(253, 224, 71, 0.3); }
+
+.btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* CONFIRMATION */
+.confirmation {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-icon {
+  width: 100px; height: 100px;
+  margin: 0 auto 24px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.success-icon::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: var(--green);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: pulse 2s infinite;
+}
+
+.success-icon svg {
+  width: 50px; height: 50px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.success-icon svg path {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: drawCheck 0.6s 0.3s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+.confirmation-title {
+  font-size: 42px;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.confirmation-text {
+  color: var(--gray-soft);
+  font-size: 16px;
+  margin-bottom: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.confirmation-summary {
+  background: var(--navy-soft);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 0 auto 24px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  padding: 16px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 12px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background: #1da851;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+}
+
+/* ============ PRECIOS ============ */
+.precios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.precio-card {
+  background: linear-gradient(145deg, var(--navy-soft) 0%, var(--navy) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.precio-card:hover { transform: translateY(-8px); border-color: var(--sky); }
+
+.precio-card.featured {
+  background: linear-gradient(145deg, var(--royal) 0%, #1E40AF 100%);
+  border: 2px solid var(--yellow);
+}
+
+.precio-card.featured::before {
+  content: 'RECOMENDADO';
+  position: absolute;
+  top: 24px; right: -32px;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 6px 40px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  transform: rotate(45deg);
+  font-weight: 700;
+}
+
+.precio-icon {
+  width: 60px; height: 60px;
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+
+.precio-card.featured .precio-icon {
+  background: rgba(253, 224, 71, 0.2);
+}
+
+.precio-name {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.precio-desc {
+  color: var(--gray-soft);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.precio-card.featured .precio-desc { color: rgba(255,255,255,0.85); }
+
+.precio-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.precio-currency {
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  color: var(--gray);
+}
+
+.precio-card.featured .precio-currency { color: var(--yellow); }
+
+.precio-number {
+  font-family: 'Anton', sans-serif;
+  font-size: 72px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.precio-period {
+  font-size: 14px;
+  color: var(--gray);
+  margin-left: 4px;
+}
+
+.precio-card.featured .precio-period { color: rgba(255,255,255,0.7); }
+
+.precio-features {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.precio-features li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.precio-features li:last-child { border: none; }
+
+.precio-features li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  background: rgba(34, 197, 94, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.precio-card.featured .precio-features li::before {
+  background: var(--yellow);
+  color: var(--navy);
+}
+
+/* ============ CONTACTO ============ */
+#contacto {
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.contacto-info { padding-top: 20px; }
+
+.contacto-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.contacto-item:last-child { border: none; }
+
+.contacto-icon {
+  width: 50px; height: 50px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.contacto-content h4 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.contacto-content p { color: var(--gray-soft); font-size: 15px; }
+
+.map-container {
+  background: var(--navy-soft);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  height: 100%;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-iframe-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 350px;
+}
+
+.map-iframe-wrap iframe {
+  width: 100%; height: 100%;
+  border: 0;
+  filter: invert(0.9) hue-rotate(180deg) brightness(0.95) contrast(0.95);
+}
+
+.map-cta {
+  padding: 20px;
+  background: var(--navy);
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.btn-maps {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 16px;
+  border-radius: 12px;
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.btn-maps:hover {
+  background: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(253, 224, 71, 0.3);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--navy-deep);
+  padding: 60px 0 30px;
+  border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.footer-brand h3 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  color: var(--gray);
+  font-size: 14px;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: var(--yellow);
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  padding: 6px 0;
+  color: var(--gray-soft);
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.footer-col li:hover { color: var(--sky); }
+
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+  color: var(--gray);
+  font-size: 13px;
+}
+
+.footer-bottom strong { color: var(--white); }
+
+.footer-admin-hint {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  margin-top: 8px;
+}
+
+/* ============ ADMIN MODAL ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.active { display: flex; animation: fadeIn 0.3s; }
+
+.modal {
+  background: var(--navy);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 24px;
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+}
+
+.modal::-webkit-scrollbar { width: 8px; }
+.modal::-webkit-scrollbar-track { background: var(--navy-soft); border-radius: 4px; }
+.modal::-webkit-scrollbar-thumb { background: var(--royal); border-radius: 4px; }
+
+.modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 40px; height: 40px;
+  background: var(--navy-soft);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: var(--transition);
+}
+
+.modal-close:hover { background: var(--red); }
+
+.admin-login {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.admin-login h2 {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.admin-login p {
+  color: var(--gray-soft);
+  margin-bottom: 32px;
+}
+
+.admin-dashboard { display: none; }
+.admin-dashboard.active { display: block; }
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.admin-title {
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-title .live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green);
+  background: rgba(34, 197, 94, 0.1);
+  padding: 6px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.admin-title .live-dot {
+  width: 8px; height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.admin-stat {
+  background: var(--navy-soft);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.admin-stat-label {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.admin-stat-value {
+  font-family: 'Anton', sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--yellow);
+}
+
+.admin-stat-value.green { color: var(--green); }
+.admin-stat-value.red { color: var(--red); }
+.admin-stat-value.blue { color: var(--sky); }
+
+.admin-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-filter {
+  padding: 8px 16px;
+  background: var(--navy-soft);
+  border: 1px solid transparent;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.admin-filter:hover { border-color: var(--sky); }
+.admin-filter.active { background: var(--yellow); color: var(--navy); }
+
+.admin-filter-select {
+  background: var(--navy-soft);
+  color: var(--white);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.admin-table {
+  background: var(--navy-soft);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.admin-table-header {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 0.8fr 1.2fr 1fr 0.8fr;
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  gap: 12px;
+}
+
+.admin-table-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 0.8fr 1.2fr 1fr 0.8fr;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px;
+  gap: 12px;
+  align-items: center;
+  transition: var(--transition);
+  animation: slideInRow 0.3s ease-out;
+}
+
+@keyframes slideInRow {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.admin-table-row:hover { background: rgba(56, 189, 248, 0.05); }
+
+.admin-table-row.new {
+  animation: highlightNew 2s ease-out;
+}
+
+@keyframes highlightNew {
+  0% { background: rgba(253, 224, 71, 0.2); }
+  100% { background: transparent; }
+}
+
+.admin-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray);
+}
+
+.admin-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.badge-cancha {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.badge-cancha.c1 { background: rgba(56, 189, 248, 0.15); color: var(--sky); }
+.badge-cancha.c2 { background: rgba(253, 224, 71, 0.15); color: var(--yellow); }
+
+.btn-icon {
+  width: 32px; height: 32px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--red);
+  transition: var(--transition);
+}
+
+.btn-icon:hover { background: var(--red); color: white; }
+
+/* ============ ANIMATIONS ============ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 968px) {
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: block; }
+  
+  .hero-stats { grid-template-columns: 1fr; }
+  .canchas-grid { grid-template-columns: 1fr; }
+  .precios-grid { grid-template-columns: 1fr; }
+  .contacto-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .time-slots { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+  .reservation-box { padding: 28px; }
+  .step-label { font-size: 10px; }
+  
+  .admin-table-header { display: none; }
+  .admin-table-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 16px;
+  }
+  
+  .modal { padding: 24px; }
+  .section { padding: 70px 0; }
+}
+
+@media (max-width: 480px) {
+  .time-slots { grid-template-columns: repeat(2, 1fr); }
+  .cancha-options { grid-template-columns: 1fr; }
+  .hero-cta-group { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .admin-stats { grid-template-columns: 1fr; }
+  .step-label { display: none; }
+}
+
+/* ============ FAQ ACCORDION ============ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.faq-item:hover {
+  border-color: rgba(56,189,248,0.35);
+  background: rgba(56,189,248,0.03);
+}
+
+.faq-item.open {
+  border-color: var(--yellow);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.faq-icon {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--sky);
+  transition: var(--transition);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  color: var(--yellow);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 200px;
+}
+
+.faq-answer p {
+  padding: 0 24px 20px;
+  color: var(--gray-soft);
+  font-size: 15px;
+  line-height: 1.7;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 16px;
+}
+
+/* CONFETTI ANIMATION */
+.confetti {
+  position: fixed;
+  width: 10px; height: 10px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ============ LOGO SVG STYLES ============ */
+.logo-svg {
+  width: 100%;
+  height: auto;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-content">
+    <div class="nav-logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      <div class="nav-logo-icon"></div>
+      <span>PADEL ESTE</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#canchas">Canchas</a></li>
+      <li><a href="#reservas">Reservar</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#reservas" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Reservas abiertas — Maldonado</span>
+      </div>
+      
+      <h1 class="hero-title">
+        <span class="word">Jugá</span>
+        <span class="word">cuando</span>
+        <span class="word"><span class="accent">vos quieras</span>.</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Reservá tu cancha en segundos. Sin llamadas, sin esperas. 
+        Tu lugar para jugar al pádel está a un click de distancia.
+      </p>
+      
+      <div class="hero-cta-group">
+        <a href="#reservas" class="btn-primary">
+          <span>Reservar Ahora</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#canchas" class="btn-secondary">
+          <span>Ver Canchas</span>
+        </a>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number" id="statSlotsToday">30</div>
+          <div class="stat-label">Turnos libres hoy</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Canchas premium</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">15h</div>
+          <div class="stat-label">8:00 a 23:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Logo flotante a la derecha -->
+  <div class="hero-logo">
+    <svg class="logo-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bloque PADEL (azul royal) -->
+      <g transform="rotate(-6 200 200)">
+        <rect x="40" y="100" width="320" height="80" fill="#2563EB" />
+        <text x="200" y="165" font-family="Anton, Impact, sans-serif" font-size="90" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">PADEL</text>
+        
+        <!-- Bloque ESTE (blanco) -->
+        <rect x="90" y="190" width="280" height="80" fill="white" />
+        <text x="225" y="255" font-family="Anton, Impact, sans-serif" font-size="90" font-weight="900" fill="#2563EB" text-anchor="middle" letter-spacing="2">ESTE</text>
+        
+        <!-- Pelota de tenis -->
+        <circle cx="350" cy="240" r="28" fill="#FDE047" />
+        <path d="M 326 230 Q 350 220 374 232" fill="none" stroke="#0A1628" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+        <path d="M 326 248 Q 350 258 374 246" fill="none" stroke="#0A1628" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+        
+        <!-- TU CLUB -->
+        <text x="220" y="305" font-family="DM Sans, sans-serif" font-size="28" font-weight="700" fill="white" text-anchor="middle" letter-spacing="6">TU CLUB</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ CANCHAS ============ -->
+<section class="section" id="canchas">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Nuestras Canchas</span>
+      <h2 class="section-title">Dos canchas,<br>infinitas <span style="color:var(--yellow)">jugadas</span>.</h2>
+      <p class="section-subtitle">Canchas de pádel techadas, con iluminación profesional y césped sintético de primera calidad.</p>
+    </div>
+    
+    <div class="canchas-grid">
+      <div class="cancha-card fade-in-up">
+        <div class="cancha-image" style="position:relative; height:200px; overflow:hidden; border-radius:12px 12px 0 0;">
+          <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80" alt="Cancha de pádel 1 - Padel Este Maldonado" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <span class="cancha-badge" style="position:absolute; top:16px; left:16px; z-index:2;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            MÁS POPULAR
+          </span>
+          <span class="cancha-number" style="position:absolute; top:8px; right:16px; z-index:2; opacity:0.6;">01</span>
+        </div>
+        <div class="cancha-body">
+          <div class="cancha-type">Cancha Premium</div>
+          <h3 class="cancha-name">Cancha 1</h3>
+          <div class="cancha-features">
+            <span class="feature-tag">🏠 Techada</span>
+            <span class="feature-tag">💡 Iluminación LED</span>
+            <span class="feature-tag">🌱 Césped premium</span>
+          </div>
+          <a href="#reservas" class="cancha-cta" onclick="selectCanchaFromCard(1)">
+            Reservar esta cancha
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="cancha-card fade-in-up">
+        <div class="cancha-image" style="position:relative; height:200px; overflow:hidden; border-radius:12px 12px 0 0;">
+          <img src="https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?w=600&q=80" alt="Cancha de pádel 2 - Padel Este Maldonado" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <span class="cancha-badge" style="position:absolute; top:16px; left:16px; z-index:2; background:var(--green); color:white;">✨ NUEVA</span>
+          <span class="cancha-number" style="position:absolute; top:8px; right:16px; z-index:2; opacity:0.6;">02</span>
+        </div>
+        <div class="cancha-body">
+          <div class="cancha-type">Cancha Premium</div>
+          <h3 class="cancha-name">Cancha 2</h3>
+          <div class="cancha-features">
+            <span class="feature-tag">🏠 Techada</span>
+            <span class="feature-tag">💡 Iluminación LED</span>
+            <span class="feature-tag">🌱 Césped premium</span>
+          </div>
+          <a href="#reservas" class="cancha-cta" onclick="selectCanchaFromCard(2)">
+            Reservar esta cancha
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVAS ============ -->
+<section class="section" id="reservas">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Sistema de Reservas</span>
+      <h2 class="section-title">Reservá en <span style="color:var(--yellow)">4 pasos</span>.</h2>
+      <p class="section-subtitle">Elegí tu cancha, fecha y hora. Confirmá con tus datos. Listo.</p>
+    </div>
+    
+    <div class="reservation-box">
+      <!-- Progress -->
+      <div class="steps-progress step-1" id="stepsProgress">
+        <div class="step active" data-step="1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Cancha</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Fecha</div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-circle">3</div>
+          <div class="step-label">Horario</div>
+        </div>
+        <div class="step" data-step="4">
+          <div class="step-circle">4</div>
+          <div class="step-label">Datos</div>
+        </div>
+      </div>
+      
+      <!-- Step 1: Cancha -->
+      <div class="reservation-step active" data-step-content="1">
+        <h3 class="step-title">Elegí tu cancha</h3>
+        <p class="step-subtitle">Ambas canchas son techadas con iluminación profesional.</p>
+        
+        <!-- Tipo de reserva -->
+        <div style="margin-bottom:24px;">
+          <p class="form-label" style="margin-bottom:12px;">Tipo de reserva</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="tipo-option selected" data-tipo="completa" onclick="selectTipo('completa')" style="flex:1; padding:16px; background:rgba(253,224,71,0.08); border:2px solid var(--yellow); border-radius:12px; cursor:pointer; text-align:left; transition:var(--transition);">
+              <div style="font-family:'Anton',sans-serif; font-size:18px; margin-bottom:4px;">🎾 Cancha Completa</div>
+              <div style="font-size:13px; color:var(--gray-soft);">Hasta 4 jugadores · <strong style="color:var(--yellow)">$1.200/hora</strong></div>
+            </button>
+            <button class="tipo-option" data-tipo="persona" onclick="selectTipo('persona')" style="flex:1; padding:16px; background:var(--navy-soft); border:2px solid transparent; border-radius:12px; cursor:pointer; text-align:left; transition:var(--transition);">
+              <div style="font-family:'Anton',sans-serif; font-size:18px; margin-bottom:4px;">👤 Por Persona</div>
+              <div style="font-size:13px; color:var(--gray-soft);">Te sumamos a un partido · <strong style="color:var(--sky)">$300/hora</strong></div>
+            </button>
+          </div>
+        </div>
+        
+        <div class="cancha-options">
+          <button class="cancha-option" data-cancha="1" onclick="selectCancha(1)">
+            <div class="cancha-option-icon"></div>
+            <div class="cancha-option-name">Cancha 1</div>
+            <div class="cancha-option-desc">Premium • La más popular</div>
+          </button>
+          <button class="cancha-option" data-cancha="2" onclick="selectCancha(2)">
+            <div class="cancha-option-icon" style="background:var(--sky)"></div>
+            <div class="cancha-option-name">Cancha 2</div>
+            <div class="cancha-option-desc">Premium • Nuevo césped 2026</div>
+          </button>
+        </div>
+        
+        <p id="errorCancha" style="color:var(--red); font-size:13px; margin-bottom:12px; display:none;">⚠ Por favor seleccioná una cancha para continuar.</p>
+        <div class="step-actions" style="justify-content: flex-end;">
+          <button class="btn-next" id="next1" onclick="nextStep(2)">
+            Continuar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Step 2: Fecha -->
+      <div class="reservation-step" data-step-content="2">
+        <h3 class="step-title">Elegí la fecha</h3>
+        <p class="step-subtitle">Mostramos los próximos 30 días. Los domingos cerramos antes.</p>
+        
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn" onclick="changeMonth(-1)">‹</button>
+            <div class="calendar-month" id="calendarMonth"></div>
+            <button class="calendar-nav-btn" onclick="changeMonth(1)">›</button>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+        
+        <p id="errorFecha" style="color:var(--red); font-size:13px; margin-bottom:12px; display:none;">⚠ Por favor seleccioná una fecha para continuar.</p>
+        <div class="step-actions">
+          <button class="btn-back" onclick="prevStep(1)">‹ Atrás</button>
+          <button class="btn-next" id="next2" onclick="nextStep(3)">
+            Continuar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Step 3: Hora -->
+      <div class="reservation-step" data-step-content="3">
+        <h3 class="step-title">Elegí el horario</h3>
+        <p class="step-subtitle" id="step3Subtitle">Reservas por hora — De 8:00 a 23:00.</p>
+        
+        <div class="time-legend">
+          <div class="legend-item"><span class="legend-dot available"></span>Disponible</div>
+          <div class="legend-item"><span class="legend-dot selected"></span>Seleccionado</div>
+          <div class="legend-item"><span class="legend-dot occupied"></span>Ocupado</div>
+        </div>
+        
+        <div class="time-slots" id="timeSlots"></div>
+        
+        <div class="step-actions">
+          <button class="btn-back" onclick="prevStep(2)">‹ Atrás</button>
+          <button class="btn-next" id="next3" onclick="nextStep(4)" disabled>
+            Continuar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Step 4: Datos -->
+      <div class="reservation-step" data-step-content="4">
+        <h3 class="step-title">Tus datos</h3>
+        <p class="step-subtitle">Te enviaremos la confirmación por WhatsApp.</p>
+        
+        <div class="summary-box">
+          <h4 class="summary-title">📋 Resumen de tu reserva</h4>
+          <div class="summary-row">
+            <span class="summary-label">Cancha</span>
+            <span class="summary-value" id="summaryCancha">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Fecha</span>
+            <span class="summary-value" id="summaryDate">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Horario</span>
+            <span class="summary-value" id="summaryTime">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Total</span>
+            <span class="summary-value" id="step4total" style="color:var(--yellow); font-size:20px; font-family:'Anton'">$1.200</span>
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-input" id="inputNombre" placeholder="Ej: Juan" oninput="validateForm()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-input" id="inputApellido" placeholder="Ej: Pérez" oninput="validateForm()">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-input" id="inputEmail" placeholder="Ej: juan@email.com" oninput="validateForm()">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Teléfono (con código de país)</label>
+            <input type="tel" class="form-input" id="inputTelefono" placeholder="Ej: +598 99 123 456" oninput="validateForm()">
+          </div>
+        </div>
+        
+        <div class="step-actions">
+          <button class="btn-back" onclick="prevStep(3)">‹ Atrás</button>
+          <button class="btn-next" id="btnConfirm" onclick="confirmReservation()" disabled>
+            Confirmar Reserva ✓
+          </button>
+        </div>
+      </div>
+      
+      <!-- Step 5: Confirmation -->
+      <div class="reservation-step" data-step-content="5">
+        <div class="confirmation">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 12l5 5L20 7"/>
+            </svg>
+          </div>
+          <h3 class="confirmation-title">¡Reserva Confirmada!</h3>
+          <p class="confirmation-text">
+            Tu cancha está reservada. Te llegará un mensaje de WhatsApp con todos los detalles. ¡Nos vemos en la cancha!
+          </p>
+          
+          <div class="confirmation-summary" id="confirmationSummary"></div>
+          
+          <div>
+            <a href="#" id="whatsappBtn" class="btn-whatsapp" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enviar por WhatsApp
+            </a>
+            <button class="btn-secondary" onclick="resetReservation()">Nueva Reserva</button>
+            <button class="btn-secondary" onclick="showMyReservations()" style="margin-left:8px;">Ver mis reservas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRECIOS ============ -->
+<section class="section" id="precios">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Tarifas</span>
+      <h2 class="section-title">Precios <span style="color:var(--yellow)">claros</span>.</h2>
+      <p class="section-subtitle">Sin sorpresas. Pagás por hora de cancha, no por jugador.</p>
+    </div>
+    
+    <div class="precios-grid">
+      <div class="precio-card fade-in-up">
+        <div class="precio-icon">👤</div>
+        <h3 class="precio-name">Por Persona</h3>
+        <p class="precio-desc">Si querés sumarte a un partido o jugar solo.</p>
+        <div class="precio-amount">
+          <span class="precio-currency">$</span>
+          <span class="precio-number">300</span>
+          <span class="precio-period">/persona/hora</span>
+        </div>
+        <ul class="precio-features">
+          <li>1 hora de cancha</li>
+          <li>Acceso a vestuarios</li>
+          <li>Iluminación incluida</li>
+          <li>Estacionamiento gratis</li>
+        </ul>
+        <a href="#reservas" class="btn-secondary" style="width:100%; justify-content:center;">Reservar</a>
+      </div>
+      
+      <div class="precio-card featured fade-in-up">
+        <div class="precio-icon">🎾</div>
+        <h3 class="precio-name">Cancha Completa</h3>
+        <p class="precio-desc">Reservá la cancha para vos y tus amigos. ¡La mejor opción!</p>
+        <div class="precio-amount">
+          <span class="precio-currency">$</span>
+          <span class="precio-number">1.200</span>
+          <span class="precio-period">/hora</span>
+        </div>
+        <ul class="precio-features">
+          <li>1 hora de cancha completa</li>
+          <li>Hasta 4 jugadores</li>
+          <li>Acceso a vestuarios</li>
+          <li>Iluminación incluida</li>
+          <li>Estacionamiento gratis</li>
+          <li>Reservá con anticipación</li>
+        </ul>
+        <a href="#reservas" class="btn-primary" style="width:100%; justify-content:center; padding:14px;">Reservar Ahora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" style="background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 class="section-title">Todo lo que <span style="color:var(--yellow)">necesitás saber</span>.</h2>
+      <p class="section-subtitle">Resolvemos tus dudas antes de llegar a la cancha.</p>
+    </div>
+    
+    <div class="faq-list" style="max-width:760px; margin:0 auto;">
+      
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Qué pasa si llueve?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Nuestras canchas son techadas, así que jugás con cualquier clima. La lluvia no cancela ni modifica tu reserva. ¡Nos vemos igual!</p>
+        </div>
+      </div>
+      
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Puedo llevar mi propia paleta?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, podés traer tu equipo completo. También contamos con paletas disponibles para alquilar en recepción si lo necesitás.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Cómo cancelo una reserva?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Escribinos por WhatsApp al <a href="https://wa.me/59892451182" target="_blank" style="color:var(--sky)">+598 92 451 182</a> con al menos 2 horas de anticipación y te ayudamos a reagendar o cancelar sin costo.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Los vestuarios tienen ducha?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, contamos con vestuarios completos con duchas calientes disponibles para todos los jugadores. El acceso está incluido con tu reserva.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Puedo pagar en el lugar?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, aceptamos efectivo y transferencia bancaria directamente en el club. Próximamente habilitaremos el pago online desde esta misma página.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Contacto</span>
+      <h2 class="section-title">Vení a <span style="color:var(--yellow)">conocernos</span>.</h2>
+      <p class="section-subtitle">Estamos en el corazón de Maldonado, fácil acceso y estacionamiento.</p>
+    </div>
+    
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <div class="contacto-item">
+          <div class="contacto-icon">📍</div>
+          <div class="contacto-content">
+            <h4>Dirección</h4>
+            <p>Tacuabé esq. Guyunusa<br>Maldonado, Uruguay</p>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-icon">📱</div>
+          <div class="contacto-content">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/59892451182" target="_blank" style="color:var(--sky)">+598 92 451 182</a></p>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-icon">🕐</div>
+          <div class="contacto-content">
+            <h4>Horarios</h4>
+            <p>Lunes a Domingo<br>8:00 a 23:00</p>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-icon">🅿️</div>
+          <div class="contacto-content">
+            <h4>Estacionamiento</h4>
+            <p>Gratis para clientes</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="map-container">
+        <div class="map-iframe-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.1234!2d-54.9561!3d-34.9058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95750247d7c0fe6f%3A0xa58c7c3b0b3c1234!2sTacuab%C3%A9%20esq.%20Guyunusa%2C%2020000%20Maldonado!5e0!3m2!1ses!2suy!4v1700000000000!5m2!1ses!2suy"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="map-cta">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Tacuab%C3%A9+y+Guyunusa+Maldonado+Uruguay&travelmode=driving" target="_blank" class="btn-maps">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Abrir en Google Maps · Iniciar GPS
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>PADEL ESTE — TU CLUB</h3>
+        <p>El mejor lugar para jugar pádel en Maldonado. Reservá tu cancha online, fácil y rápido.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <ul>
+          <li onclick="document.getElementById('canchas').scrollIntoView({behavior:'smooth'})">Canchas</li>
+          <li onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">Reservar</li>
+          <li onclick="document.getElementById('precios').scrollIntoView({behavior:'smooth'})">Precios</li>
+          <li onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">FAQ</li>
+          <li onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li>📍 Tacuabé esq. Guyunusa</li>
+          <li>📱 <a href="https://wa.me/59892451182" target="_blank" style="color:var(--sky); text-decoration:none;">+598 92 451 182</a></li>
+          <li>🕐 8:00 a 23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <strong>Padel Este — Tu Club</strong>. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ADMIN MODAL ============ -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAdmin()">×</button>
+    
+    <!-- Login -->
+    <div class="admin-login" id="adminLogin">
+      <h2>🔒 Acceso Administrador</h2>
+      <p>Ingresá la contraseña para ver el panel.</p>
+      <input type="password" class="form-input" id="adminPassword" placeholder="Contraseña" onkeyup="if(event.key==='Enter')doLogin()" style="margin-bottom:16px;">
+      <button class="btn-next" onclick="doLogin()" style="width:100%; justify-content:center;">Entrar</button>
+    </div>
+    
+    <!-- Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+      <div class="admin-header">
+        <h2 class="admin-title">
+          Panel de Reservas
+          <span class="live-indicator">
+            <span class="live-dot"></span>
+            En vivo
+          </span>
+        </h2>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="admin-filter" onclick="loadDemoData()">➕ Datos de prueba</button>
+          <button class="admin-filter" onclick="exportReservations()">📥 Exportar CSV</button>
+          <button class="admin-filter" onclick="if(confirm('¿Borrar TODAS las reservas? Esta acción no se puede deshacer.')){clearAll()}" style="color:var(--red)">🗑 Limpiar todo</button>
+        </div>
+      </div>
+      
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="admin-stat-label">Total reservas</div>
+          <div class="admin-stat-value" id="statTotal">0</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-label">Hoy</div>
+          <div class="admin-stat-value green" id="statToday">0</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-label">Cancha 1</div>
+          <div class="admin-stat-value blue" id="statC1">0</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-label">Cancha 2</div>
+          <div class="admin-stat-value" id="statC2">0</div>
+        </div>
+      </div>
+      
+      <div class="admin-filters">
+        <span style="font-size:13px; color:var(--gray); margin-right:8px;">Filtrar:</span>
+        <button class="admin-filter active" data-filter="all" onclick="setFilter('all')">Todas</button>
+        <button class="admin-filter" data-filter="today" onclick="setFilter('today')">Hoy</button>
+        <button class="admin-filter" data-filter="week" onclick="setFilter('week')">Esta semana</button>
+        <button class="admin-filter" data-filter="c1" onclick="setFilter('c1')">Cancha 1</button>
+        <button class="admin-filter" data-filter="c2" onclick="setFilter('c2')">Cancha 2</button>
+      </div>
+      
+      <div class="admin-table">
+        <div class="admin-table-header" style="grid-template-columns: 0.8fr 1fr 0.7fr 0.9fr 1.1fr 0.9fr 0.6fr;">
+          <div>Fecha</div>
+          <div>Cliente</div>
+          <div>Cancha</div>
+          <div>Horario</div>
+          <div>Email / Teléfono</div>
+          <div>Total</div>
+          <div>Acción</div>
+        </div>
+        <div id="adminTableBody"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ STATE ============
+const STATE = {
+  selectedCancha: null,
+  selectedDate: null,
+  selectedTime: null,
+  selectedTipo: 'completa',
+  currentStep: 1,
+  calendarMonth: new Date().getMonth(),
+  calendarYear: new Date().getFullYear(),
+  adminFilter: 'all'
+};
+const PRECIOS = { completa: 1200, persona: 300 };
+
+const STORAGE_KEY = 'padel_este_reservas';
+const ADMIN_PASSWORD = 'padel2026';
+const WHATSAPP_NUMBER = '59892451182';
+const HOURS = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'];
+
+// ============ DATA PERSISTENCE ============
+function getReservations() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  } catch(e) {
+    return [];
+  }
+}
+
+function saveReservations(reservations) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(reservations));
+  // Trigger event for cross-tab sync
+  window.dispatchEvent(new Event('reservations-updated'));
+}
+
+function addReservation(reservation) {
+  const reservations = getReservations();
+  reservations.push(reservation);
+  saveReservations(reservations);
+}
+
+function deleteReservation(id) {
+  const reservations = getReservations().filter(r => r.id !== id);
+  saveReservations(reservations);
+  renderAdmin();
+}
+
+function isSlotOccupied(cancha, date, time) {
+  return getReservations().some(r => 
+    r.cancha === cancha && r.date === date && r.time === time
+  );
+}
+
+// ============ NAVBAR SCROLL ============
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// ============ INTERSECTION OBSERVER (scroll animations) ============
+const observerOptions = { threshold: 0.15 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in-up, .cancha-card').forEach(el => observer.observe(el));
+
+// ============ RESERVATION FLOW ============
+function selectCancha(num) {
+  STATE.selectedCancha = num;
+  document.querySelectorAll('.cancha-option').forEach(el => el.classList.remove('selected'));
+  document.querySelector(`[data-cancha="${num}"]`).classList.add('selected');
+  document.getElementById('next1').disabled = false;
+}
+
+function selectCanchaFromCard(num) {
+  // Cuando vienen de las tarjetas, ya seleccionamos la cancha
+  STATE.selectedCancha = num;
+  setTimeout(() => {
+    document.querySelectorAll('.cancha-option').forEach(el => el.classList.remove('selected'));
+    const target = document.querySelector(`[data-cancha="${num}"]`);
+    if (target) target.classList.add('selected');
+    document.getElementById('next1').disabled = false;
+  }, 800);
+}
+
+function selectTipo(tipo) {
+  STATE.selectedTipo = tipo;
+  document.querySelectorAll('.tipo-option').forEach(el => {
+    const isSelected = el.dataset.tipo === tipo;
+    el.style.borderColor = isSelected ? 'var(--yellow)' : 'transparent';
+    el.style.background = isSelected ? 'rgba(253,224,71,0.08)' : 'var(--navy-soft)';
+  });
+}
+
+function nextStep(step) {
+  if (step === 2) {
+    const err = document.getElementById('errorCancha');
+    if (!STATE.selectedCancha) {
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+  }
+  if (step === 3) {
+    const err = document.getElementById('errorFecha');
+    if (!STATE.selectedDate) {
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+  }
+  goToStep(step);
+}
+
+function prevStep(step) {
+  goToStep(step);
+}
+
+function goToStep(step) {
+  STATE.currentStep = step;
+  document.querySelectorAll('.reservation-step').forEach(el => el.classList.remove('active'));
+  document.querySelector(`[data-step-content="${step}"]`).classList.add('active');
+  
+  // Update progress
+  const progress = document.getElementById('stepsProgress');
+  progress.className = `steps-progress step-${step}`;
+  
+  document.querySelectorAll('.step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active', 'completed');
+    if (s < step) el.classList.add('completed');
+    else if (s === step) el.classList.add('active');
+  });
+  
+  // Render specific step
+  if (step === 2) renderCalendar();
+  if (step === 3) renderTimeSlots();
+  if (step === 4) renderSummary();
+  
+  // Scroll to top of reservation box
+  document.querySelector('.reservation-box').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ============ CALENDAR ============
+function changeMonth(delta) {
+  STATE.calendarMonth += delta;
+  if (STATE.calendarMonth < 0) {
+    STATE.calendarMonth = 11;
+    STATE.calendarYear--;
+  } else if (STATE.calendarMonth > 11) {
+    STATE.calendarMonth = 0;
+    STATE.calendarYear++;
+  }
+  renderCalendar();
+}
+
+function renderCalendar() {
+  const month = STATE.calendarMonth;
+  const year = STATE.calendarYear;
+  const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('calendarMonth').textContent = `${monthNames[month]} ${year}`;
+  
+  const firstDay = new Date(year, month, 1).getDay(); // 0=Sun
+  // Shift so Monday=0
+  const offsetDay = (firstDay + 6) % 7;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const maxDate = new Date(today);
+  maxDate.setDate(maxDate.getDate() + 30);
+  
+  let html = '';
+  const dayLabels = ['L','M','M','J','V','S','D'];
+  dayLabels.forEach(d => html += `<div class="calendar-day-label">${d}</div>`);
+  
+  for (let i = 0; i < offsetDay; i++) {
+    html += `<div class="calendar-day empty"></div>`;
+  }
+  
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    const dateStr = formatDate(date);
+    const isPast = date < today;
+    const isFuture = date > maxDate;
+    const isToday = date.getTime() === today.getTime();
+    const isSelected = STATE.selectedDate === dateStr;
+    const disabled = isPast || isFuture;
+    
+    let classes = 'calendar-day';
+    if (disabled) classes += ' disabled';
+    if (isToday) classes += ' today';
+    if (isSelected) classes += ' selected';
+    
+    html += `<div class="${classes}" ${disabled ? '' : `onclick="selectDate('${dateStr}')"`}>${day}</div>`;
+  }
+  
+  document.getElementById('calendarGrid').innerHTML = html;
+}
+
+function formatDate(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2,'0');
+  const d = String(date.getDate()).padStart(2,'0');
+  return `${y}-${m}-${d}`;
+}
+
+function formatDateDisplay(dateStr) {
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m-1, d);
+  const days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  return `${days[date.getDay()]} ${d} de ${months[date.getMonth()]}`;
+}
+
+function selectDate(dateStr) {
+  STATE.selectedDate = dateStr;
+  STATE.selectedTime = null;
+  renderCalendar();
+  document.getElementById('next2').disabled = false;
+}
+
+// ============ TIME SLOTS ============
+function renderTimeSlots() {
+  const container = document.getElementById('timeSlots');
+  const subtitle = document.getElementById('step3Subtitle');
+  
+  subtitle.innerHTML = `<strong style="color:var(--yellow)">Cancha ${STATE.selectedCancha}</strong> · ${formatDateDisplay(STATE.selectedDate)}`;
+  
+  let html = '';
+  HOURS.forEach(time => {
+    const occupied = isSlotOccupied(STATE.selectedCancha, STATE.selectedDate, time);
+    const selected = STATE.selectedTime === time;
+    let classes = 'time-slot';
+    if (occupied) classes += ' occupied';
+    if (selected) classes += ' selected';
+    
+    html += `<button class="${classes}" ${occupied ? 'disabled' : `onclick="selectTime('${time}')"`}>${time}</button>`;
+  });
+  
+  container.innerHTML = html;
+}
+
+function selectTime(time) {
+  STATE.selectedTime = time;
+  renderTimeSlots();
+  document.getElementById('next3').disabled = false;
+}
+
+// ============ SUMMARY ============
+function renderSummary() {
+  document.getElementById('summaryCancha').textContent = `Cancha ${STATE.selectedCancha}`;
+  document.getElementById('summaryDate').textContent = formatDateDisplay(STATE.selectedDate);
+  document.getElementById('summaryTime').textContent = `${STATE.selectedTime} - ${String(parseInt(STATE.selectedTime.split(':')[0]) + 1).padStart(2,'0')}:00`;
+  const precio = PRECIOS[STATE.selectedTipo] || 1200;
+  const tipoLabel = STATE.selectedTipo === 'persona' ? 'Por persona' : 'Cancha completa';
+  const totalEl = document.querySelector('#step4total');
+  if (totalEl) totalEl.textContent = `$${precio.toLocaleString('es-UY')} · ${tipoLabel}`;
+}
+
+// ============ FORM VALIDATION ============
+function validateForm() {
+  const nombre = document.getElementById('inputNombre').value.trim();
+  const apellido = document.getElementById('inputApellido').value.trim();
+  const email = document.getElementById('inputEmail').value.trim();
+  const tel = document.getElementById('inputTelefono').value.trim();
+  const emailValid = email.includes('@') && email.includes('.');
+  document.getElementById('btnConfirm').disabled = !(nombre && apellido && emailValid && tel.length >= 8);
+}
+
+// ============ CONFIRM RESERVATION ============
+function confirmReservation() {
+  const precio = PRECIOS[STATE.selectedTipo] || 1200;
+  const tipoLabel = STATE.selectedTipo === 'persona' ? 'Por persona' : 'Cancha completa';
+  const reservation = {
+    id: 'res_' + Date.now() + '_' + Math.random().toString(36).substr(2,5),
+    cancha: STATE.selectedCancha,
+    date: STATE.selectedDate,
+    time: STATE.selectedTime,
+    tipo: STATE.selectedTipo,
+    precio: precio,
+    nombre: document.getElementById('inputNombre').value.trim(),
+    apellido: document.getElementById('inputApellido').value.trim(),
+    email: document.getElementById('inputEmail').value.trim(),
+    telefono: document.getElementById('inputTelefono').value.trim(),
+    timestamp: Date.now()
+  };
+  
+  // Double-check the slot isn't taken (race condition protection)
+  if (isSlotOccupied(reservation.cancha, reservation.date, reservation.time)) {
+    alert('¡Ups! Ese horario acaba de ser reservado por otra persona. Por favor elegí otro horario.');
+    goToStep(3);
+    renderTimeSlots();
+    return;
+  }
+  
+  addReservation(reservation);
+  
+  // Show confirmation step 5
+  const confSummary = document.getElementById('confirmationSummary');
+  confSummary.innerHTML = `
+    <div class="summary-row">
+      <span class="summary-label">Reserva</span>
+      <span class="summary-value">#${reservation.id.split('_')[1]}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Cliente</span>
+      <span class="summary-value">${reservation.nombre} ${reservation.apellido}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Cancha</span>
+      <span class="summary-value">Cancha ${reservation.cancha}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Tipo</span>
+      <span class="summary-value">${tipoLabel}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Fecha</span>
+      <span class="summary-value">${formatDateDisplay(reservation.date)}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Horario</span>
+      <span class="summary-value">${reservation.time} - ${String(parseInt(reservation.time.split(':')[0])+1).padStart(2,'0')}:00</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Total</span>
+      <span class="summary-value" style="color:var(--yellow);font-family:'Anton';font-size:20px;">$${precio.toLocaleString('es-UY')}</span>
+    </div>
+  `;
+  
+  // Build WhatsApp message
+  const endHour = String(parseInt(reservation.time.split(':')[0])+1).padStart(2,'0');
+  const encodedMsg = encodeURIComponent(
+    `Hola Padel Este! 🎾
+
+Confirmo mi reserva:
+👤 ${reservation.nombre} ${reservation.apellido}
+📧 ${reservation.email}
+📅 ${formatDateDisplay(reservation.date)}
+⏰ ${reservation.time} - ${endHour}:00hs
+🎾 Cancha ${reservation.cancha} · ${tipoLabel}
+💰 $${precio.toLocaleString('es-UY')}
+
+¡Gracias!`
+  );
+  document.getElementById('whatsappBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+  
+  goToStep(5);
+  launchConfetti();
+  updateHeroStats();
+}
+
+function resetReservation() {
+  STATE.selectedCancha = null;
+  STATE.selectedDate = null;
+  STATE.selectedTime = null;
+  STATE.selectedTipo = 'completa';
+  document.getElementById('inputNombre').value = '';
+  document.getElementById('inputApellido').value = '';
+  document.getElementById('inputEmail').value = '';
+  document.getElementById('inputTelefono').value = '';
+  document.querySelectorAll('.cancha-option').forEach(el => el.classList.remove('selected'));
+  document.querySelectorAll('.tipo-option').forEach(el => {
+    el.style.borderColor = el.dataset.tipo === 'completa' ? 'var(--yellow)' : 'transparent';
+    el.style.background = el.dataset.tipo === 'completa' ? 'rgba(253,224,71,0.08)' : 'var(--navy-soft)';
+  });
+  document.getElementById('btnConfirm').disabled = true;
+  goToStep(1);
+}
+
+// ============ CONFETTI ============
+function launchConfetti() {
+  const colors = ['#FDE047','#2563EB','#38BDF8','#22C55E','#FFFFFF'];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.top = '-20px';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (2 + Math.random() * 2) + 's';
+      c.style.transform = `rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }, i * 30);
+  }
+}
+
+// ============ HERO STATS ============
+function updateHeroStats() {
+  const today = formatDate(new Date());
+  const occupiedToday = getReservations().filter(r => r.date === today).length;
+  const total = 2 * HOURS.length; // 2 canchas * 15 horas
+  const available = total - occupiedToday;
+  document.getElementById('statSlotsToday').textContent = available;
+}
+
+// ============ ADMIN PANEL ============
+function checkAdminURL() {
+  if (window.location.hash === '#admin') {
+    openAdmin();
+  }
+}
+
+function openAdmin() {
+  document.getElementById('adminModal').classList.add('active');
+  document.getElementById('adminPassword').focus();
+}
+
+function closeAdmin() {
+  document.getElementById('adminModal').classList.remove('active');
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminDashboard').classList.remove('active');
+  document.getElementById('adminPassword').value = '';
+  if (window.location.hash === '#admin') {
+    history.pushState('', document.title, window.location.pathname);
+  }
+}
+
+function doLogin() {
+  const pass = document.getElementById('adminPassword').value;
+  if (pass === ADMIN_PASSWORD) {
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminDashboard').classList.add('active');
+    renderAdmin();
+  } else {
+    alert('Contraseña incorrecta.');
+  }
+}
+
+function renderAdmin() {
+  const reservations = getReservations().sort((a,b) => {
+    const dateCompare = b.date.localeCompare(a.date);
+    if (dateCompare !== 0) return dateCompare;
+    return b.time.localeCompare(a.time);
+  });
+  
+  // Stats
+  const today = formatDate(new Date());
+  const todayReservations = reservations.filter(r => r.date === today);
+  document.getElementById('statTotal').textContent = reservations.length;
+  document.getElementById('statToday').textContent = todayReservations.length;
+  document.getElementById('statC1').textContent = reservations.filter(r => r.cancha === 1).length;
+  document.getElementById('statC2').textContent = reservations.filter(r => r.cancha === 2).length;
+  
+  // Apply filter
+  let filtered = reservations;
+  const filter = STATE.adminFilter;
+  if (filter === 'today') {
+    filtered = reservations.filter(r => r.date === today);
+  } else if (filter === 'week') {
+    const weekFromNow = new Date();
+    weekFromNow.setDate(weekFromNow.getDate() + 7);
+    const weekStr = formatDate(weekFromNow);
+    filtered = reservations.filter(r => r.date >= today && r.date <= weekStr);
+  } else if (filter === 'c1') {
+    filtered = reservations.filter(r => r.cancha === 1);
+  } else if (filter === 'c2') {
+    filtered = reservations.filter(r => r.cancha === 2);
+  }
+  
+  // Render rows
+  const tbody = document.getElementById('adminTableBody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = `
+      <div class="admin-empty">
+        <div class="admin-empty-icon">📋</div>
+        <p>No hay reservas para mostrar.</p>
+        <p style="font-size:13px; margin-top:8px;">Las nuevas reservas aparecerán aquí automáticamente.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  let html = '';
+  const recentLimit = Date.now() - 5000; // marcar como nuevas las de últimos 5 seg
+  
+  filtered.forEach(r => {
+    const isNew = r.timestamp > recentLimit;
+    const endH = String(parseInt(r.time.split(':')[0])+1).padStart(2,'0');
+    const precioStr = r.precio ? `$${r.precio.toLocaleString('es-UY')}` : '$1.200';
+    html += `
+      <div class="admin-table-row ${isNew ? 'new' : ''}" style="grid-template-columns: 0.8fr 1fr 0.7fr 0.9fr 1.1fr 0.9fr 0.6fr;">
+        <div>
+          <strong>${formatDateShort(r.date)}</strong>
+          <div style="font-size:11px; color:var(--gray); margin-top:2px;">${formatDateRelative(r.date)}</div>
+        </div>
+        <div>
+          <strong>${r.nombre} ${r.apellido}</strong>
+          <div style="font-size:11px; color:var(--gray); margin-top:2px;">#${r.id.split('_')[1]}</div>
+        </div>
+        <div>
+          <span class="badge-cancha c${r.cancha}">Cancha ${r.cancha}</span>
+        </div>
+        <div>
+          <strong>${r.time}</strong>
+          <span style="color:var(--gray);"> - ${endH}:00</span>
+        </div>
+        <div>
+          <div style="font-size:12px; color:var(--sky);">${r.email || '—'}</div>
+          <a href="https://wa.me/${r.telefono ? r.telefono.replace(/[^\d]/g,'') : ''}" target="_blank" style="color:var(--gray); font-size:11px;">${r.telefono || '—'}</a>
+        </div>
+        <div>
+          <span style="color:var(--yellow); font-family:'Anton'; font-size:14px;">${precioStr}</span>
+          <div style="font-size:10px; color:var(--gray);">${r.tipo === 'persona' ? 'por persona' : 'completa'}</div>
+        </div>
+        <div>
+          <button class="btn-icon" onclick="if(confirm('¿Cancelar esta reserva?')) deleteReservation('${r.id}')" title="Cancelar reserva">✕</button>
+        </div>
+      </div>
+    `;
+  });
+  
+  tbody.innerHTML = html;
+}
+
+function formatDateShort(dateStr) {
+  const [y,m,d] = dateStr.split('-');
+  return `${d}/${m}/${y.substr(2)}`;
+}
+
+function formatDateRelative(dateStr) {
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m-1, d);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const diff = Math.round((date - today) / (1000*60*60*24));
+  if (diff === 0) return 'Hoy';
+  if (diff === 1) return 'Mañana';
+  if (diff === -1) return 'Ayer';
+  if (diff > 0 && diff < 7) return `En ${diff} días`;
+  if (diff < 0) return `Hace ${Math.abs(diff)} días`;
+  const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  return days[date.getDay()];
+}
+
+function setFilter(filter) {
+  STATE.adminFilter = filter;
+  document.querySelectorAll('.admin-filter[data-filter]').forEach(el => el.classList.remove('active'));
+  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+  renderAdmin();
+}
+
+function exportReservations() {
+  const reservations = getReservations();
+  if (reservations.length === 0) {
+    alert('No hay reservas para exportar.');
+    return;
+  }
+  const csv = [
+    ['ID','Fecha','Hora','Cancha','Nombre','Apellido','Email','Telefono','Tipo','Total','Timestamp'],
+    ...reservations.map(r => [r.id, r.date, r.time, r.cancha, r.nombre, r.apellido, r.email||'', r.telefono, r.tipo||'completa', r.precio||1200, new Date(r.timestamp).toLocaleString()])
+  ].map(row => row.map(c => `"${c}"`).join(',')).join('\n');
+  
+  const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `reservas-padel-este-${formatDate(new Date())}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function clearAll() {
+  saveReservations([]);
+  renderAdmin();
+}
+
+function loadDemoData() {
+  if (!confirm('¿Cargar 3 reservas de prueba? Se agregarán a las existentes.')) return;
+  const today = new Date();
+  const d1 = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1));
+  const d2 = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2));
+  const d3 = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3));
+  const demos = [
+    { id: 'res_demo1_abc01', cancha: 1, date: d1, time: '10:00', tipo: 'completa', precio: 1200,
+      nombre: 'Martín', apellido: 'García', email: 'martin@demo.com', telefono: '+598 99 111 222', timestamp: Date.now() - 3000 },
+    { id: 'res_demo2_abc02', cancha: 2, date: d1, time: '14:00', tipo: 'persona', precio: 300,
+      nombre: 'Laura', apellido: 'Rodríguez', email: 'laura@demo.com', telefono: '+598 99 333 444', timestamp: Date.now() - 2000 },
+    { id: 'res_demo3_abc03', cancha: 1, date: d2, time: '18:00', tipo: 'completa', precio: 1200,
+      nombre: 'Pablo', apellido: 'Fernández', email: 'pablo@demo.com', telefono: '+598 98 555 666', timestamp: Date.now() - 1000 },
+    { id: 'res_demo4_abc04', cancha: 2, date: d3, time: '09:00', tipo: 'completa', precio: 1200,
+      nombre: 'Sofía', apellido: 'López', email: 'sofia@demo.com', telefono: '+598 92 777 888', timestamp: Date.now() },
+  ];
+  const existing = getReservations().filter(r => !r.id.startsWith('res_demo'));
+  saveReservations([...existing, ...demos]);
+  renderAdmin();
+}
+
+// ============ REAL-TIME SYNC ============
+// Listen for changes from other tabs
+window.addEventListener('storage', (e) => {
+  if (e.key === STORAGE_KEY) {
+    if (document.getElementById('adminDashboard').classList.contains('active')) {
+      renderAdmin();
+    }
+    updateHeroStats();
+    // If user is on time-slot step, refresh
+    if (STATE.currentStep === 3 && STATE.selectedCancha && STATE.selectedDate) {
+      renderTimeSlots();
+    }
+  }
+});
+
+// Listen for in-same-tab updates
+window.addEventListener('reservations-updated', () => {
+  if (document.getElementById('adminDashboard').classList.contains('active')) {
+    renderAdmin();
+  }
+  updateHeroStats();
+});
+
+// Periodic refresh of admin (catch any edge cases)
+setInterval(() => {
+  if (document.getElementById('adminDashboard').classList.contains('active')) {
+    renderAdmin();
+  }
+}, 3000);
+
+// ============ INIT ============
+window.addEventListener('DOMContentLoaded', () => {
+  updateHeroStats();
+  checkAdminURL();
+  
+  // Listen for hash changes
+  window.addEventListener('hashchange', checkAdminURL);
+});
+
+// Close modal on overlay click
+document.getElementById('adminModal').addEventListener('click', (e) => {
+  if (e.target.id === 'adminModal') closeAdmin();
+});
+
+// ESC to close modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.getElementById('adminModal').classList.contains('active')) {
+    closeAdmin();
+  }
+});
+
+// ============ FAQ ACCORDION ============
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ============ MY RESERVATIONS (Tarea 3.3) ============
+function showMyReservations() {
+  const tel = document.getElementById('inputTelefono').value.trim();
+  const all = getReservations().filter(r => r.telefono && r.telefono.replace(/[^\d]/g,'').includes(tel.replace(/[^\d]/g,'')));
+  if (all.length === 0) {
+    alert('No encontramos reservas asociadas a ese número de teléfono.');
+    return;
+  }
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:3000;display:flex;align-items:center;justify-content:center;padding:24px;';
+  let rows = all.map(r => `
+    <div style="background:var(--navy-soft);border:1px solid rgba(56,189,248,0.15);border-radius:12px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-family:'Anton',sans-serif;font-size:18px;">Cancha ${r.cancha} · ${r.time}hs</div>
+        <div style="font-size:13px;color:var(--gray-soft);">${formatDateDisplay(r.date)} · $${(r.precio||1200).toLocaleString('es-UY')}</div>
+      </div>
+      <button onclick="if(confirm('¿Cancelar esta reserva?')){deleteReservation('${r.id}');this.closest('[data-myres]').remove();}" data-myres style="background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;">Cancelar</button>
+    </div>
+  `).join('');
+  modal.innerHTML = `
+    <div style="background:var(--navy);border:1px solid rgba(56,189,248,0.2);border-radius:24px;max-width:560px;width:100%;padding:36px;max-height:90vh;overflow-y:auto;">
+      <h3 style="font-family:'Anton',sans-serif;font-size:28px;margin-bottom:8px;">Mis Reservas</h3>
+      <p style="color:var(--gray-soft);margin-bottom:24px;font-size:14px;">${all.length} reserva${all.length>1?'s':''} encontrada${all.length>1?'s':''}</p>
+      ${rows}
+      <button onclick="this.closest('[style*=position]').remove()" style="width:100%;margin-top:8px;background:var(--navy-soft);color:var(--white);border:none;border-radius:10px;padding:14px;font-size:15px;cursor:pointer;">Cerrar</button>
+    </div>`;
+  document.body.appendChild(modal);
+}
+</script>
+
+</body>
+</html>
