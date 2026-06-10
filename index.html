@@ -13,7 +13,7 @@
 
 <style>
 /* ================================================================
-   PADEL ESTE — v2 simplificada · Mobile-first (97% usuarios móvil)
+   PADEL ESTE — v3 · Mobile-first · Admin seguro · Torneos
    ================================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -48,7 +48,7 @@ body {
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 a { color: inherit; text-decoration: none; }
-input, select { font-family: inherit; }
+input, select, textarea { font-family: inherit; }
 
 .container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
 
@@ -144,6 +144,21 @@ h1, h2, h3 {
 }
 .btn-hero:active { transform: scale(0.98); }
 
+/* Aviso de torneo en el hero (solo visible si hay torneo activo) */
+.torneo-pill {
+  display: none;
+  align-items: center; gap: 10px;
+  margin-top: 18px;
+  max-width: 380px;
+  background: linear-gradient(120deg, rgba(37,99,235,.25), rgba(37,99,235,.08));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 14px;
+  padding: 13px 16px;
+  font-size: 14px; font-weight: 600;
+}
+.torneo-pill.visible { display: flex; }
+.torneo-pill .arrow { margin-left: auto; color: var(--sky); flex-shrink: 0; }
+
 .hero-facts {
   display: flex; flex-wrap: wrap; gap: 8px;
   margin-top: 26px;
@@ -164,7 +179,6 @@ h1, h2, h3 {
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
-/* Progreso */
 .progress { display: flex; gap: 6px; margin-bottom: 24px; }
 .progress span {
   flex: 1; height: 4px; border-radius: 4px;
@@ -186,8 +200,8 @@ h1, h2, h3 {
 .date-scroll {
   display: flex; gap: 10px;
   overflow-x: auto;
-  padding: 4px 2px 14px;
-  margin: 0 -18px; padding-left: 18px; padding-right: 18px;
+  padding: 4px 18px 14px;
+  margin: 0 -18px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
@@ -261,7 +275,7 @@ h1, h2, h3 {
 }
 .type-opt.selected { border-color: var(--yellow); background: rgba(253, 224, 71, 0.06); }
 .type-name { font-weight: 700; font-size: 15px; }
-.type-desc { font-size: 12.5px; color: var(--gray); margin-top: 1px; }
+.type-desc { font-size: 12.5px; color: var(--gray); margin-top: 1px; display: block; }
 .type-price { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--yellow); white-space: nowrap; }
 
 .players-row {
@@ -289,7 +303,7 @@ h1, h2, h3 {
   letter-spacing: 0.07em; text-transform: uppercase;
   color: var(--gray); margin-bottom: 7px;
 }
-.field input {
+.field input, .field textarea, .field select {
   width: 100%;
   background: var(--navy); border: 1.5px solid var(--line);
   border-radius: 12px;
@@ -297,10 +311,11 @@ h1, h2, h3 {
   color: var(--white); font-size: 16px; /* 16px evita el zoom de iOS */
   transition: var(--transition);
 }
-.field input:focus { outline: none; border-color: var(--sky); }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--sky); }
 .field input.error { border-color: var(--red); }
 .field .hint { font-size: 12px; color: var(--red); margin-top: 5px; display: none; }
 .field.has-error .hint { display: block; }
+.field.has-error input { border-color: var(--red); }
 
 .fields-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
@@ -312,9 +327,9 @@ h1, h2, h3 {
   padding: 16px;
   margin: 18px 0;
 }
-.summary-row { display: flex; justify-content: space-between; font-size: 14px; padding: 5px 0; }
+.summary-row { display: flex; justify-content: space-between; font-size: 14px; padding: 5px 0; gap: 12px; }
 .summary-row .k { color: var(--gray); }
-.summary-row .v { font-weight: 600; }
+.summary-row .v { font-weight: 600; text-align: right; }
 .summary-row.total { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 11px; }
 .summary-row.total .v { font-family: 'Anton', sans-serif; font-size: 20px; color: var(--yellow); }
 
@@ -366,6 +381,53 @@ h1, h2, h3 {
   border: 1.5px solid var(--line); color: var(--gray-soft);
   font-weight: 600; font-size: 14px;
   padding: 14px 20px; border-radius: 12px;
+}
+
+/* ---------- Torneo (público) ---------- */
+#torneo { display: none; }
+#torneo.visible { display: block; }
+
+.torneo-card {
+  position: relative;
+  background: linear-gradient(135deg, #1438a8 0%, var(--royal) 45%, #1d4ed8 100%);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 22px;
+  padding: 26px 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(37, 99, 235, 0.25);
+}
+.torneo-card::before {
+  content: '🏆';
+  position: absolute; right: -10px; top: -18px;
+  font-size: 120px; opacity: 0.10;
+  transform: rotate(12deg);
+}
+.torneo-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--yellow); color: var(--navy);
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 14px;
+}
+.torneo-card h3 { font-size: clamp(26px, 6vw, 40px); margin-bottom: 8px; position: relative; }
+.torneo-desc { font-size: 14px; color: rgba(255,255,255,.85); max-width: 480px; margin-bottom: 18px; position: relative; }
+
+.torneo-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; position: relative; }
+.tmeta {
+  font-size: 13px; font-weight: 600;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 7px 13px; border-radius: 100px;
+}
+.tmeta.warn { background: rgba(253, 224, 71, 0.18); border-color: rgba(253, 224, 71, 0.4); color: var(--yellow); }
+
+.torneo-form { position: relative; background: rgba(6, 13, 24, 0.45); border-radius: 16px; padding: 16px; }
+.torneo-form .field input { background: rgba(10, 22, 40, 0.7); }
+.torneo-full {
+  position: relative;
+  text-align: center; font-weight: 700; font-size: 15px;
+  background: rgba(6, 13, 24, 0.45); border-radius: 16px;
+  padding: 22px 16px;
 }
 
 /* ---------- Precios ---------- */
@@ -489,6 +551,7 @@ h1, h2, h3 {
   background: var(--navy-card); border: 1px solid var(--line);
   font-size: 17px;
   display: flex; align-items: center; justify-content: center;
+  z-index: 5;
 }
 
 .admin-login { max-width: 340px; margin: 28px auto; text-align: center; }
@@ -500,13 +563,38 @@ h1, h2, h3 {
   margin-bottom: 12px; text-align: center;
 }
 .admin-login input:focus { outline: none; border-color: var(--sky); }
+.lock-msg { font-size: 13px; color: var(--red); margin-top: 10px; display: none; }
+.lock-msg.visible { display: block; }
 
 .admin-panel { display: none; }
 .admin-panel.active { display: block; }
 
-.admin-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; padding-right: 44px; }
+.admin-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; padding-right: 44px; }
 .admin-top h2 { font-size: 24px; }
-.admin-tools { display: flex; gap: 8px; }
+
+.admin-tabs {
+  display: flex; gap: 6px;
+  background: var(--navy-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 18px;
+}
+.admin-tab {
+  flex: 1;
+  padding: 10px 6px;
+  border-radius: 9px;
+  font-size: 13px; font-weight: 700;
+  color: var(--gray);
+  transition: var(--transition);
+  text-align: center;
+}
+.admin-tab.active { background: var(--yellow); color: var(--navy); }
+
+.admin-view { display: none; }
+.admin-view.active { display: block; animation: fade 0.25s ease; }
+
+.admin-tools { display: flex; gap: 8px; flex-wrap: wrap; }
 .chip-btn {
   font-size: 12.5px; font-weight: 600;
   background: var(--navy-card); border: 1px solid var(--line);
@@ -554,11 +642,32 @@ h1, h2, h3 {
 .sync-tag {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--gray); margin-top: 14px;
+  color: var(--gray); margin-top: 16px;
 }
 .sync-tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--gray); }
 .sync-tag.live { color: var(--green); }
 .sync-tag.live i { background: var(--green); animation: ping 2s infinite; }
+
+/* Formularios del admin */
+.admin-form {
+  background: var(--navy-card); border: 1px solid var(--line);
+  border-radius: 16px; padding: 18px 16px;
+  margin-bottom: 14px;
+}
+.admin-form h3 { font-size: 18px; margin-bottom: 14px; }
+.admin-form .field input, .admin-form .field textarea { background: var(--navy); }
+.form-note { font-size: 12px; color: var(--gray); margin-top: 10px; line-height: 1.5; }
+
+.torneo-admin-head {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.torneo-status {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 100px;
+}
+.torneo-status.on { background: rgba(34,197,94,.15); color: var(--green); }
+.torneo-status.off { background: rgba(148,163,184,.12); color: var(--gray); }
 
 /* ---------- Desktop ---------- */
 @media (min-width: 768px) {
@@ -575,8 +684,9 @@ h1, h2, h3 {
   .info-list { margin-top: 0; }
   .modal-overlay { align-items: center; padding: 24px; }
   .modal { border-radius: 22px; max-height: 88vh; padding: 28px; }
-  .admin-stats { grid-template-columns: repeat(3, 1fr); }
   .date-chip { width: 72px; }
+  .torneo-card { padding: 34px 32px; }
+  .torneo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -611,10 +721,15 @@ h1, h2, h3 {
       Reservar ahora
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
+    <a class="torneo-pill" id="torneoPill" href="#torneo">
+      <span>🏆</span>
+      <span id="torneoPillText">Torneo abierto — inscribite</span>
+      <span class="arrow">→</span>
+    </a>
     <div class="hero-facts">
       <span class="fact"><strong>2</strong> canchas techadas</span>
       <span class="fact">Iluminación LED</span>
-      <span class="fact"><strong>8:00 – 23:00</strong> todos los días</span>
+      <span class="fact" id="factHorario"><strong>8:00 – 23:00</strong> todos los días</span>
     </div>
   </div>
 </section>
@@ -671,16 +786,16 @@ h1, h2, h3 {
           <button class="type-opt selected" data-type="completa" onclick="selectType('completa')">
             <span>
               <span class="type-name">Cancha completa</span>
-              <span class="type-desc" style="display:block;">Hasta 4 jugadores</span>
+              <span class="type-desc">Hasta 4 jugadores</span>
             </span>
-            <span class="type-price">$1.200</span>
+            <span class="type-price" id="priceFullLabel">$1.200</span>
           </button>
           <button class="type-opt" data-type="persona" onclick="selectType('persona')">
             <span>
               <span class="type-name">Por persona</span>
-              <span class="type-desc" style="display:block;">Te sumamos a un partido</span>
+              <span class="type-desc">Te sumamos a un partido</span>
             </span>
-            <span class="type-price">$300 <small style="font-family:'DM Sans';font-size:11px;color:var(--gray);">c/u</small></span>
+            <span class="type-price" id="pricePersonLabel">$300 <small style="font-family:'DM Sans';font-size:11px;color:var(--gray);">c/u</small></span>
           </button>
         </div>
 
@@ -738,6 +853,45 @@ h1, h2, h3 {
   </div>
 </section>
 
+<!-- ============ TORNEO (solo visible si el admin activó uno) ============ -->
+<section class="section" id="torneo" style="padding-top: 0;">
+  <div class="container">
+    <div class="torneo-card">
+      <span class="torneo-tag">🏆 Torneo</span>
+      <h3 id="tNombre">—</h3>
+      <p class="torneo-desc" id="tDesc"></p>
+      <div class="torneo-meta" id="tMeta"></div>
+
+      <div class="torneo-form" id="tForm">
+        <div class="fields-2">
+          <div class="field" id="tfNombre">
+            <label for="tInputNombre">Nombre</label>
+            <input type="text" id="tInputNombre" placeholder="Juan" oninput="validateTorneoForm()">
+            <span class="hint">Ingresá tu nombre.</span>
+          </div>
+          <div class="field" id="tfApellido">
+            <label for="tInputApellido">Apellido</label>
+            <input type="text" id="tInputApellido" placeholder="Pérez" oninput="validateTorneoForm()">
+            <span class="hint">Ingresá tu apellido.</span>
+          </div>
+        </div>
+        <div class="field" id="tfTel">
+          <label for="tInputTelefono">Celular (WhatsApp)</label>
+          <input type="tel" id="tInputTelefono" placeholder="099 123 456" inputmode="tel" oninput="validateTorneoForm()">
+          <span class="hint">Ingresá un celular válido (mínimo 8 dígitos).</span>
+        </div>
+        <div class="field">
+          <label for="tInputPareja">Compañero/a (opcional)</label>
+          <input type="text" id="tInputPareja" placeholder="Nombre de tu pareja de juego">
+        </div>
+        <button class="btn-main" id="tBtnInscribir" style="width:100%;" disabled onclick="inscribirTorneo()">Inscribirme al torneo</button>
+      </div>
+
+      <div class="torneo-full" id="tFull" style="display:none;"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRECIOS ============ -->
 <section class="section" id="precios" style="padding-top: 16px;">
   <div class="container">
@@ -751,7 +905,7 @@ h1, h2, h3 {
           <p class="price-desc">1 hora · hasta 4 jugadores · vestuarios incluidos</p>
         </div>
         <div class="price-tag">
-          <div class="price-amount">$1.200</div>
+          <div class="price-amount" id="priceCardFull">$1.200</div>
           <div class="price-unit">por hora</div>
         </div>
       </div>
@@ -761,7 +915,7 @@ h1, h2, h3 {
           <p class="price-desc">Sumate a un partido armado</p>
         </div>
         <div class="price-tag">
-          <div class="price-amount">$300</div>
+          <div class="price-amount" id="priceCardPerson">$300</div>
           <div class="price-unit">por persona / hora</div>
         </div>
       </div>
@@ -810,8 +964,8 @@ h1, h2, h3 {
       </div>
 
       <div class="info-list">
-        <div class="info-item"><span class="k">WhatsApp</span><span class="v"><a href="https://wa.me/59892451182" target="_blank" rel="noopener">+598 92 451 182</a></span></div>
-        <div class="info-item"><span class="k">Horarios</span><span class="v">Lun a Dom · 8:00 – 23:00</span></div>
+        <div class="info-item"><span class="k">WhatsApp</span><span class="v"><a id="waInfoLink" href="https://wa.me/59892451182" target="_blank" rel="noopener">+598 92 451 182</a></span></div>
+        <div class="info-item"><span class="k">Horarios</span><span class="v" id="infoHorario">Lun a Dom · 8:00 – 23:00</span></div>
         <div class="info-item"><span class="k">Estacionamiento</span><span class="v">Gratis para clientes</span></div>
         <div class="info-item"><span class="k">Canchas</span><span class="v">2 techadas · césped premium</span></div>
       </div>
@@ -836,35 +990,156 @@ h1, h2, h3 {
 
     <div class="admin-login" id="adminLogin">
       <h2>Panel del club</h2>
-      <p>Ingresá la contraseña para administrar las reservas.</p>
-      <input type="password" id="adminPassword" placeholder="Contraseña" onkeyup="if(event.key==='Enter')doLogin()">
-      <button class="btn-main" style="width:100%;" onclick="doLogin()">Entrar</button>
+      <p>Ingresá la contraseña para administrar la página.</p>
+      <input type="password" id="adminPassword" placeholder="Contraseña" autocomplete="current-password" onkeyup="if(event.key==='Enter')doLogin()">
+      <button class="btn-main" style="width:100%;" id="btnLogin" onclick="doLogin()">Entrar</button>
+      <p class="lock-msg" id="lockMsg"></p>
     </div>
 
     <div class="admin-panel" id="adminPanel">
       <div class="admin-top">
-        <h2>Reservas</h2>
-        <div class="admin-tools">
+        <h2>Panel del club</h2>
+        <button class="chip-btn" onclick="logoutAdmin()">Cerrar sesión</button>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="reservas" onclick="setTab('reservas')">Reservas</button>
+        <button class="admin-tab" data-tab="torneo" onclick="setTab('torneo')">Torneo</button>
+        <button class="admin-tab" data-tab="ajustes" onclick="setTab('ajustes')">Ajustes</button>
+      </div>
+
+      <!-- VISTA: RESERVAS -->
+      <div class="admin-view active" data-view="reservas">
+        <div class="admin-stats">
+          <div class="astat"><div class="n" id="stTotal">0</div><div class="l">Total</div></div>
+          <div class="astat"><div class="n" id="stToday">0</div><div class="l">Hoy</div></div>
+          <div class="astat"><div class="n" id="stWeek">0</div><div class="l">Próx. 7 días</div></div>
+        </div>
+
+        <div class="admin-filters">
+          <button class="chip-btn active" data-f="upcoming" onclick="setFilter('upcoming')">Próximas</button>
+          <button class="chip-btn" data-f="today" onclick="setFilter('today')">Hoy</button>
+          <button class="chip-btn" data-f="all" onclick="setFilter('all')">Todas</button>
+          <button class="chip-btn" data-f="c1" onclick="setFilter('c1')">Cancha 1</button>
+          <button class="chip-btn" data-f="c2" onclick="setFilter('c2')">Cancha 2</button>
+        </div>
+
+        <div class="res-list" id="resList"></div>
+
+        <div class="admin-tools" style="margin-top: 16px;">
           <button class="chip-btn" onclick="exportCSV()">Exportar CSV</button>
-          <button class="chip-btn danger" onclick="clearAllAsk()">Borrar todo</button>
+          <button class="chip-btn danger" onclick="clearAllAsk()">Borrar todas</button>
         </div>
       </div>
 
-      <div class="admin-stats">
-        <div class="astat"><div class="n" id="stTotal">0</div><div class="l">Total</div></div>
-        <div class="astat"><div class="n" id="stToday">0</div><div class="l">Hoy</div></div>
-        <div class="astat"><div class="n" id="stWeek">0</div><div class="l">Próx. 7 días</div></div>
+      <!-- VISTA: TORNEO -->
+      <div class="admin-view" data-view="torneo">
+        <!-- Sin torneo activo: crear -->
+        <div id="torneoCreate">
+          <div class="admin-form">
+            <h3>Crear torneo</h3>
+            <div class="field">
+              <label for="ntNombre">Nombre del torneo</label>
+              <input type="text" id="ntNombre" placeholder="Ej: Torneo de Verano 2026">
+            </div>
+            <div class="field">
+              <label for="ntDesc">Descripción (opcional)</label>
+              <input type="text" id="ntDesc" placeholder="Ej: Categoría libre · premios para los finalistas">
+            </div>
+            <div class="torneo-grid">
+              <div class="field">
+                <label for="ntFecha">Fecha del torneo</label>
+                <input type="date" id="ntFecha">
+              </div>
+              <div class="field">
+                <label for="ntCierre">Cierre de inscripciones</label>
+                <input type="date" id="ntCierre">
+              </div>
+              <div class="field">
+                <label for="ntCupo">Cupo (cantidad de inscriptos)</label>
+                <input type="number" id="ntCupo" min="2" placeholder="Ej: 16" inputmode="numeric">
+              </div>
+              <div class="field">
+                <label for="ntPrecio">Precio por inscripto ($)</label>
+                <input type="number" id="ntPrecio" min="0" placeholder="Ej: 500" inputmode="numeric">
+              </div>
+            </div>
+            <button class="btn-main" style="width:100%;" onclick="createTorneo()">Publicar torneo en la página</button>
+            <p class="form-note">Al publicarlo, la sección "Torneo" aparece en la página para que la gente se inscriba. Se oculta sola al pasar la fecha de cierre, o cuando lo finalices desde acá.</p>
+          </div>
+        </div>
+
+        <!-- Torneo activo: gestionar -->
+        <div id="torneoManage" style="display:none;">
+          <div class="admin-form">
+            <div class="torneo-admin-head">
+              <div>
+                <h3 id="atNombre" style="margin-bottom:4px;">—</h3>
+                <span class="torneo-status on" id="atStatus">Inscripciones abiertas</span>
+              </div>
+              <button class="chip-btn danger" onclick="endTorneo()">Finalizar torneo</button>
+            </div>
+            <div class="res-meta" style="font-size:13px; color:var(--gray-soft); display:flex; gap:14px; flex-wrap:wrap; margin-bottom:6px;">
+              <span id="atFecha"></span>
+              <span id="atCierre"></span>
+              <span id="atCupo"></span>
+              <span id="atPrecio"></span>
+            </div>
+          </div>
+
+          <div class="admin-stats" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="astat"><div class="n" id="atInscriptos">0</div><div class="l">Inscriptos</div></div>
+            <div class="astat"><div class="n" id="atLibres">0</div><div class="l">Lugares libres</div></div>
+          </div>
+
+          <div class="res-list" id="inscList"></div>
+
+          <div class="admin-tools" style="margin-top: 16px;">
+            <button class="chip-btn" onclick="exportInscCSV()">Exportar inscriptos CSV</button>
+          </div>
+        </div>
       </div>
 
-      <div class="admin-filters">
-        <button class="chip-btn active" data-f="upcoming" onclick="setFilter('upcoming')">Próximas</button>
-        <button class="chip-btn" data-f="today" onclick="setFilter('today')">Hoy</button>
-        <button class="chip-btn" data-f="all" onclick="setFilter('all')">Todas</button>
-        <button class="chip-btn" data-f="c1" onclick="setFilter('c1')">Cancha 1</button>
-        <button class="chip-btn" data-f="c2" onclick="setFilter('c2')">Cancha 2</button>
-      </div>
+      <!-- VISTA: AJUSTES -->
+      <div class="admin-view" data-view="ajustes">
+        <div class="admin-form">
+          <h3>Precios y contacto</h3>
+          <div class="torneo-grid">
+            <div class="field">
+              <label for="cfgPriceFull">Cancha completa ($/hora)</label>
+              <input type="number" id="cfgPriceFull" min="0" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="cfgPricePerson">Por persona ($/hora)</label>
+              <input type="number" id="cfgPricePerson" min="0" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="cfgApertura">Apertura (hora)</label>
+              <input type="number" id="cfgApertura" min="0" max="22" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="cfgCierre">Cierre (hora)</label>
+              <input type="number" id="cfgCierre" min="1" max="23" inputmode="numeric">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cfgWhatsapp">WhatsApp del club (solo números, con código de país)</label>
+            <input type="tel" id="cfgWhatsapp" placeholder="59892451182" inputmode="tel">
+          </div>
+          <button class="btn-main" style="width:100%;" onclick="saveConfig()">Guardar cambios</button>
+          <p class="form-note">Los cambios se aplican al instante en toda la página: selector de reserva, sección de precios, horarios disponibles y botones de WhatsApp.</p>
+        </div>
 
-      <div class="res-list" id="resList"></div>
+        <div class="admin-form">
+          <h3>Cambiar contraseña</h3>
+          <div class="field">
+            <label for="cfgNewPass">Nueva contraseña (mínimo 8 caracteres)</label>
+            <input type="password" id="cfgNewPass" placeholder="••••••••" autocomplete="new-password">
+          </div>
+          <button class="btn-main" style="width:100%;" onclick="changePassword()">Actualizar contraseña</button>
+          <p class="form-note">La contraseña se guarda cifrada (hash SHA-256), nunca en texto plano. Si la olvidás, podés restablecerla borrando la configuración guardada del navegador o desde Supabase.</p>
+        </div>
+      </div>
 
       <div class="sync-tag" id="syncTag"><i></i> <span id="syncLabel">Guardado en este dispositivo</span></div>
     </div>
@@ -881,7 +1156,7 @@ h1, h2, h3 {
      Si quedan vacías, la página funciona igual con localStorage
      (los datos solo viven en el navegador de cada persona).
 
-   ▶ SQL para crear la tabla en Supabase (SQL Editor → pegar y Run):
+   ▶ SQL para crear las tablas en Supabase (SQL Editor → Run):
 
      create table public.reservas (
        id uuid primary key default gen_random_uuid(),
@@ -892,55 +1167,119 @@ h1, h2, h3 {
        nombre text not null,
        apellido text not null,
        telefono text not null,
-       tipo text not null default 'completa',   -- 'completa' | 'persona'
+       tipo text not null default 'completa',
        jugadores int not null default 4,
        total int not null default 1200,
        unique (fecha, hora, cancha)
      );
 
-     alter table public.reservas enable row level security;
-     create policy "lectura publica" on public.reservas for select using (true);
-     create policy "insertar publico" on public.reservas for insert with check (true);
-     create policy "borrar publico" on public.reservas for delete using (true);
+     create table public.torneos (
+       id uuid primary key default gen_random_uuid(),
+       created_at timestamptz default now(),
+       nombre text not null,
+       descripcion text default '',
+       fecha_torneo date not null,
+       cierre date not null,
+       cupo int not null default 16,
+       precio int not null default 0,
+       activo boolean not null default true
+     );
 
-     -- Activá Realtime: Database → Replication → tabla "reservas"
+     create table public.inscripciones (
+       id uuid primary key default gen_random_uuid(),
+       created_at timestamptz default now(),
+       torneo_id uuid references public.torneos(id) on delete cascade,
+       nombre text not null,
+       apellido text not null,
+       telefono text not null,
+       pareja text default ''
+     );
+
+     create table public.config (
+       id int primary key default 1,
+       data jsonb not null default '{}'::jsonb
+     );
+     insert into public.config (id, data) values (1, '{}') on conflict do nothing;
+
+     alter table public.reservas enable row level security;
+     alter table public.torneos enable row level security;
+     alter table public.inscripciones enable row level security;
+     alter table public.config enable row level security;
+
+     -- Políticas de arranque (abiertas). NOTA DE SEGURIDAD:
+     -- cuando configures Supabase Auth para el admin, reemplazá las
+     -- políticas de update/delete por: using (auth.role() = 'authenticated')
+     create policy "reservas select" on public.reservas for select using (true);
+     create policy "reservas insert" on public.reservas for insert with check (true);
+     create policy "reservas delete" on public.reservas for delete using (true);
+     create policy "torneos select" on public.torneos for select using (true);
+     create policy "torneos insert" on public.torneos for insert with check (true);
+     create policy "torneos update" on public.torneos for update using (true);
+     create policy "insc select" on public.inscripciones for select using (true);
+     create policy "insc insert" on public.inscripciones for insert with check (true);
+     create policy "insc delete" on public.inscripciones for delete using (true);
+     create policy "config select" on public.config for select using (true);
+     create policy "config update" on public.config for update using (true);
+
+     -- Activá Realtime: Database → Replication → las 4 tablas
    ================================================================= */
 const SUPABASE_URL = '';        // ej: 'https://xxxx.supabase.co'
 const SUPABASE_ANON_KEY = '';   // ej: 'eyJhbGciOi...'
 
-const WHATSAPP_CLUB = '59892451182';
-const ADMIN_PASSWORD = 'padel2026';
+/* --- SEGURIDAD DEL ADMIN ---
+   La contraseña NO está escrita en el código: solo se guarda su hash
+   SHA-256. Hash por defecto = contraseña "padel2026". Cambiala desde
+   Ajustes apenas publiques la página.
+   Además: máximo 5 intentos y bloqueo de 5 minutos. */
+const DEFAULT_ADMIN_HASH = 'd97c0fc29ac6ac54b2e8fcc3239c8c57633edde5a77ce4819828189e6f837bcc';
+const MAX_ATTEMPTS = 5;
+const LOCK_MINUTES = 5;
+
 const NUM_COURTS = 2;
 const DAYS_AHEAD = 14;
-const HOURS = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'];
-const PRICE_FULL = 1200;
-const PRICE_PERSON = 300;
-const STORAGE_KEY = 'padel_este_reservas';
+const K = {
+  reservas: 'padel_este_reservas',
+  torneos: 'padel_este_torneos',
+  insc: 'padel_este_inscripciones',
+  config: 'padel_este_config',
+  attempts: 'padel_este_intentos',
+  session: 'padel_este_admin'
+};
+
+const DEFAULT_CONFIG = {
+  precio_completa: 1200,
+  precio_persona: 300,
+  apertura: 8,
+  cierre: 23,
+  whatsapp: '59892451182',
+  admin_hash: DEFAULT_ADMIN_HASH
+};
 
 /* =================================================================
-   CAPA DE DATOS (DB)
-   Toda la página habla con este objeto. Hoy usa localStorage;
-   cuando completes SUPABASE_URL y SUPABASE_ANON_KEY pasa solo
-   a usar Supabase, sin tocar nada más del código.
+   CAPA DE DATOS (DB) — localStorage hoy, Supabase cuando lo conectes
    ================================================================= */
 let supabase = null;
-let cache = [];
+let cache = { reservas: [], torneos: [], insc: [], config: { ...DEFAULT_CONFIG } };
+
+function lsGet(key, fallback) {
+  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
+  catch (e) { return fallback; }
+}
+function lsSet(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+function newId(prefix) { return prefix + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7); }
 
 const DB = {
-  ready: null,
-
   async init() {
     if (SUPABASE_URL && SUPABASE_ANON_KEY) {
       try {
         const mod = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
         supabase = mod.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         await DB.refresh();
-        // Tiempo real: cualquier cambio en la tabla actualiza la página
-        supabase.channel('reservas-rt')
-          .on('postgres_changes', { event: '*', schema: 'public', table: 'reservas' }, async () => {
-            await DB.refresh();
-            onDataChanged();
-          })
+        supabase.channel('padel-rt')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'reservas' }, async () => { await DB.refresh(); onDataChanged(); })
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'torneos' }, async () => { await DB.refresh(); onDataChanged(); })
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'inscripciones' }, async () => { await DB.refresh(); onDataChanged(); })
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'config' }, async () => { await DB.refresh(); applyConfig(); onDataChanged(); })
           .subscribe();
         setSyncTag(true);
         return;
@@ -949,54 +1288,111 @@ const DB = {
         supabase = null;
       }
     }
-    DB.refresh();
+    await DB.refresh();
     setSyncTag(false);
   },
 
   async refresh() {
     if (supabase) {
-      const { data, error } = await supabase.from('reservas').select('*').order('fecha').order('hora');
-      if (!error && data) cache = data;
+      const [r, t, i, c] = await Promise.all([
+        supabase.from('reservas').select('*').order('fecha').order('hora'),
+        supabase.from('torneos').select('*').order('created_at', { ascending: false }),
+        supabase.from('inscripciones').select('*').order('created_at'),
+        supabase.from('config').select('*').eq('id', 1).maybeSingle()
+      ]);
+      if (!r.error && r.data) cache.reservas = r.data;
+      if (!t.error && t.data) cache.torneos = t.data;
+      if (!i.error && i.data) cache.insc = i.data;
+      cache.config = { ...DEFAULT_CONFIG, ...((c.data && c.data.data) || {}) };
     } else {
-      try { cache = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-      catch (e) { cache = []; }
+      cache.reservas = lsGet(K.reservas, []);
+      cache.torneos = lsGet(K.torneos, []);
+      cache.insc = lsGet(K.insc, []);
+      cache.config = { ...DEFAULT_CONFIG, ...lsGet(K.config, {}) };
     }
   },
 
-  list() { return cache; },
+  reservas() { return cache.reservas; },
+  torneos() { return cache.torneos; },
+  insc() { return cache.insc; },
+  config() { return cache.config; },
 
-  async add(res) {
+  async addReserva(res) {
     if (supabase) {
       const { error } = await supabase.from('reservas').insert(res);
       if (error) throw error;
       await DB.refresh();
     } else {
-      res.id = 'res_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
-      res.created_at = new Date().toISOString();
-      cache.push(res);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cache));
+      res.id = newId('res'); res.created_at = new Date().toISOString();
+      cache.reservas.push(res); lsSet(K.reservas, cache.reservas);
     }
   },
-
-  async remove(id) {
+  async removeReserva(id) {
     if (supabase) {
       const { error } = await supabase.from('reservas').delete().eq('id', id);
       if (error) throw error;
       await DB.refresh();
     } else {
-      cache = cache.filter(r => r.id !== id);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cache));
+      cache.reservas = cache.reservas.filter(r => r.id !== id); lsSet(K.reservas, cache.reservas);
     }
   },
-
-  async clear() {
+  async clearReservas() {
     if (supabase) {
       const { error } = await supabase.from('reservas').delete().neq('cancha', 0);
       if (error) throw error;
       await DB.refresh();
+    } else { cache.reservas = []; lsSet(K.reservas, cache.reservas); }
+  },
+
+  async addTorneo(t) {
+    if (supabase) {
+      const { error } = await supabase.from('torneos').insert(t);
+      if (error) throw error;
+      await DB.refresh();
     } else {
-      cache = [];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cache));
+      t.id = newId('tor'); t.created_at = new Date().toISOString();
+      cache.torneos.unshift(t); lsSet(K.torneos, cache.torneos);
+    }
+  },
+  async endTorneo(id) {
+    if (supabase) {
+      const { error } = await supabase.from('torneos').update({ activo: false }).eq('id', id);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      const t = cache.torneos.find(x => x.id === id);
+      if (t) t.activo = false;
+      lsSet(K.torneos, cache.torneos);
+    }
+  },
+
+  async addInsc(i) {
+    if (supabase) {
+      const { error } = await supabase.from('inscripciones').insert(i);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      i.id = newId('ins'); i.created_at = new Date().toISOString();
+      cache.insc.push(i); lsSet(K.insc, cache.insc);
+    }
+  },
+  async removeInsc(id) {
+    if (supabase) {
+      const { error } = await supabase.from('inscripciones').delete().eq('id', id);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      cache.insc = cache.insc.filter(x => x.id !== id); lsSet(K.insc, cache.insc);
+    }
+  },
+
+  async saveConfig(cfg) {
+    cache.config = { ...cache.config, ...cfg };
+    if (supabase) {
+      const { error } = await supabase.from('config').upsert({ id: 1, data: cache.config });
+      if (error) throw error;
+    } else {
+      lsSet(K.config, cache.config);
     }
   }
 };
@@ -1008,9 +1404,36 @@ function setSyncTag(live) {
   else { tag.classList.remove('live'); label.textContent = 'Guardado solo en este dispositivo'; }
 }
 
+/* ================= SEGURIDAD: HASH + INTENTOS ================= */
+async function sha256(text) {
+  if (!(window.crypto && crypto.subtle)) {
+    showToast('Abrí la página por HTTPS para poder iniciar sesión.');
+    throw new Error('crypto.subtle no disponible (se requiere HTTPS)');
+  }
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function getLock() { return lsGet(K.attempts, { n: 0, until: 0 }); }
+function isLocked() {
+  const lock = getLock();
+  return lock.until > Date.now();
+}
+function registerFail() {
+  const lock = getLock();
+  lock.n += 1;
+  if (lock.n >= MAX_ATTEMPTS) {
+    lock.until = Date.now() + LOCK_MINUTES * 60 * 1000;
+    lock.n = 0;
+  }
+  lsSet(K.attempts, lock);
+  return lock;
+}
+function clearFails() { lsSet(K.attempts, { n: 0, until: 0 }); }
+
 /* ================= DISPONIBILIDAD ================= */
 function bookedCourts(fecha, hora) {
-  return DB.list().filter(r => r.fecha === fecha && r.hora === hora).map(r => Number(r.cancha));
+  return DB.reservas().filter(r => r.fecha === fecha && r.hora === hora).map(r => Number(r.cancha));
 }
 function freeCourt(fecha, hora) {
   const taken = bookedCourts(fecha, hora);
@@ -1020,15 +1443,17 @@ function freeCourt(fecha, hora) {
 function freeCount(fecha, hora) {
   return NUM_COURTS - bookedCourts(fecha, hora).length;
 }
+function getHours() {
+  const cfg = DB.config();
+  const out = [];
+  for (let h = Number(cfg.apertura); h < Number(cfg.cierre); h++) {
+    out.push(String(h).padStart(2, '0') + ':00');
+  }
+  return out;
+}
 
 /* ================= ESTADO DEL FLUJO ================= */
-const S = {
-  step: 1,
-  fecha: null,
-  hora: null,
-  tipo: 'completa',
-  jugadores: 1
-};
+const S = { step: 1, fecha: null, hora: null, tipo: 'completa', jugadores: 1 };
 
 /* ================= UTILIDADES DE FECHA ================= */
 const DOW = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
@@ -1050,6 +1475,27 @@ function fmtNice(iso) {
 }
 function endHour(hora) {
   return String(parseInt(hora.split(':')[0]) + 1).padStart(2, '0') + ':00';
+}
+function money(n) { return '$' + Number(n || 0).toLocaleString('es-UY'); }
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ================= APLICAR CONFIG A LA PÁGINA ================= */
+function applyConfig() {
+  const cfg = DB.config();
+  document.getElementById('priceFullLabel').textContent = money(cfg.precio_completa);
+  document.getElementById('pricePersonLabel').innerHTML =
+    money(cfg.precio_persona) + ' <small style="font-family:\'DM Sans\';font-size:11px;color:var(--gray);">c/u</small>';
+  document.getElementById('priceCardFull').textContent = money(cfg.precio_completa);
+  document.getElementById('priceCardPerson').textContent = money(cfg.precio_persona);
+  const hor = cfg.apertura + ':00 – ' + cfg.cierre + ':00';
+  document.getElementById('factHorario').innerHTML = '<strong>' + hor + '</strong> todos los días';
+  document.getElementById('infoHorario').textContent = 'Lun a Dom · ' + hor;
+  const wa = document.getElementById('waInfoLink');
+  wa.href = 'https://wa.me/' + cfg.whatsapp;
+  wa.textContent = '+' + String(cfg.whatsapp).replace(/^(\d{3})(\d{2})(\d{3})(\d{3})$/, '$1 $2 $3 $4');
+  if (S.step === 3) renderSummary();
 }
 
 /* ================= PASO 1: FECHAS ================= */
@@ -1086,7 +1532,7 @@ function renderSlots() {
   const isToday = S.fecha === fmtISO(now);
   let html = '';
 
-  HOURS.forEach(h => {
+  getHours().forEach(h => {
     const free = freeCount(S.fecha, h);
     const pastHour = isToday && parseInt(h) <= now.getHours();
     const occupied = free === 0 || pastHour;
@@ -1123,18 +1569,18 @@ function changePlayers(delta) {
 }
 
 function calcTotal() {
-  return S.tipo === 'completa' ? PRICE_FULL : PRICE_PERSON * S.jugadores;
+  const cfg = DB.config();
+  return S.tipo === 'completa' ? Number(cfg.precio_completa) : Number(cfg.precio_persona) * S.jugadores;
 }
 
 function renderSummary() {
-  const tipoTxt = S.tipo === 'completa'
-    ? 'Cancha completa'
-    : 'Por persona × ' + S.jugadores;
+  if (!S.fecha || !S.hora) return;
+  const tipoTxt = S.tipo === 'completa' ? 'Cancha completa' : 'Por persona × ' + S.jugadores;
   document.getElementById('summary').innerHTML = `
     <div class="summary-row"><span class="k">Día</span><span class="v">${fmtNice(S.fecha)}</span></div>
     <div class="summary-row"><span class="k">Hora</span><span class="v">${S.hora} – ${endHour(S.hora)}</span></div>
     <div class="summary-row"><span class="k">Reserva</span><span class="v">${tipoTxt}</span></div>
-    <div class="summary-row total"><span class="k">Total a pagar en el club</span><span class="v">$${calcTotal().toLocaleString('es-UY')}</span></div>`;
+    <div class="summary-row total"><span class="k">Total a pagar en el club</span><span class="v">${money(calcTotal())}</span></div>`;
 }
 
 function validateForm(showHints) {
@@ -1174,14 +1620,13 @@ function goStep(n) {
   document.querySelector('.booking-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* ================= CONFIRMAR ================= */
+/* ================= CONFIRMAR RESERVA ================= */
 let saving = false;
 
 async function confirmReservation() {
   if (saving) return;
   if (!validateForm(true)) return;
 
-  // Revalidar disponibilidad (puede haberse ocupado mientras tanto)
   await DB.refresh();
   const cancha = freeCourt(S.fecha, S.hora);
   if (cancha === null) {
@@ -1208,7 +1653,7 @@ async function confirmReservation() {
   btn.textContent = 'Guardando…';
 
   try {
-    await DB.add(res);
+    await DB.addReserva(res);
   } catch (err) {
     console.error(err);
     showToast('No pudimos guardar la reserva. Probá de nuevo.');
@@ -1223,11 +1668,11 @@ async function confirmReservation() {
 
   const tipoTxt = res.tipo === 'completa' ? 'Cancha completa' : 'Por persona × ' + res.jugadores;
   document.getElementById('confirmSummary').innerHTML = `
-    <div class="summary-row"><span class="k">Cliente</span><span class="v">${res.nombre} ${res.apellido}</span></div>
+    <div class="summary-row"><span class="k">Cliente</span><span class="v">${esc(res.nombre)} ${esc(res.apellido)}</span></div>
     <div class="summary-row"><span class="k">Día</span><span class="v">${fmtNice(res.fecha)}</span></div>
     <div class="summary-row"><span class="k">Hora</span><span class="v">${res.hora} – ${endHour(res.hora)}</span></div>
     <div class="summary-row"><span class="k">Cancha asignada</span><span class="v">Cancha ${res.cancha}</span></div>
-    <div class="summary-row total"><span class="k">Total (${tipoTxt})</span><span class="v">$${res.total.toLocaleString('es-UY')}</span></div>`;
+    <div class="summary-row total"><span class="k">Total (${tipoTxt})</span><span class="v">${money(res.total)}</span></div>`;
 
   const msg = encodeURIComponent(
     `Hola Padel Este! 🎾\n\nHice una reserva en la web:\n` +
@@ -1235,9 +1680,9 @@ async function confirmReservation() {
     `📅 ${fmtNice(res.fecha)}\n` +
     `⏰ ${res.hora} a ${endHour(res.hora)}\n` +
     `🎾 Cancha ${res.cancha} · ${tipoTxt}\n` +
-    `💰 Total: $${res.total.toLocaleString('es-UY')}\n\n¡Gracias!`
+    `💰 Total: ${money(res.total)}\n\n¡Gracias!`
   );
-  document.getElementById('waBtn').href = `https://wa.me/${WHATSAPP_CLUB}?text=${msg}`;
+  document.getElementById('waBtn').href = `https://wa.me/${DB.config().whatsapp}?text=${msg}`;
 
   goStep(4);
   onDataChanged();
@@ -1255,6 +1700,124 @@ function resetBooking() {
   goStep(1);
 }
 
+/* ================= TORNEO (PÚBLICO) ================= */
+function activeTorneo() {
+  const today = fmtISO(new Date());
+  return DB.torneos().find(t => t.activo && t.cierre >= today) || null;
+}
+function inscDe(torneoId) {
+  return DB.insc().filter(i => i.torneo_id === torneoId);
+}
+
+function renderTorneoPublic() {
+  const t = activeTorneo();
+  const section = document.getElementById('torneo');
+  const pill = document.getElementById('torneoPill');
+
+  if (!t) {
+    section.classList.remove('visible');
+    pill.classList.remove('visible');
+    return;
+  }
+
+  section.classList.add('visible');
+  pill.classList.add('visible');
+  document.getElementById('torneoPillText').textContent = '🎾 ' + t.nombre + ' — inscribite';
+
+  const inscritos = inscDe(t.id).length;
+  const libres = Math.max(0, Number(t.cupo) - inscritos);
+
+  document.getElementById('tNombre').textContent = t.nombre;
+  document.getElementById('tDesc').textContent = t.descripcion || '';
+  document.getElementById('tDesc').style.display = t.descripcion ? '' : 'none';
+
+  document.getElementById('tMeta').innerHTML = `
+    <span class="tmeta">📅 ${fmtNice(t.fecha_torneo)}</span>
+    <span class="tmeta">⏳ Inscripciones hasta el ${fmtNice(t.cierre)}</span>
+    ${Number(t.precio) > 0 ? `<span class="tmeta">💰 ${money(t.precio)} por inscripto</span>` : ''}
+    <span class="tmeta ${libres <= 3 ? 'warn' : ''}">${libres > 0 ? '🔥 Quedan ' + libres + ' lugares' : 'Cupo completo'}</span>`;
+
+  const form = document.getElementById('tForm');
+  const full = document.getElementById('tFull');
+  if (libres <= 0) {
+    form.style.display = 'none';
+    full.style.display = '';
+    full.textContent = '¡Cupo completo! Escribinos por WhatsApp para entrar en lista de espera.';
+  } else {
+    form.style.display = '';
+    full.style.display = 'none';
+  }
+}
+
+function validateTorneoForm(showHints) {
+  const n = document.getElementById('tInputNombre').value.trim();
+  const a = document.getElementById('tInputApellido').value.trim();
+  const tel = document.getElementById('tInputTelefono').value.replace(/[^\d]/g, '');
+  const okN = n.length >= 2, okA = a.length >= 2, okT = tel.length >= 8;
+  if (showHints) {
+    document.getElementById('tfNombre').classList.toggle('has-error', !okN);
+    document.getElementById('tfApellido').classList.toggle('has-error', !okA);
+    document.getElementById('tfTel').classList.toggle('has-error', !okT);
+  } else {
+    if (okN) document.getElementById('tfNombre').classList.remove('has-error');
+    if (okA) document.getElementById('tfApellido').classList.remove('has-error');
+    if (okT) document.getElementById('tfTel').classList.remove('has-error');
+  }
+  document.getElementById('tBtnInscribir').disabled = !(okN && okA && okT);
+  return okN && okA && okT;
+}
+
+let inscribing = false;
+async function inscribirTorneo() {
+  if (inscribing) return;
+  if (!validateTorneoForm(true)) return;
+
+  await DB.refresh();
+  const t = activeTorneo();
+  if (!t) { renderTorneoPublic(); return; }
+  if (inscDe(t.id).length >= Number(t.cupo)) {
+    showToast('El cupo se acaba de completar.');
+    renderTorneoPublic();
+    return;
+  }
+
+  const insc = {
+    torneo_id: t.id,
+    nombre: document.getElementById('tInputNombre').value.trim(),
+    apellido: document.getElementById('tInputApellido').value.trim(),
+    telefono: document.getElementById('tInputTelefono').value.trim(),
+    pareja: document.getElementById('tInputPareja').value.trim()
+  };
+
+  inscribing = true;
+  const btn = document.getElementById('tBtnInscribir');
+  btn.disabled = true; btn.textContent = 'Guardando…';
+
+  try {
+    await DB.addInsc(insc);
+  } catch (e) {
+    console.error(e);
+    showToast('No pudimos guardar tu inscripción. Probá de nuevo.');
+    btn.textContent = 'Inscribirme al torneo'; btn.disabled = false; inscribing = false;
+    return;
+  }
+
+  inscribing = false;
+  btn.textContent = 'Inscribirme al torneo';
+  ['tInputNombre','tInputApellido','tInputTelefono','tInputPareja'].forEach(id => document.getElementById(id).value = '');
+
+  const msg = encodeURIComponent(
+    `Hola Padel Este! 🏆\n\nMe inscribí al torneo "${t.nombre}":\n` +
+    `👤 ${insc.nombre} ${insc.apellido}` +
+    (insc.pareja ? `\n👥 Pareja: ${insc.pareja}` : '') +
+    `\n📅 Torneo: ${fmtNice(t.fecha_torneo)}\n\n¡Nos vemos!`
+  );
+  window.open(`https://wa.me/${DB.config().whatsapp}?text=${msg}`, '_blank');
+
+  showToast('¡Inscripción guardada! Te abrimos WhatsApp para avisar al club.');
+  renderTorneoPublic();
+}
+
 /* ================= TOAST ================= */
 let toastTimer = null;
 function showToast(text) {
@@ -1265,7 +1828,7 @@ function showToast(text) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-/* ================= ADMIN ================= */
+/* ================= ADMIN: SESIÓN ================= */
 let adminFilter = 'upcoming';
 let adminOpen = false;
 
@@ -1276,26 +1839,76 @@ function openAdmin() {
   adminOpen = true;
   document.getElementById('adminModal').classList.add('active');
   document.body.style.overflow = 'hidden';
-  setTimeout(() => document.getElementById('adminPassword').focus(), 100);
+  if (sessionStorage.getItem(K.session) === '1') {
+    showPanel();
+  } else {
+    setTimeout(() => document.getElementById('adminPassword').focus(), 100);
+  }
 }
 function closeAdmin() {
   adminOpen = false;
   document.getElementById('adminModal').classList.remove('active');
   document.body.style.overflow = '';
-  document.getElementById('adminLogin').style.display = '';
-  document.getElementById('adminPanel').classList.remove('active');
   document.getElementById('adminPassword').value = '';
   if (window.location.hash === '#admin') history.pushState('', document.title, window.location.pathname);
 }
-function doLogin() {
-  if (document.getElementById('adminPassword').value === ADMIN_PASSWORD) {
-    document.getElementById('adminLogin').style.display = 'none';
-    document.getElementById('adminPanel').classList.add('active');
-    renderAdmin();
+function showPanel() {
+  document.getElementById('adminLogin').style.display = 'none';
+  document.getElementById('adminPanel').classList.add('active');
+  renderAdmin();
+  renderTorneoAdmin();
+  fillConfigForm();
+}
+function logoutAdmin() {
+  sessionStorage.removeItem(K.session);
+  document.getElementById('adminLogin').style.display = '';
+  document.getElementById('adminPanel').classList.remove('active');
+  closeAdmin();
+}
+
+async function doLogin() {
+  const lockEl = document.getElementById('lockMsg');
+  if (isLocked()) {
+    const mins = Math.ceil((getLock().until - Date.now()) / 60000);
+    lockEl.textContent = `Demasiados intentos. Probá de nuevo en ${mins} min.`;
+    lockEl.classList.add('visible');
+    return;
+  }
+  const pass = document.getElementById('adminPassword').value;
+  if (!pass) return;
+
+  let hash;
+  try { hash = await sha256(pass); } catch (e) { return; }
+
+  if (hash === DB.config().admin_hash) {
+    clearFails();
+    lockEl.classList.remove('visible');
+    sessionStorage.setItem(K.session, '1');
+    document.getElementById('adminPassword').value = '';
+    showPanel();
   } else {
-    showToast('Contraseña incorrecta.');
+    const lock = registerFail();
+    if (lock.until > Date.now()) {
+      lockEl.textContent = `Demasiados intentos. Bloqueado por ${LOCK_MINUTES} minutos.`;
+    } else {
+      lockEl.textContent = `Contraseña incorrecta. Te quedan ${MAX_ATTEMPTS - lock.n} intentos.`;
+    }
+    lockEl.classList.add('visible');
   }
 }
+
+/* ================= ADMIN: TABS ================= */
+function setTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(el =>
+    el.classList.toggle('active', el.dataset.tab === tab));
+  document.querySelectorAll('.admin-view').forEach(el =>
+    el.classList.toggle('active', el.dataset.view === tab));
+  if (tab === 'reservas') renderAdmin();
+  if (tab === 'torneo') renderTorneoAdmin();
+  if (tab === 'ajustes') fillConfigForm();
+}
+
+/* ================= ADMIN: RESERVAS ================= */
 function setFilter(f) {
   adminFilter = f;
   document.querySelectorAll('.admin-filters .chip-btn').forEach(el =>
@@ -1304,7 +1917,7 @@ function setFilter(f) {
 }
 
 function renderAdmin() {
-  const all = [...DB.list()].sort((a, b) =>
+  const all = [...DB.reservas()].sort((a, b) =>
     a.fecha === b.fecha ? a.hora.localeCompare(b.hora) : a.fecha.localeCompare(b.fecha));
 
   const today = fmtISO(new Date());
@@ -1333,14 +1946,14 @@ function renderAdmin() {
     return `
     <div class="res-card">
       <div class="res-line1">
-        <span class="res-name">${r.nombre} ${r.apellido}</span>
+        <span class="res-name">${esc(r.nombre)} ${esc(r.apellido)}</span>
         <span class="res-court c${r.cancha}">Cancha ${r.cancha}</span>
       </div>
       <div class="res-line2">
         <span class="res-meta">
           <span>📅 ${fmtNice(r.fecha)}</span>
           <span>⏰ ${r.hora}–${endHour(r.hora)}</span>
-          <span>${tipoTxt} · $${Number(r.total || 0).toLocaleString('es-UY')}</span>
+          <span>${tipoTxt} · ${money(r.total)}</span>
         </span>
         <span class="res-actions">
           <a class="mini-btn ok" title="Confirmar por WhatsApp" target="_blank" rel="noopener"
@@ -1355,7 +1968,7 @@ function renderAdmin() {
 async function removeRes(id) {
   if (!confirm('¿Cancelar esta reserva?')) return;
   try {
-    await DB.remove(id);
+    await DB.removeReserva(id);
     onDataChanged();
     showToast('Reserva cancelada.');
   } catch (e) {
@@ -1365,39 +1978,218 @@ async function removeRes(id) {
 
 function clearAllAsk() {
   if (!confirm('¿Borrar TODAS las reservas? Esta acción no se puede deshacer.')) return;
-  DB.clear().then(() => { onDataChanged(); showToast('Reservas borradas.'); });
+  DB.clearReservas().then(() => { onDataChanged(); showToast('Reservas borradas.'); });
 }
 
 function exportCSV() {
-  const all = DB.list();
+  const all = DB.reservas();
   if (!all.length) { showToast('No hay reservas para exportar.'); return; }
   const csv = [
     ['Fecha','Hora','Cancha','Nombre','Apellido','Teléfono','Tipo','Jugadores','Total'],
     ...all.map(r => [r.fecha, r.hora, r.cancha, r.nombre, r.apellido, r.telefono, r.tipo, r.jugadores, r.total])
-  ].map(row => row.map(c => `"${String(c ?? '')}"`).join(',')).join('\n');
+  ].map(row => row.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+  downloadCSV(csv, `reservas-padel-este-${fmtISO(new Date())}.csv`);
+}
+
+function downloadCSV(csv, filename) {
   const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `reservas-padel-este-${fmtISO(new Date())}.csv`;
+  a.download = filename;
   a.click();
   URL.revokeObjectURL(a.href);
+}
+
+/* ================= ADMIN: TORNEO ================= */
+function renderTorneoAdmin() {
+  const t = DB.torneos().find(x => x.activo) || null;
+  document.getElementById('torneoCreate').style.display = t ? 'none' : '';
+  document.getElementById('torneoManage').style.display = t ? '' : 'none';
+  if (!t) return;
+
+  const today = fmtISO(new Date());
+  const cerrado = t.cierre < today;
+  const inscritos = inscDe(t.id);
+  const libres = Math.max(0, Number(t.cupo) - inscritos.length);
+
+  document.getElementById('atNombre').textContent = t.nombre;
+  const st = document.getElementById('atStatus');
+  if (cerrado) { st.textContent = 'Inscripciones cerradas (pasó la fecha)'; st.className = 'torneo-status off'; }
+  else { st.textContent = 'Inscripciones abiertas'; st.className = 'torneo-status on'; }
+
+  document.getElementById('atFecha').textContent = '📅 Torneo: ' + fmtNice(t.fecha_torneo);
+  document.getElementById('atCierre').textContent = '⏳ Cierre: ' + fmtNice(t.cierre);
+  document.getElementById('atCupo').textContent = '👥 Cupo: ' + t.cupo;
+  document.getElementById('atPrecio').textContent = Number(t.precio) > 0 ? '💰 ' + money(t.precio) + ' c/u' : '💰 Gratis';
+
+  document.getElementById('atInscriptos').textContent = inscritos.length;
+  document.getElementById('atLibres').textContent = libres;
+
+  const list = document.getElementById('inscList');
+  if (!inscritos.length) {
+    list.innerHTML = '<div class="admin-empty">Todavía no hay inscriptos.<br>Aparecen acá apenas alguien se anota desde la página.</div>';
+    return;
+  }
+  list.innerHTML = inscritos.map((i, idx) => {
+    const tel = String(i.telefono || '').replace(/[^\d]/g, '');
+    return `
+    <div class="res-card">
+      <div class="res-line1">
+        <span class="res-name">${idx + 1}. ${esc(i.nombre)} ${esc(i.apellido)}</span>
+      </div>
+      <div class="res-line2">
+        <span class="res-meta">
+          <span>📱 ${esc(i.telefono)}</span>
+          ${i.pareja ? '<span>👥 ' + esc(i.pareja) + '</span>' : ''}
+        </span>
+        <span class="res-actions">
+          <a class="mini-btn ok" title="WhatsApp" target="_blank" rel="noopener" href="https://wa.me/${tel}">✓</a>
+          <button class="mini-btn del" title="Quitar inscripto" onclick="removeInscAdmin('${i.id}')">✕</button>
+        </span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function createTorneo() {
+  const nombre = document.getElementById('ntNombre').value.trim();
+  const desc = document.getElementById('ntDesc').value.trim();
+  const fecha = document.getElementById('ntFecha').value;
+  const cierre = document.getElementById('ntCierre').value;
+  const cupo = parseInt(document.getElementById('ntCupo').value);
+  const precio = parseInt(document.getElementById('ntPrecio').value) || 0;
+
+  const today = fmtISO(new Date());
+  if (nombre.length < 3) { showToast('Poné un nombre para el torneo.'); return; }
+  if (!fecha || !cierre) { showToast('Completá las dos fechas.'); return; }
+  if (cierre < today) { showToast('El cierre de inscripciones no puede ser una fecha pasada.'); return; }
+  if (cierre > fecha) { showToast('El cierre debe ser antes (o el mismo día) que el torneo.'); return; }
+  if (!cupo || cupo < 2) { showToast('Indicá un cupo de al menos 2.'); return; }
+
+  try {
+    await DB.addTorneo({ nombre, descripcion: desc, fecha_torneo: fecha, cierre, cupo, precio, activo: true });
+  } catch (e) {
+    console.error(e);
+    showToast('No se pudo crear el torneo. Probá de nuevo.');
+    return;
+  }
+
+  ['ntNombre','ntDesc','ntFecha','ntCierre','ntCupo','ntPrecio'].forEach(id => document.getElementById(id).value = '');
+  showToast('¡Torneo publicado! Ya se ve en la página.');
+  renderTorneoAdmin();
+  renderTorneoPublic();
+}
+
+async function endTorneo() {
+  const t = DB.torneos().find(x => x.activo);
+  if (!t) return;
+  if (!confirm(`¿Finalizar "${t.nombre}"? La sección de torneo desaparece de la página. Los inscriptos quedan guardados (exportalos antes si los necesitás).`)) return;
+  try {
+    await DB.endTorneo(t.id);
+    showToast('Torneo finalizado.');
+    renderTorneoAdmin();
+    renderTorneoPublic();
+  } catch (e) {
+    showToast('No se pudo finalizar. Probá de nuevo.');
+  }
+}
+
+async function removeInscAdmin(id) {
+  if (!confirm('¿Quitar este inscripto?')) return;
+  try {
+    await DB.removeInsc(id);
+    renderTorneoAdmin();
+    renderTorneoPublic();
+    showToast('Inscripto quitado.');
+  } catch (e) {
+    showToast('No se pudo quitar. Probá de nuevo.');
+  }
+}
+
+function exportInscCSV() {
+  const t = DB.torneos().find(x => x.activo);
+  if (!t) return;
+  const rows = inscDe(t.id);
+  if (!rows.length) { showToast('No hay inscriptos para exportar.'); return; }
+  const csv = [
+    ['Torneo','Nombre','Apellido','Teléfono','Pareja'],
+    ...rows.map(i => [t.nombre, i.nombre, i.apellido, i.telefono, i.pareja || ''])
+  ].map(row => row.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+  downloadCSV(csv, `inscriptos-${t.nombre.toLowerCase().replace(/\s+/g, '-')}.csv`);
+}
+
+/* ================= ADMIN: AJUSTES ================= */
+function fillConfigForm() {
+  const cfg = DB.config();
+  document.getElementById('cfgPriceFull').value = cfg.precio_completa;
+  document.getElementById('cfgPricePerson').value = cfg.precio_persona;
+  document.getElementById('cfgApertura').value = cfg.apertura;
+  document.getElementById('cfgCierre').value = cfg.cierre;
+  document.getElementById('cfgWhatsapp').value = cfg.whatsapp;
+}
+
+async function saveConfig() {
+  const pf = parseInt(document.getElementById('cfgPriceFull').value);
+  const pp = parseInt(document.getElementById('cfgPricePerson').value);
+  const ap = parseInt(document.getElementById('cfgApertura').value);
+  const ci = parseInt(document.getElementById('cfgCierre').value);
+  const wa = document.getElementById('cfgWhatsapp').value.replace(/[^\d]/g, '');
+
+  if (!pf || pf < 0 || !pp || pp < 0) { showToast('Revisá los precios.'); return; }
+  if (isNaN(ap) || isNaN(ci) || ap >= ci || ap < 0 || ci > 23) { showToast('Revisá los horarios: la apertura debe ser antes del cierre (0–23).'); return; }
+  if (wa.length < 10) { showToast('Revisá el número de WhatsApp (con código de país, ej: 59892451182).'); return; }
+
+  try {
+    await DB.saveConfig({ precio_completa: pf, precio_persona: pp, apertura: ap, cierre: ci, whatsapp: wa });
+    applyConfig();
+    if (S.step === 2 && S.fecha) renderSlots();
+    showToast('Cambios guardados y aplicados en la página.');
+  } catch (e) {
+    console.error(e);
+    showToast('No se pudieron guardar los cambios.');
+  }
+}
+
+async function changePassword() {
+  const np = document.getElementById('cfgNewPass').value;
+  if (np.length < 8) { showToast('La contraseña debe tener al menos 8 caracteres.'); return; }
+  try {
+    const hash = await sha256(np);
+    await DB.saveConfig({ admin_hash: hash });
+    document.getElementById('cfgNewPass').value = '';
+    clearFails();
+    showToast('Contraseña actualizada.');
+  } catch (e) {
+    console.error(e);
+    showToast('No se pudo actualizar la contraseña.');
+  }
 }
 
 /* ================= SINCRONIZACIÓN ================= */
 function onDataChanged() {
   if (S.step === 2 && S.fecha) renderSlots();
-  if (document.getElementById('adminPanel').classList.contains('active')) renderAdmin();
+  renderTorneoPublic();
+  if (document.getElementById('adminPanel').classList.contains('active')) {
+    renderAdmin();
+    renderTorneoAdmin();
+  }
 }
 
 // Entre pestañas del mismo navegador (modo localStorage)
-window.addEventListener('storage', e => {
-  if (e.key === STORAGE_KEY) { DB.refresh(); onDataChanged(); }
+window.addEventListener('storage', async e => {
+  if ([K.reservas, K.torneos, K.insc, K.config].includes(e.key)) {
+    await DB.refresh();
+    applyConfig();
+    onDataChanged();
+  }
 });
 
 /* ================= INIT ================= */
 window.addEventListener('DOMContentLoaded', async () => {
   renderDates();
   await DB.init();
+  applyConfig();
+  renderTorneoPublic();
   onDataChanged();
   checkAdminURL();
   window.addEventListener('hashchange', checkAdminURL);
