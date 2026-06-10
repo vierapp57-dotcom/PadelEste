@@ -1,3 +1,4 @@
+L
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,17 +7,17 @@
 <meta name="description" content="Padel Este — Tu Club. Reservá tu cancha de pádel online en Maldonado, Uruguay. Fácil, rápido y desde tu celular.">
 <meta name="theme-color" content="#0A1628">
 <title>Padel Este — Reservá tu cancha</title>
-
+ 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+ 
 <style>
 /* ================================================================
    PADEL ESTE — v3 · Mobile-first · Admin seguro · Torneos
    ================================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
 :root {
   --navy: #0A1628;
   --navy-deep: #060D18;
@@ -33,10 +34,10 @@
   --radius: 16px;
   --transition: 0.25s ease;
 }
-
+ 
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 [id] { scroll-margin-top: 72px; }
-
+ 
 body {
   font-family: 'DM Sans', system-ui, sans-serif;
   background: var(--navy);
@@ -44,14 +45,14 @@ body {
   line-height: 1.55;
   overflow-x: hidden;
 }
-
+ 
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 a { color: inherit; text-decoration: none; }
 input, select, textarea { font-family: inherit; }
-
+ 
 .container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-
+ 
 h1, h2, h3 {
   font-family: 'Anton', sans-serif;
   font-weight: 400;
@@ -59,12 +60,12 @@ h1, h2, h3 {
   letter-spacing: 0.02em;
   line-height: 1;
 }
-
+ 
 .section { padding: 56px 0; }
 .section-title { font-size: clamp(30px, 7vw, 52px); margin-bottom: 10px; }
 .section-sub { color: var(--gray-soft); font-size: 15px; max-width: 480px; }
 .accent { color: var(--yellow); }
-
+ 
 /* ---------- Header ---------- */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -73,14 +74,14 @@ h1, h2, h3 {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
-
+ 
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
   height: 60px;
 }
-
+ 
 .brand { display: flex; align-items: center; gap: 9px; font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.06em; }
-
+ 
 .brand-mark {
   width: 32px; height: 32px; border-radius: 8px;
   background: var(--royal);
@@ -93,7 +94,7 @@ h1, h2, h3 {
   width: 10px; height: 10px; border-radius: 50%;
   background: var(--yellow);
 }
-
+ 
 .header-cta {
   background: var(--yellow); color: var(--navy);
   font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;
@@ -101,7 +102,7 @@ h1, h2, h3 {
   transition: var(--transition);
 }
 .header-cta:active { transform: scale(0.97); }
-
+ 
 /* ---------- Hero ---------- */
 .hero {
   padding: 104px 0 40px;
@@ -111,7 +112,7 @@ h1, h2, h3 {
     radial-gradient(ellipse 60% 45% at 10% 30%, rgba(56, 189, 248, 0.10), transparent 70%),
     var(--navy);
 }
-
+ 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
@@ -127,12 +128,12 @@ h1, h2, h3 {
   animation: ping 2s infinite;
 }
 @keyframes ping { 70% { box-shadow: 0 0 0 7px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
-
+ 
 .hero h1 { font-size: clamp(42px, 11vw, 88px); margin-bottom: 16px; }
 .hero h1 .line { display: block; }
-
+ 
 .hero p { color: var(--gray-soft); font-size: 16px; max-width: 440px; margin-bottom: 28px; }
-
+ 
 .btn-hero {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; max-width: 380px;
@@ -143,7 +144,7 @@ h1, h2, h3 {
   transition: var(--transition);
 }
 .btn-hero:active { transform: scale(0.98); }
-
+ 
 /* Aviso de torneo en el hero (solo visible si hay torneo activo) */
 .torneo-pill {
   display: none;
@@ -158,7 +159,7 @@ h1, h2, h3 {
 }
 .torneo-pill.visible { display: flex; }
 .torneo-pill .arrow { margin-left: auto; color: var(--sky); flex-shrink: 0; }
-
+ 
 .hero-facts {
   display: flex; flex-wrap: wrap; gap: 8px;
   margin-top: 26px;
@@ -169,7 +170,7 @@ h1, h2, h3 {
   padding: 8px 14px; border-radius: 100px;
 }
 .fact strong { color: var(--white); }
-
+ 
 /* ---------- Card de reserva ---------- */
 .booking-card {
   background: var(--navy-card);
@@ -178,7 +179,7 @@ h1, h2, h3 {
   padding: 24px 18px 22px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
-
+ 
 .progress { display: flex; gap: 6px; margin-bottom: 24px; }
 .progress span {
   flex: 1; height: 4px; border-radius: 4px;
@@ -186,16 +187,16 @@ h1, h2, h3 {
   transition: background var(--transition);
 }
 .progress span.done { background: var(--yellow); }
-
+ 
 .step-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
 .step-title { font-size: 24px; }
 .step-count { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--gray); }
 .step-sub { color: var(--gray); font-size: 14px; margin-bottom: 20px; }
-
+ 
 .bstep { display: none; }
 .bstep.active { display: block; animation: fade 0.3s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-
+ 
 /* Selector de fecha — scroll horizontal */
 .date-scroll {
   display: flex; gap: 10px;
@@ -207,7 +208,7 @@ h1, h2, h3 {
   scroll-snap-type: x proximity;
 }
 .date-scroll::-webkit-scrollbar { display: none; }
-
+ 
 .date-chip {
   flex: 0 0 auto;
   width: 64px; padding: 12px 0 10px;
@@ -223,7 +224,7 @@ h1, h2, h3 {
 .date-chip.selected { background: var(--yellow); border-color: var(--yellow); color: var(--navy); }
 .date-chip.selected .dow, .date-chip.selected .mon { color: rgba(10,22,40,.65); }
 .date-chip.today:not(.selected) { border-color: var(--sky); }
-
+ 
 /* Horarios */
 .slots {
   display: grid;
@@ -256,13 +257,13 @@ h1, h2, h3 {
   padding: 2px 7px; border-radius: 100px;
   text-transform: uppercase;
 }
-
+ 
 .legend { display: flex; gap: 16px; margin: 14px 0 4px; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray); }
 .legend i { width: 11px; height: 11px; border-radius: 4px; display: inline-block; }
 .legend .l-free { background: var(--navy); border: 1.5px solid var(--line); }
 .legend .l-busy { background: rgba(148,163,184,.15); }
-
+ 
 /* Tipo de reserva */
 .type-row { display: grid; gap: 10px; margin-bottom: 18px; }
 .type-opt {
@@ -277,7 +278,7 @@ h1, h2, h3 {
 .type-name { font-weight: 700; font-size: 15px; }
 .type-desc { font-size: 12.5px; color: var(--gray); margin-top: 1px; display: block; }
 .type-price { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--yellow); white-space: nowrap; }
-
+ 
 .players-row {
   display: none;
   align-items: center; justify-content: space-between;
@@ -295,7 +296,7 @@ h1, h2, h3 {
 }
 .stepper button:disabled { opacity: 0.3; }
 .stepper b { font-family: 'Anton', sans-serif; font-size: 20px; min-width: 18px; text-align: center; }
-
+ 
 /* Formulario */
 .field { margin-bottom: 14px; }
 .field label {
@@ -316,9 +317,9 @@ h1, h2, h3 {
 .field .hint { font-size: 12px; color: var(--red); margin-top: 5px; display: none; }
 .field.has-error .hint { display: block; }
 .field.has-error input { border-color: var(--red); }
-
+ 
 .fields-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
+ 
 /* Resumen */
 .summary {
   background: var(--navy);
@@ -332,7 +333,7 @@ h1, h2, h3 {
 .summary-row .v { font-weight: 600; text-align: right; }
 .summary-row.total { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 11px; }
 .summary-row.total .v { font-family: 'Anton', sans-serif; font-size: 20px; color: var(--yellow); }
-
+ 
 /* Botones de paso */
 .step-actions { display: flex; gap: 10px; margin-top: 20px; }
 .btn-back {
@@ -351,7 +352,7 @@ h1, h2, h3 {
 }
 .btn-main:disabled { opacity: 0.35; cursor: not-allowed; }
 .btn-main:not(:disabled):active { transform: scale(0.98); }
-
+ 
 /* Confirmación */
 .confirm-wrap { text-align: center; padding: 12px 0 4px; }
 .check {
@@ -364,7 +365,7 @@ h1, h2, h3 {
 .check svg { width: 36px; height: 36px; stroke: #fff; stroke-width: 3.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .confirm-wrap h3 { font-size: 30px; margin-bottom: 8px; }
 .confirm-wrap > p { color: var(--gray-soft); font-size: 14px; max-width: 360px; margin: 0 auto 18px; }
-
+ 
 .btn-wa {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   width: 100%;
@@ -382,11 +383,11 @@ h1, h2, h3 {
   font-weight: 600; font-size: 14px;
   padding: 14px 20px; border-radius: 12px;
 }
-
+ 
 /* ---------- Torneo (público) ---------- */
 #torneo { display: none; }
 #torneo.visible { display: block; }
-
+ 
 .torneo-card {
   position: relative;
   background: linear-gradient(135deg, #1438a8 0%, var(--royal) 45%, #1d4ed8 100%);
@@ -411,7 +412,7 @@ h1, h2, h3 {
 }
 .torneo-card h3 { font-size: clamp(26px, 6vw, 40px); margin-bottom: 8px; position: relative; }
 .torneo-desc { font-size: 14px; color: rgba(255,255,255,.85); max-width: 480px; margin-bottom: 18px; position: relative; }
-
+ 
 .torneo-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; position: relative; }
 .tmeta {
   font-size: 13px; font-weight: 600;
@@ -420,7 +421,7 @@ h1, h2, h3 {
   padding: 7px 13px; border-radius: 100px;
 }
 .tmeta.warn { background: rgba(253, 224, 71, 0.18); border-color: rgba(253, 224, 71, 0.4); color: var(--yellow); }
-
+ 
 .torneo-form { position: relative; background: rgba(6, 13, 24, 0.45); border-radius: 16px; padding: 16px; }
 .torneo-form .field input { background: rgba(10, 22, 40, 0.7); }
 .torneo-full {
@@ -429,7 +430,7 @@ h1, h2, h3 {
   background: rgba(6, 13, 24, 0.45); border-radius: 16px;
   padding: 22px 16px;
 }
-
+ 
 /* ---------- Precios ---------- */
 .price-grid { display: grid; gap: 14px; }
 .price-card {
@@ -450,7 +451,7 @@ h1, h2, h3 {
   background: var(--yellow); color: var(--navy);
   padding: 3px 9px; border-radius: 100px; margin-bottom: 8px;
 }
-
+ 
 /* ---------- Ubicación ---------- */
 .map-card {
   background: var(--navy-card);
@@ -473,10 +474,10 @@ h1, h2, h3 {
 .map-pin svg { width: 20px; height: 20px; stroke: var(--sky); fill: none; stroke-width: 2; }
 .map-head h3 { font-size: 17px; font-family: 'DM Sans', sans-serif; font-weight: 700; text-transform: none; letter-spacing: 0; }
 .map-head p { font-size: 13px; color: var(--gray); }
-
+ 
 .map-frame { position: relative; aspect-ratio: 4 / 3; background: var(--navy-deep); }
 .map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
+ 
 .map-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px; }
 .btn-map {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -488,7 +489,7 @@ h1, h2, h3 {
 .btn-map.gmaps { background: var(--yellow); color: var(--navy); }
 .btn-map.waze { background: var(--navy); border: 1.5px solid var(--line); color: var(--white); }
 .btn-map svg { width: 17px; height: 17px; flex-shrink: 0; }
-
+ 
 .info-list { display: grid; gap: 10px; margin-top: 18px; }
 .info-item {
   display: flex; align-items: center; justify-content: space-between;
@@ -499,7 +500,7 @@ h1, h2, h3 {
 .info-item .k { color: var(--gray); }
 .info-item .v { font-weight: 600; text-align: right; }
 .info-item .v a { color: var(--sky); }
-
+ 
 /* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--line);
@@ -509,7 +510,7 @@ h1, h2, h3 {
   font-size: 13px;
 }
 .footer b { color: var(--white); }
-
+ 
 /* ---------- Toast ---------- */
 .toast {
   position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(80px);
@@ -521,7 +522,7 @@ h1, h2, h3 {
   z-index: 300; max-width: calc(100% - 40px); text-align: center;
 }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
+ 
 /* ---------- Admin ---------- */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 200;
@@ -530,7 +531,7 @@ h1, h2, h3 {
   display: none; align-items: flex-end; justify-content: center;
 }
 .modal-overlay.active { display: flex; }
-
+ 
 .modal {
   background: var(--navy);
   border: 1px solid var(--line);
@@ -544,7 +545,7 @@ h1, h2, h3 {
   animation: sheetUp 0.3s ease;
 }
 @keyframes sheetUp { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
-
+ 
 .modal-close {
   position: absolute; top: 14px; right: 14px;
   width: 36px; height: 36px; border-radius: 50%;
@@ -553,7 +554,7 @@ h1, h2, h3 {
   display: flex; align-items: center; justify-content: center;
   z-index: 5;
 }
-
+ 
 .admin-login { max-width: 340px; margin: 28px auto; text-align: center; }
 .admin-login h2 { font-size: 26px; margin-bottom: 6px; }
 .admin-login p { color: var(--gray); font-size: 14px; margin-bottom: 20px; }
@@ -565,13 +566,13 @@ h1, h2, h3 {
 .admin-login input:focus { outline: none; border-color: var(--sky); }
 .lock-msg { font-size: 13px; color: var(--red); margin-top: 10px; display: none; }
 .lock-msg.visible { display: block; }
-
+ 
 .admin-panel { display: none; }
 .admin-panel.active { display: block; }
-
+ 
 .admin-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; padding-right: 44px; }
 .admin-top h2 { font-size: 24px; }
-
+ 
 .admin-tabs {
   display: flex; gap: 6px;
   background: var(--navy-card);
@@ -590,10 +591,10 @@ h1, h2, h3 {
   text-align: center;
 }
 .admin-tab.active { background: var(--yellow); color: var(--navy); }
-
+ 
 .admin-view { display: none; }
 .admin-view.active { display: block; animation: fade 0.25s ease; }
-
+ 
 .admin-tools { display: flex; gap: 8px; flex-wrap: wrap; }
 .chip-btn {
   font-size: 12.5px; font-weight: 600;
@@ -603,14 +604,14 @@ h1, h2, h3 {
 }
 .chip-btn.danger { color: var(--red); }
 .chip-btn.active { background: var(--yellow); color: var(--navy); border-color: var(--yellow); }
-
+ 
 .admin-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
 .astat { background: var(--navy-card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 14px; }
 .astat .n { font-family: 'Anton', sans-serif; font-size: 26px; color: var(--yellow); line-height: 1; }
 .astat .l { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
-
+ 
 .admin-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-
+ 
 .res-list { display: grid; gap: 10px; }
 .res-card {
   background: var(--navy-card); border: 1px solid var(--line);
@@ -636,9 +637,9 @@ h1, h2, h3 {
 }
 .mini-btn.ok { color: var(--green); }
 .mini-btn.del { color: var(--red); }
-
+ 
 .admin-empty { text-align: center; color: var(--gray); padding: 36px 10px; font-size: 14px; }
-
+ 
 .sync-tag {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
@@ -647,7 +648,7 @@ h1, h2, h3 {
 .sync-tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--gray); }
 .sync-tag.live { color: var(--green); }
 .sync-tag.live i { background: var(--green); animation: ping 2s infinite; }
-
+ 
 /* Formularios del admin */
 .admin-form {
   background: var(--navy-card); border: 1px solid var(--line);
@@ -655,9 +656,9 @@ h1, h2, h3 {
   margin-bottom: 14px;
 }
 .admin-form h3 { font-size: 18px; margin-bottom: 14px; }
-.admin-form .field input, .admin-form .field textarea, .admin-form .field select { background: var(--navy); }
+.admin-form .field input, .admin-form .field textarea { background: var(--navy); }
 .form-note { font-size: 12px; color: var(--gray); margin-top: 10px; line-height: 1.5; }
-
+ 
 .torneo-admin-head {
   display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
   margin-bottom: 10px; flex-wrap: wrap;
@@ -668,7 +669,7 @@ h1, h2, h3 {
 }
 .torneo-status.on { background: rgba(34,197,94,.15); color: var(--green); }
 .torneo-status.off { background: rgba(148,163,184,.12); color: var(--gray); }
-
+ 
 /* ---------- Desktop ---------- */
 @media (min-width: 768px) {
   .section { padding: 80px 0; }
@@ -688,7 +689,7 @@ h1, h2, h3 {
   .torneo-card { padding: 34px 32px; }
   .torneo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
@@ -696,27 +697,27 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-
+ 
 <!-- ============ HEADER ============ -->
 <header class="header">
   <div class="container header-inner">
     <a class="brand" href="#inicio">
       <span class="brand-mark">P</span>
-      <span>PADEL ESTE</span>
+      <span class="club-nombre">PADEL ESTE</span>
     </a>
     <a class="header-cta" href="#reservar">Reservar</a>
   </div>
 </header>
-
+ 
 <!-- ============ HERO ============ -->
 <section class="hero" id="inicio">
   <div class="container">
-    <div class="hero-badge"><span class="dot"></span> Reservas abiertas · Maldonado</div>
+    <div class="hero-badge"><span class="dot"></span> Reservas abiertas · <span class="club-nombre">Padel Este</span></div>
     <h1>
-      <span class="line">Tu cancha,</span>
-      <span class="line"><span class="accent">en segundos</span>.</span>
+      <span class="line" id="heroTitulo1">Tu cancha,</span>
+      <span class="line"><span class="accent" id="heroTitulo2">en segundos</span>.</span>
     </h1>
-    <p>Elegí día y hora, dejá tus datos y listo. Sin llamadas ni esperas, directo desde tu celular.</p>
+    <p id="heroSubtitulo">Elegí día y hora, dejá tus datos y listo. Sin llamadas ni esperas, directo desde tu celular.</p>
     <a class="btn-hero" href="#reservar">
       Reservar ahora
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -727,22 +728,23 @@ h1, h2, h3 {
       <span class="arrow">→</span>
     </a>
     <div class="hero-facts">
-      <span class="fact"><strong>2</strong> canchas techadas</span>
+      <span class="fact"><strong><span class="club-nombre">Padel Este</span></strong></span>
+      <span class="fact" id="factCanchas"><strong>2</strong> canchas techadas</span>
       <span class="fact">Iluminación LED</span>
       <span class="fact" id="factHorario"><strong>8:00 – 23:00</strong> todos los días</span>
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ RESERVAR ============ -->
 <section class="section" id="reservar" style="padding-top: 24px;">
   <div class="container">
     <div class="booking-card">
-
+ 
       <div class="progress" id="progress">
         <span class="done"></span><span></span><span></span>
       </div>
-
+ 
       <!-- Paso 1: Fecha -->
       <div class="bstep active" data-bstep="1">
         <div class="step-head">
@@ -755,7 +757,7 @@ h1, h2, h3 {
           <button class="btn-main" id="btnStep1" disabled onclick="goStep(2)">Ver horarios</button>
         </div>
       </div>
-
+ 
       <!-- Paso 2: Horario -->
       <div class="bstep" data-bstep="2">
         <div class="step-head">
@@ -773,7 +775,7 @@ h1, h2, h3 {
           <button class="btn-main" id="btnStep2" disabled onclick="goStep(3)">Continuar</button>
         </div>
       </div>
-
+ 
       <!-- Paso 3: Tipo + Datos -->
       <div class="bstep" data-bstep="3">
         <div class="step-head">
@@ -781,7 +783,7 @@ h1, h2, h3 {
           <span class="step-count">3 / 3</span>
         </div>
         <p class="step-sub">Último paso. Confirmá y avisale al club por WhatsApp.</p>
-
+ 
         <div class="type-row">
           <button class="type-opt selected" data-type="completa" onclick="selectType('completa')">
             <span>
@@ -798,7 +800,7 @@ h1, h2, h3 {
             <span class="type-price" id="pricePersonLabel">$300 <small style="font-family:'DM Sans';font-size:11px;color:var(--gray);">c/u</small></span>
           </button>
         </div>
-
+ 
         <div class="players-row" id="playersRow">
           <label>¿Cuántos juegan?</label>
           <div class="stepper">
@@ -807,7 +809,7 @@ h1, h2, h3 {
             <button type="button" id="plusP" onclick="changePlayers(1)">+</button>
           </div>
         </div>
-
+ 
         <div class="fields-2">
           <div class="field" id="fNombre">
             <label for="inputNombre">Nombre</label>
@@ -825,15 +827,15 @@ h1, h2, h3 {
           <input type="tel" id="inputTelefono" placeholder="099 123 456" inputmode="tel" autocomplete="tel" oninput="validateForm()">
           <span class="hint">Ingresá un celular válido (mínimo 8 dígitos).</span>
         </div>
-
+ 
         <div class="summary" id="summary"></div>
-
+ 
         <div class="step-actions">
           <button class="btn-back" onclick="goStep(2)">Atrás</button>
           <button class="btn-main" id="btnConfirm" disabled onclick="confirmReservation()">Confirmar reserva</button>
         </div>
       </div>
-
+ 
       <!-- Paso 4: Confirmación -->
       <div class="bstep" data-bstep="4">
         <div class="confirm-wrap">
@@ -842,17 +844,17 @@ h1, h2, h3 {
           <p>Guardamos tu turno. Tocá el botón verde para avisarle al club por WhatsApp y dejarla confirmada.</p>
           <div class="summary" id="confirmSummary" style="text-align:left;"></div>
           <a href="#" class="btn-wa" id="waBtn" target="_blank" rel="noopener">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.306.322-.57.652-.23.316-.445.612-.703.939-.259.327-.455.616-.703.939l-.703-.939c-.248-.323-.444-.612-.703-.939-.258-.327-.473-.623-.703-.939-.264-.33-.397-.453-.57-.652-.199-.298-.397-.445-.67-.15-.272.295-.372.852-.074 1.149.298.297.478.687.67.914.192.227.296.389.481.616l.703.939c.207.276.347.465.481.616-.134.151-.274.34-.481.616l-.703.939c-.185.227-.289.389-.481.616-.192.227-.372.617-.67.914-.298.297-.198.854.074 1.149.173.199.371.352.57.652.258.327.473.623.703.939.259.327.455.616.703.939l.703-.939c.248-.323.444-.612.703-.939.23-.316.445-.612.703-.939.265-.33.397-.453.57-.652.298-.297.225-.852-.074-1.149z"/></svg>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Avisar al club por WhatsApp
           </a>
           <button class="btn-ghost" onclick="resetBooking()">Hacer otra reserva</button>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ TORNEO (solo visible si el admin activó uno) ============ -->
 <section class="section" id="torneo" style="padding-top: 0;">
   <div class="container">
@@ -861,7 +863,7 @@ h1, h2, h3 {
       <h3 id="tNombre">—</h3>
       <p class="torneo-desc" id="tDesc"></p>
       <div class="torneo-meta" id="tMeta"></div>
-
+ 
       <div class="torneo-form" id="tForm">
         <div class="fields-2">
           <div class="field" id="tfNombre">
@@ -886,12 +888,12 @@ h1, h2, h3 {
         </div>
         <button class="btn-main" id="tBtnInscribir" style="width:100%;" disabled onclick="inscribirTorneo()">Inscribirme al torneo</button>
       </div>
-
+ 
       <div class="torneo-full" id="tFull" style="display:none;"></div>
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ PRECIOS ============ -->
 <section class="section" id="precios" style="padding-top: 16px;">
   <div class="container">
@@ -902,11 +904,11 @@ h1, h2, h3 {
         <div>
           <span class="price-flag">Recomendado</span>
           <h3 class="price-name">Cancha completa</h3>
-          <p class="price-desc" id="priceDescFull">1 hora · hasta 4 jugadores · vestuarios incluidos</p>
+          <p class="price-desc" id="priceDescFull">hora y media · hasta 4 jugadores · vestuarios incluidos</p>
         </div>
         <div class="price-tag">
           <div class="price-amount" id="priceCardFull">$1.200</div>
-          <div class="price-unit" id="priceUnitFull">por hora</div>
+          <div class="price-unit" id="priceUnitFull">por hora y media</div>
         </div>
       </div>
       <div class="price-card">
@@ -916,19 +918,19 @@ h1, h2, h3 {
         </div>
         <div class="price-tag">
           <div class="price-amount" id="priceCardPerson">$300</div>
-          <div class="price-unit" id="priceUnitPerson">por persona / hora</div>
+          <div class="price-unit" id="priceUnitPerson">por persona / hora y media</div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ UBICACIÓN ============ -->
 <section class="section" id="ubicacion" style="padding-top: 16px;">
   <div class="container">
     <h2 class="section-title">Cómo <span class="accent">llegar</span>.</h2>
     <p class="section-sub" style="margin-bottom: 24px;">Estamos en Maldonado, con estacionamiento gratis para clientes.</p>
-
+ 
     <div class="location-grid">
       <div class="map-card">
         <div class="map-head">
@@ -936,8 +938,8 @@ h1, h2, h3 {
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <h3>Padel Este — Tu Club</h3>
-            <p>Tacuabé esq. Guyunusa, Maldonado</p>
+            <h3><span class="club-nombre">Padel Este</span> — <span class="club-subtitulo">Tu Club</span></h3>
+            <p class="club-direccion">Tacuabé esq. Guyunusa, Maldonado</p>
           </div>
         </div>
         <div class="map-frame">
@@ -950,44 +952,44 @@ h1, h2, h3 {
           </iframe>
         </div>
         <div class="map-actions">
-          <a class="btn-map gmaps" target="_blank" rel="noopener"
+          <a class="btn-map gmaps" id="btnGmaps" target="_blank" rel="noopener"
              href="https://www.google.com/maps/dir/?api=1&destination=Tacuab%C3%A9+y+Guyunusa+Maldonado+Uruguay&travelmode=driving">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Google Maps
           </a>
-          <a class="btn-map waze" target="_blank" rel="noopener"
+          <a class="btn-map waze" id="btnWaze" target="_blank" rel="noopener"
              href="https://waze.com/ul?q=Tacuab%C3%A9%20y%20Guyunusa%20Maldonado%20Uruguay&navigate=yes">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
             Waze
           </a>
         </div>
       </div>
-
+ 
       <div class="info-list">
         <div class="info-item"><span class="k">WhatsApp</span><span class="v"><a id="waInfoLink" href="https://wa.me/59892451182" target="_blank" rel="noopener">+598 92 451 182</a></span></div>
         <div class="info-item"><span class="k">Horarios</span><span class="v" id="infoHorario">Lun a Dom · 8:00 – 23:00</span></div>
         <div class="info-item"><span class="k">Estacionamiento</span><span class="v">Gratis para clientes</span></div>
-        <div class="info-item"><span class="k">Canchas</span><span class="v">2 techadas · césped premium</span></div>
+        <div class="info-item"><span class="k">Canchas</span><span class="v" id="canchasDesc">2 techadas · césped premium</span></div>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container">
-    <p>© 2026 <b>Padel Este — Tu Club</b> · Maldonado, Uruguay</p>
+    <p>© 2026 <b><span class="club-nombre">Padel Este</span> — <span class="club-subtitulo">Tu Club</span></b> · <span class="club-direccion">Maldonado, Uruguay</span></p>
   </div>
 </footer>
-
+ 
 <!-- ============ TOAST ============ -->
 <div class="toast" id="toast"></div>
-
+ 
 <!-- ============ ADMIN ============ -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <button class="modal-close" onclick="closeAdmin()" aria-label="Cerrar">✕</button>
-
+ 
     <div class="admin-login" id="adminLogin">
       <h2>Panel del club</h2>
       <p>Ingresá la contraseña para administrar la página.</p>
@@ -995,211 +997,1383 @@ h1, h2, h3 {
       <button class="btn-main" style="width:100%;" id="btnLogin" onclick="doLogin()">Entrar</button>
       <p class="lock-msg" id="lockMsg"></p>
     </div>
-
+ 
     <div class="admin-panel" id="adminPanel">
       <div class="admin-top">
         <h2>Panel del club</h2>
-        <button class="chip-btn danger" onclick="closeAdmin()">Salir</button>
+        <button class="chip-btn" onclick="logoutAdmin()">Cerrar sesión</button>
       </div>
-
+ 
       <div class="admin-tabs">
-        <button class="admin-tab active" onclick="switchTab('reservas')">Reservas</button>
-        <button class="admin-tab" onclick="switchTab('settings')">Configuración</button>
+        <button class="admin-tab active" data-tab="reservas" onclick="setTab('reservas')">Reservas</button>
+        <button class="admin-tab" data-tab="torneo" onclick="setTab('torneo')">Torneo</button>
+        <button class="admin-tab" data-tab="ajustes" onclick="setTab('ajustes')">Ajustes</button>
       </div>
-
-      <!-- Tab: Reservas -->
-      <div class="admin-view active" id="tab-reservas">
-        <div class="admin-form">
-          <h3>Filtrar reservas</h3>
-          <div class="fields-2">
-            <div class="field">
-              <label>Desde</label>
-              <input type="date" id="filterFrom">
-            </div>
-            <div class="field">
-              <label>Hasta</label>
-              <input type="date" id="filterTo">
-            </div>
-          </div>
-        </div>
-
+ 
+      <!-- VISTA: RESERVAS -->
+      <div class="admin-view active" data-view="reservas">
         <div class="admin-stats">
-          <div class="astat">
-            <div class="n" id="statTotal">0</div>
-            <div class="l">Reservas</div>
-          </div>
-          <div class="astat">
-            <div class="n" id="statCompleta">0</div>
-            <div class="l">Canchas</div>
-          </div>
-          <div class="astat">
-            <div class="n" id="statPersona">0</div>
-            <div class="l">Por persona</div>
-          </div>
+          <div class="astat"><div class="n" id="stTotal">0</div><div class="l">Total</div></div>
+          <div class="astat"><div class="n" id="stToday">0</div><div class="l">Hoy</div></div>
+          <div class="astat"><div class="n" id="stWeek">0</div><div class="l">Próx. 7 días</div></div>
         </div>
-
+ 
+        <div class="admin-filters">
+          <button class="chip-btn active" data-f="upcoming" onclick="setFilter('upcoming')">Próximas</button>
+          <button class="chip-btn" data-f="today" onclick="setFilter('today')">Hoy</button>
+          <button class="chip-btn" data-f="all" onclick="setFilter('all')">Todas</button>
+          <button class="chip-btn" data-f="c1" onclick="setFilter('c1')">Cancha 1</button>
+          <button class="chip-btn" data-f="c2" onclick="setFilter('c2')">Cancha 2</button>
+        </div>
+ 
         <div class="res-list" id="resList"></div>
-        <div class="admin-empty" id="emptyRes" style="display:none;">No hay reservas para mostrar</div>
-      </div>
-
-      <!-- Tab: Settings -->
-      <div class="admin-view" id="tab-settings">
-        <div class="admin-form">
-          <h3>Configuración de turnos</h3>
-          
-          <div class="field">
-            <label for="slotDuration">Duración de cada turno</label>
-            <select id="slotDuration" onchange="saveSlotDuration()">
-              <option value="60">1 hora</option>
-              <option value="90">1 hora y media</option>
-              <option value="120">2 horas</option>
-              <option value="30">30 minutos</option>
-            </select>
-            <div class="form-note">Selecciona cuántos minutos durará cada turno de cancha.</div>
-          </div>
-
-          <div class="fields-2">
-            <div class="field">
-              <label for="priceFullInput">Precio cancha completa</label>
-              <input type="number" id="priceFullInput" placeholder="1200" min="0" step="100" onchange="saveSettings()">
-            </div>
-            <div class="field">
-              <label for="pricePersonInput">Precio por persona</label>
-              <input type="number" id="pricePersonInput" placeholder="300" min="0" step="50" onchange="saveSettings()">
-            </div>
-          </div>
-
-          <p class="form-note">Los cambios se guardan automáticamente en localStorage. Estos datos NO se sincronizan con un servidor (próxima mejora).</p>
-        </div>
-
-        <div class="admin-form">
-          <h3>Información general</h3>
-          
-          <div class="field">
-            <label for="infoPhone">Teléfono WhatsApp</label>
-            <input type="tel" id="infoPhone" placeholder="+598 92 451 182" onchange="saveSettings()">
-          </div>
-
-          <div class="field">
-            <label for="infoHours">Horarios</label>
-            <input type="text" id="infoHours" placeholder="Lun a Dom · 8:00 – 23:00" onchange="saveSettings()">
-          </div>
+ 
+        <div class="admin-tools" style="margin-top: 16px;">
+          <button class="chip-btn" onclick="exportCSV()">Exportar CSV</button>
+          <button class="chip-btn danger" onclick="clearAllAsk()">Borrar todas</button>
         </div>
       </div>
+ 
+      <!-- VISTA: TORNEO -->
+      <div class="admin-view" data-view="torneo">
+        <!-- Sin torneo activo: crear -->
+        <div id="torneoCreate">
+          <div class="admin-form">
+            <h3>Crear torneo</h3>
+            <div class="field">
+              <label for="ntNombre">Nombre del torneo</label>
+              <input type="text" id="ntNombre" placeholder="Ej: Torneo de Verano 2026">
+            </div>
+            <div class="field">
+              <label for="ntDesc">Descripción (opcional)</label>
+              <input type="text" id="ntDesc" placeholder="Ej: Categoría libre · premios para los finalistas">
+            </div>
+            <div class="torneo-grid">
+              <div class="field">
+                <label for="ntFecha">Fecha del torneo</label>
+                <input type="date" id="ntFecha">
+              </div>
+              <div class="field">
+                <label for="ntCierre">Cierre de inscripciones</label>
+                <input type="date" id="ntCierre">
+              </div>
+              <div class="field">
+                <label for="ntCupo">Cupo (cantidad de inscriptos)</label>
+                <input type="number" id="ntCupo" min="2" placeholder="Ej: 16" inputmode="numeric">
+              </div>
+              <div class="field">
+                <label for="ntPrecio">Precio por inscripto ($)</label>
+                <input type="number" id="ntPrecio" min="0" placeholder="Ej: 500" inputmode="numeric">
+              </div>
+            </div>
+            <button class="btn-main" style="width:100%;" onclick="createTorneo()">Publicar torneo en la página</button>
+            <p class="form-note">Al publicarlo, la sección "Torneo" aparece en la página para que la gente se inscriba. Se oculta sola al pasar la fecha de cierre, o cuando lo finalices desde acá.</p>
+          </div>
+        </div>
+ 
+        <!-- Torneo activo: gestionar -->
+        <div id="torneoManage" style="display:none;">
+          <div class="admin-form">
+            <div class="torneo-admin-head">
+              <div>
+                <h3 id="atNombre" style="margin-bottom:4px;">—</h3>
+                <span class="torneo-status on" id="atStatus">Inscripciones abiertas</span>
+              </div>
+              <button class="chip-btn danger" onclick="endTorneo()">Finalizar torneo</button>
+            </div>
+            <div class="res-meta" style="font-size:13px; color:var(--gray-soft); display:flex; gap:14px; flex-wrap:wrap; margin-bottom:6px;">
+              <span id="atFecha"></span>
+              <span id="atCierre"></span>
+              <span id="atCupo"></span>
+              <span id="atPrecio"></span>
+            </div>
+          </div>
+ 
+          <div class="admin-stats" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="astat"><div class="n" id="atInscriptos">0</div><div class="l">Inscriptos</div></div>
+            <div class="astat"><div class="n" id="atLibres">0</div><div class="l">Lugares libres</div></div>
+          </div>
+ 
+          <div class="res-list" id="inscList"></div>
+ 
+          <div class="admin-tools" style="margin-top: 16px;">
+            <button class="chip-btn" onclick="exportInscCSV()">Exportar inscriptos CSV</button>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- VISTA: AJUSTES -->
+      <div class="admin-view" data-view="ajustes">
+ 
+        <div class="admin-form">
+          <h3>Precios y turnos</h3>
+          <div class="torneo-grid">
+            <div class="field">
+              <label for="cfgPriceFull">Cancha completa ($)</label>
+              <input type="number" id="cfgPriceFull" min="0" inputmode="numeric" placeholder="1200">
+            </div>
+            <div class="field">
+              <label for="cfgPricePerson">Por persona ($)</label>
+              <input type="number" id="cfgPricePerson" min="0" inputmode="numeric" placeholder="300">
+            </div>
+            <div class="field">
+              <label for="cfgDuracion">Duración del turno</label>
+              <select id="cfgDuracion">
+                <option value="60">1 hora (60 min)</option>
+                <option value="90">Hora y media (90 min)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cfgWhatsapp">WhatsApp del club</label>
+              <input type="tel" id="cfgWhatsapp" placeholder="59892451182" inputmode="tel">
+            </div>
+          </div>
+        </div>
+ 
+        <div class="admin-form">
+          <h3>Horarios de atención</h3>
+          <div class="torneo-grid">
+            <div class="field">
+              <label for="cfgApertura">Apertura (hora, ej: 8)</label>
+              <input type="number" id="cfgApertura" min="0" max="22" inputmode="numeric" placeholder="8">
+            </div>
+            <div class="field">
+              <label for="cfgCierre">Cierre (hora, ej: 23)</label>
+              <input type="number" id="cfgCierre" min="1" max="23" inputmode="numeric" placeholder="23">
+            </div>
+          </div>
+          <p class="form-note">Los turnos disponibles se recalculan automáticamente según la duración elegida y estos horarios.</p>
+        </div>
+ 
+        <div class="admin-form">
+          <h3>Identidad del club</h3>
+          <div class="torneo-grid">
+            <div class="field">
+              <label for="cfgNombreClub">Nombre del club</label>
+              <input type="text" id="cfgNombreClub" placeholder="Padel Este">
+            </div>
+            <div class="field">
+              <label for="cfgSubtitulo">Subtítulo / lema</label>
+              <input type="text" id="cfgSubtitulo" placeholder="Tu Club">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cfgDireccion">Dirección</label>
+            <input type="text" id="cfgDireccion" placeholder="Tacuabé esq. Guyunusa, Maldonado">
+          </div>
+          <div class="torneo-grid">
+            <div class="field">
+              <label for="cfgNumCanchas">Cantidad de canchas</label>
+              <input type="number" id="cfgNumCanchas" min="1" max="10" inputmode="numeric" placeholder="2">
+            </div>
+            <div class="field">
+              <label for="cfgCanchasDesc">Descripción de canchas</label>
+              <input type="text" id="cfgCanchasDesc" placeholder="2 techadas · césped premium">
+            </div>
+          </div>
+          <p class="form-note">La dirección actualiza el mapa GPS al instante.</p>
+        </div>
+ 
+        <div class="admin-form">
+          <h3>Texto del hero (portada)</h3>
+          <div class="field">
+            <label for="cfgHeroT1">Primera línea del título</label>
+            <input type="text" id="cfgHeroT1" placeholder="Tu cancha,">
+          </div>
+          <div class="field">
+            <label for="cfgHeroT2">Segunda línea (en amarillo)</label>
+            <input type="text" id="cfgHeroT2" placeholder="en segundos">
+          </div>
+          <div class="field">
+            <label for="cfgHeroSub">Subtítulo debajo del título</label>
+            <input type="text" id="cfgHeroSub" placeholder="Elegí día y hora...">
+          </div>
+          <p class="form-note">Tip: usá frases cortas y directas. El título grande se ve mejor con 2-4 palabras por línea.</p>
+        </div>
+ 
+        <button class="btn-main" style="width:100%; margin-bottom:20px;" onclick="saveConfig()">Guardar todos los cambios</button>
+ 
+        <div class="admin-form">
+          <h3>Cambiar contraseña</h3>
+          <div class="field">
+            <label for="cfgNewPass">Nueva contraseña (mínimo 8 caracteres)</label>
+            <input type="password" id="cfgNewPass" placeholder="••••••••" autocomplete="new-password">
+          </div>
+          <button class="btn-main" style="width:100%;" onclick="changePassword()">Actualizar contraseña</button>
+          <p class="form-note">La contraseña se guarda cifrada (hash SHA-256), nunca en texto plano.</p>
+        </div>
+      </div>
+ 
+      <div class="sync-tag" id="syncTag"><i></i> <span id="syncLabel">Guardado en este dispositivo</span></div>
     </div>
   </div>
 </div>
-
+ 
 <script>
-// Config global
-let config = {
-  password: '1234',
-  slotDuration: 60, // minutos
-  priceFull: 1200,
-  pricePerson: 300,
-  phone: '59892451182',
-  hours: 'Lun a Dom · 8:00 – 23:00'
+/* =================================================================
+   CONFIGURACIÓN
+   =================================================================
+   ▶ PARA CONECTAR SUPABASE (datos compartidos entre todos los
+     dispositivos), completá estas 2 constantes con los valores de
+     tu proyecto (Supabase → Settings → API) y subí el archivo.
+     Si quedan vacías, la página funciona igual con localStorage
+     (los datos solo viven en el navegador de cada persona).
+ 
+   ▶ SQL para crear las tablas en Supabase (SQL Editor → Run):
+ 
+     create table public.reservas (
+       id uuid primary key default gen_random_uuid(),
+       created_at timestamptz default now(),
+       fecha date not null,
+       hora text not null,
+       cancha int not null,
+       nombre text not null,
+       apellido text not null,
+       telefono text not null,
+       tipo text not null default 'completa',
+       jugadores int not null default 4,
+       total int not null default 1200,
+       unique (fecha, hora, cancha)
+     );
+ 
+     create table public.torneos (
+       id uuid primary key default gen_random_uuid(),
+       created_at timestamptz default now(),
+       nombre text not null,
+       descripcion text default '',
+       fecha_torneo date not null,
+       cierre date not null,
+       cupo int not null default 16,
+       precio int not null default 0,
+       activo boolean not null default true
+     );
+ 
+     create table public.inscripciones (
+       id uuid primary key default gen_random_uuid(),
+       created_at timestamptz default now(),
+       torneo_id uuid references public.torneos(id) on delete cascade,
+       nombre text not null,
+       apellido text not null,
+       telefono text not null,
+       pareja text default ''
+     );
+ 
+     create table public.config (
+       id int primary key default 1,
+       data jsonb not null default '{}'::jsonb
+     );
+     insert into public.config (id, data) values (1, '{}') on conflict do nothing;
+ 
+     alter table public.reservas enable row level security;
+     alter table public.torneos enable row level security;
+     alter table public.inscripciones enable row level security;
+     alter table public.config enable row level security;
+ 
+     -- Políticas de arranque (abiertas). NOTA DE SEGURIDAD:
+     -- cuando configures Supabase Auth para el admin, reemplazá las
+     -- políticas de update/delete por: using (auth.role() = 'authenticated')
+     create policy "reservas select" on public.reservas for select using (true);
+     create policy "reservas insert" on public.reservas for insert with check (true);
+     create policy "reservas delete" on public.reservas for delete using (true);
+     create policy "torneos select" on public.torneos for select using (true);
+     create policy "torneos insert" on public.torneos for insert with check (true);
+     create policy "torneos update" on public.torneos for update using (true);
+     create policy "insc select" on public.inscripciones for select using (true);
+     create policy "insc insert" on public.inscripciones for insert with check (true);
+     create policy "insc delete" on public.inscripciones for delete using (true);
+     create policy "config select" on public.config for select using (true);
+     create policy "config update" on public.config for update using (true);
+ 
+     -- Activá Realtime: Database → Replication → las 4 tablas
+   ================================================================= */
+const SUPABASE_URL = '';        // ej: 'https://xxxx.supabase.co'
+const SUPABASE_ANON_KEY = '';   // ej: 'eyJhbGciOi...'
+ 
+/* --- SEGURIDAD DEL ADMIN ---
+   La contraseña NO está escrita en el código: solo se guarda su hash
+   SHA-256. Hash por defecto = contraseña "padel2026". Cambiala desde
+   Ajustes apenas publiques la página.
+   Además: máximo 5 intentos y bloqueo de 5 minutos. */
+const DEFAULT_ADMIN_HASH = 'd97c0fc29ac6ac54b2e8fcc3239c8c57633edde5a77ce4819828189e6f837bcc';
+const MAX_ATTEMPTS = 5;
+const LOCK_MINUTES = 5;
+ 
+function numCourts() { return Number(DB.config().num_canchas) || 2; }
+const DAYS_AHEAD = 14;
+const K = {
+  reservas: 'padel_este_reservas',
+  torneos: 'padel_este_torneos',
+  insc: 'padel_este_inscripciones',
+  config: 'padel_este_config',
+  attempts: 'padel_este_intentos',
+  session: 'padel_este_admin'
 };
-
-// Cargar config desde localStorage
-function loadConfig() {
-  const saved = localStorage.getItem('padelEsteConfig');
-  if (saved) {
-    config = { ...config, ...JSON.parse(saved) };
+ 
+const DEFAULT_CONFIG = {
+  // Precios
+  precio_completa: 1200,
+  precio_persona: 300,
+  // Horarios
+  apertura: 8,
+  cierre: 23,
+  duracion: 90,          // minutos por turno: 60 o 90
+  // Club
+  nombre_club: 'Padel Este',
+  subtitulo_club: 'Tu Club',
+  direccion: 'Tacuabé esq. Guyunusa, Maldonado',
+  whatsapp: '59892451182',
+  // Hero
+  hero_titulo_1: 'Tu cancha,',
+  hero_titulo_2: 'en segundos',
+  hero_subtitulo: 'Elegí día y hora, dejá tus datos y listo. Sin llamadas ni esperas, directo desde tu celular.',
+  // Canchas
+  num_canchas: 2,
+  canchas_descripcion: '2 techadas · césped premium',
+  // Admin
+  admin_hash: DEFAULT_ADMIN_HASH
+};
+ 
+/* =================================================================
+   CAPA DE DATOS (DB) — localStorage hoy, Supabase cuando lo conectes
+   ================================================================= */
+let supabase = null;
+let cache = { reservas: [], torneos: [], insc: [], config: { ...DEFAULT_CONFIG } };
+ 
+function lsGet(key, fallback) {
+  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
+  catch (e) { return fallback; }
+}
+function lsSet(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+function newId(prefix) { return prefix + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7); }
+ 
+const DB = {
+  async init() {
+    if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+      try {
+        const mod = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+        supabase = mod.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        await DB.refresh();
+        supabase.channel('padel-rt')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'reservas' }, async () => { await DB.refresh(); onDataChanged(); })
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'torneos' }, async () => { await DB.refresh(); onDataChanged(); })
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'inscripciones' }, async () => { await DB.refresh(); onDataChanged(); })
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'config' }, async () => { await DB.refresh(); applyConfig(); onDataChanged(); })
+          .subscribe();
+        setSyncTag(true);
+        return;
+      } catch (err) {
+        console.error('Supabase no disponible, usando localStorage:', err);
+        supabase = null;
+      }
+    }
+    await DB.refresh();
+    setSyncTag(false);
+  },
+ 
+  async refresh() {
+    if (supabase) {
+      const [r, t, i, c] = await Promise.all([
+        supabase.from('reservas').select('*').order('fecha').order('hora'),
+        supabase.from('torneos').select('*').order('created_at', { ascending: false }),
+        supabase.from('inscripciones').select('*').order('created_at'),
+        supabase.from('config').select('*').eq('id', 1).maybeSingle()
+      ]);
+      if (!r.error && r.data) cache.reservas = r.data;
+      if (!t.error && t.data) cache.torneos = t.data;
+      if (!i.error && i.data) cache.insc = i.data;
+      cache.config = { ...DEFAULT_CONFIG, ...((c.data && c.data.data) || {}) };
+    } else {
+      cache.reservas = lsGet(K.reservas, []);
+      cache.torneos = lsGet(K.torneos, []);
+      cache.insc = lsGet(K.insc, []);
+      cache.config = { ...DEFAULT_CONFIG, ...lsGet(K.config, {}) };
+    }
+  },
+ 
+  reservas() { return cache.reservas; },
+  torneos() { return cache.torneos; },
+  insc() { return cache.insc; },
+  config() { return cache.config; },
+ 
+  async addReserva(res) {
+    if (supabase) {
+      const { error } = await supabase.from('reservas').insert(res);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      res.id = newId('res'); res.created_at = new Date().toISOString();
+      cache.reservas.push(res); lsSet(K.reservas, cache.reservas);
+    }
+  },
+  async removeReserva(id) {
+    if (supabase) {
+      const { error } = await supabase.from('reservas').delete().eq('id', id);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      cache.reservas = cache.reservas.filter(r => r.id !== id); lsSet(K.reservas, cache.reservas);
+    }
+  },
+  async clearReservas() {
+    if (supabase) {
+      const { error } = await supabase.from('reservas').delete().neq('cancha', 0);
+      if (error) throw error;
+      await DB.refresh();
+    } else { cache.reservas = []; lsSet(K.reservas, cache.reservas); }
+  },
+ 
+  async addTorneo(t) {
+    if (supabase) {
+      const { error } = await supabase.from('torneos').insert(t);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      t.id = newId('tor'); t.created_at = new Date().toISOString();
+      cache.torneos.unshift(t); lsSet(K.torneos, cache.torneos);
+    }
+  },
+  async endTorneo(id) {
+    if (supabase) {
+      const { error } = await supabase.from('torneos').update({ activo: false }).eq('id', id);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      const idx = cache.torneos.findIndex(x => x.id === id);
+      if (idx !== -1) cache.torneos[idx] = { ...cache.torneos[idx], activo: false };
+      lsSet(K.torneos, cache.torneos);
+      // Forzar refresh del cache desde localStorage para que sea consistente
+      cache.torneos = lsGet(K.torneos, []);
+    }
+  },
+ 
+  async addInsc(i) {
+    if (supabase) {
+      const { error } = await supabase.from('inscripciones').insert(i);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      i.id = newId('ins'); i.created_at = new Date().toISOString();
+      cache.insc.push(i); lsSet(K.insc, cache.insc);
+    }
+  },
+  async removeInsc(id) {
+    if (supabase) {
+      const { error } = await supabase.from('inscripciones').delete().eq('id', id);
+      if (error) throw error;
+      await DB.refresh();
+    } else {
+      cache.insc = cache.insc.filter(x => x.id !== id); lsSet(K.insc, cache.insc);
+    }
+  },
+ 
+  async saveConfig(cfg) {
+    cache.config = { ...cache.config, ...cfg };
+    if (supabase) {
+      const { error } = await supabase.from('config').upsert({ id: 1, data: cache.config });
+      if (error) throw error;
+    } else {
+      lsSet(K.config, cache.config);
+    }
   }
-  applyConfig();
+};
+ 
+function setSyncTag(live) {
+  const tag = document.getElementById('syncTag');
+  const label = document.getElementById('syncLabel');
+  if (live) { tag.classList.add('live'); label.textContent = 'Sincronizado en vivo (Supabase)'; }
+  else { tag.classList.remove('live'); label.textContent = 'Guardado solo en este dispositivo'; }
 }
-
-// Guardar config
-function saveConfig() {
-  localStorage.setItem('padelEsteConfig', JSON.stringify(config));
-  applyConfig();
+ 
+/* ================= SEGURIDAD: HASH + INTENTOS ================= */
+async function sha256(text) {
+  if (!(window.crypto && crypto.subtle)) {
+    showToast('Abrí la página por HTTPS para poder iniciar sesión.');
+    throw new Error('crypto.subtle no disponible (se requiere HTTPS)');
+  }
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
-
-// Aplicar configuración a la página
+ 
+function getLock() { return lsGet(K.attempts, { n: 0, until: 0 }); }
+function isLocked() {
+  const lock = getLock();
+  return lock.until > Date.now();
+}
+function registerFail() {
+  const lock = getLock();
+  lock.n += 1;
+  if (lock.n >= MAX_ATTEMPTS) {
+    lock.until = Date.now() + LOCK_MINUTES * 60 * 1000;
+    lock.n = 0;
+  }
+  lsSet(K.attempts, lock);
+  return lock;
+}
+function clearFails() { lsSet(K.attempts, { n: 0, until: 0 }); }
+ 
+/* ================= DISPONIBILIDAD ================= */
+function bookedCourts(fecha, hora) {
+  return DB.reservas().filter(r => r.fecha === fecha && r.hora === hora).map(r => Number(r.cancha));
+}
+function freeCourt(fecha, hora) {
+  const taken = bookedCourts(fecha, hora);
+  for (let c = 1; c <= numCourts(); c++) if (!taken.includes(c)) return c;
+  return null;
+}
+function freeCount(fecha, hora) {
+  return numCourts() - bookedCourts(fecha, hora).length;
+}
+function getHours() {
+  const cfg = DB.config();
+  const durMin = Number(cfg.duracion) || 60;
+  const stepH = durMin / 60; // 1 o 1.5
+  const out = [];
+  for (let h = Number(cfg.apertura); h + stepH <= Number(cfg.cierre); h += stepH) {
+    const hh = Math.floor(h);
+    const mm = Math.round((h - hh) * 60);
+    out.push(String(hh).padStart(2, '0') + ':' + String(mm).padStart(2, '0'));
+  }
+  return out;
+}
+function durLabel() {
+  const d = Number(DB.config().duracion) || 60;
+  if (d === 90) return 'hora y media';
+  if (d === 60) return '1 hora';
+  return d + ' min';
+}
+function endSlot(hora) {
+  const [hh, mm] = hora.split(':').map(Number);
+  const dur = Number(DB.config().duracion) || 60;
+  const total = hh * 60 + mm + dur;
+  return String(Math.floor(total / 60)).padStart(2, '0') + ':' + String(total % 60).padStart(2, '0');
+}
+ 
+/* ================= ESTADO DEL FLUJO ================= */
+const S = { step: 1, fecha: null, hora: null, tipo: 'completa', jugadores: 1 };
+ 
+/* ================= UTILIDADES DE FECHA ================= */
+const DOW = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+const MON = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const MON_FULL = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+ 
+function fmtISO(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function fmtNice(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const date = new Date(y, m - 1, d);
+  const todayISO = fmtISO(new Date());
+  const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+  if (iso === todayISO) return 'Hoy, ' + d + ' de ' + MON_FULL[m-1];
+  if (iso === fmtISO(tomorrow)) return 'Mañana, ' + d + ' de ' + MON_FULL[m-1];
+  const dows = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  return dows[date.getDay()] + ' ' + d + ' de ' + MON_FULL[m-1];
+}
+function endHour(hora) { return endSlot(hora); } // alias legacy
+function money(n) { return '$' + Number(n || 0).toLocaleString('es-UY'); }
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+ 
+/* ================= APLICAR CONFIG A LA PÁGINA ================= */
 function applyConfig() {
-  document.getElementById('slotDuration').value = config.slotDuration;
-  document.getElementById('priceFullInput').value = config.priceFull;
-  document.getElementById('pricePersonInput').value = config.pricePerson;
-  document.getElementById('infoPhone').value = config.phone;
-  document.getElementById('infoHours').value = config.hours;
-
-  // Actualizar precios en la página
-  document.getElementById('priceFullLabel').textContent = '$' + config.priceFull;
-  document.getElementById('pricePersonLabel').innerHTML = '$' + config.pricePerson + ' <small style="font-family:\'DM Sans\';font-size:11px;color:var(--gray);">c/u</small>';
-  document.getElementById('priceCardFull').textContent = '$' + config.priceFull;
-  document.getElementById('priceCardPerson').textContent = '$' + config.pricePerson;
-  
-  // Actualizar descripción según duración
-  const durationText = getDurationText(config.slotDuration);
-  document.getElementById('priceDescFull').textContent = durationText + ' · hasta 4 jugadores · vestuarios incluidos';
-  document.getElementById('priceUnitFull').textContent = 'por ' + durationText;
-  document.getElementById('priceUnitPerson').textContent = 'por persona / ' + durationText;
-  
-  // Actualizar step 2 sub
-  document.getElementById('slotsSub').textContent = 'Turnos de ' + durationText + '.';
-  
-  // Actualizar info
-  document.getElementById('infoHorario').textContent = config.hours;
-  document.getElementById('waInfoLink').href = 'https://wa.me/' + config.phone;
+  const cfg = DB.config();
+ 
+  // Nombre del club
+  document.querySelectorAll('.club-nombre').forEach(el => el.textContent = cfg.nombre_club || 'Padel Este');
+  document.querySelectorAll('.club-subtitulo').forEach(el => el.textContent = cfg.subtitulo_club || 'Tu Club');
+ 
+  // Hero
+  const ht1 = document.getElementById('heroTitulo1');
+  const ht2 = document.getElementById('heroTitulo2');
+  const hs  = document.getElementById('heroSubtitulo');
+  if (ht1) ht1.textContent = cfg.hero_titulo_1 || 'Tu cancha,';
+  if (ht2) ht2.textContent = cfg.hero_titulo_2 || 'en segundos';
+  if (hs)  hs.textContent  = cfg.hero_subtitulo || '';
+ 
+  // Precios
+  document.getElementById('priceFullLabel').textContent = money(cfg.precio_completa);
+  document.getElementById('pricePersonLabel').innerHTML =
+    money(cfg.precio_persona) + ' <small style="font-family:\'DM Sans\';font-size:11px;color:var(--gray);">c/u</small>';
+  document.getElementById('priceCardFull').textContent = money(cfg.precio_completa);
+  document.getElementById('priceCardPerson').textContent = money(cfg.precio_persona);
+ 
+  // Duración en tarjeta de precios
+  const dur = durLabel();
+  const pd = document.getElementById('priceDescFull');
+  if (pd) pd.textContent = dur + ' · hasta 4 jugadores · vestuarios incluidos';
+  const pu1 = document.getElementById('priceUnitFull');
+  const pu2 = document.getElementById('priceUnitPerson');
+  if (pu1) pu1.textContent = 'por ' + dur;
+  if (pu2) pu2.textContent = 'por persona / ' + dur;
+ 
+  // Horarios
+  const hor = cfg.apertura + ':00 – ' + cfg.cierre + ':00';
+  document.getElementById('factHorario').innerHTML = '<strong>' + hor + '</strong> todos los días';
+  document.getElementById('infoHorario').textContent = 'Lun a Dom · ' + hor;
+ 
+  // Dirección
+  const dirs = document.querySelectorAll('.club-direccion');
+  dirs.forEach(el => el.textContent = cfg.direccion || 'Tacuabé esq. Guyunusa, Maldonado');
+ 
+  // Canchas
+  const cd = document.getElementById('canchasDesc');
+  if (cd) cd.textContent = cfg.canchas_descripcion || '2 techadas · césped premium';
+  const fc = document.getElementById('factCanchas');
+  if (fc) fc.innerHTML = '<strong>' + (cfg.num_canchas || 2) + '</strong> canchas techadas';
+ 
+  // WhatsApp
+  const wa = document.getElementById('waInfoLink');
+  wa.href = 'https://wa.me/' + cfg.whatsapp;
+  wa.textContent = '+' + String(cfg.whatsapp);
+ 
+  // Mapa y GPS links
+  const mapAddr = encodeURIComponent((cfg.direccion || 'Tacuabé y Guyunusa') + ', Uruguay');
+  const gmaps = document.getElementById('btnGmaps');
+  const waze  = document.getElementById('btnWaze');
+  if (gmaps) gmaps.href = 'https://www.google.com/maps/dir/?api=1&destination=' + mapAddr + '&travelmode=driving';
+  if (waze)  waze.href  = 'https://waze.com/ul?q=' + mapAddr + '&navigate=yes';
+ 
+  // Actualizar step-sub si está en paso 3
+  if (S.step === 3) renderSummary();
 }
-
-function getDurationText(minutes) {
-  if (minutes === 30) return '30 minutos';
-  if (minutes === 60) return '1 hora';
-  if (minutes === 90) return '1 hora y media';
-  if (minutes === 120) return '2 horas';
-  return minutes + ' minutos';
+ 
+/* ================= PASO 1: FECHAS ================= */
+function renderDates() {
+  const wrap = document.getElementById('dateScroll');
+  const today = new Date(); today.setHours(0,0,0,0);
+  let html = '';
+  for (let i = 0; i < DAYS_AHEAD; i++) {
+    const d = new Date(today); d.setDate(d.getDate() + i);
+    const iso = fmtISO(d);
+    const cls = ['date-chip', i === 0 ? 'today' : '', S.fecha === iso ? 'selected' : ''].join(' ').trim();
+    html += `<button class="${cls}" onclick="selectDate('${iso}')">
+      <span class="dow">${i === 0 ? 'Hoy' : DOW[d.getDay()]}</span>
+      <span class="num">${d.getDate()}</span>
+      <span class="mon">${MON[d.getMonth()]}</span>
+    </button>`;
+  }
+  wrap.innerHTML = html;
 }
-
-function saveSlotDuration() {
-  config.slotDuration = parseInt(document.getElementById('slotDuration').value);
-  saveConfig();
+ 
+function selectDate(iso) {
+  S.fecha = iso;
+  S.hora = null;
+  renderDates();
+  document.getElementById('btnStep1').disabled = false;
 }
-
-function saveSettings() {
-  config.priceFull = parseInt(document.getElementById('priceFullInput').value) || 0;
-  config.pricePerson = parseInt(document.getElementById('pricePersonInput').value) || 0;
-  config.phone = document.getElementById('infoPhone').value.replace(/\D/g, '');
-  config.hours = document.getElementById('infoHours').value;
-  saveConfig();
+ 
+/* ================= PASO 2: HORARIOS ================= */
+function renderSlots() {
+  document.getElementById('slotsSub').innerHTML =
+    '<strong style="color:var(--yellow)">' + fmtNice(S.fecha) + '</strong> · turnos de ' + durLabel();
+ 
+  const now = new Date();
+  const isToday = S.fecha === fmtISO(now);
+  let html = '';
+ 
+  getHours().forEach(h => {
+    const free = freeCount(S.fecha, h);
+    const pastHour = isToday && parseInt(h) <= now.getHours();
+    const occupied = free === 0 || pastHour;
+    const selected = S.hora === h;
+    const cls = ['slot', occupied ? 'occupied' : '', selected ? 'selected' : ''].join(' ').trim();
+    const last = (!occupied && free === 1) ? '<span class="last">Última</span>' : '';
+    html += `<button class="${cls}" ${occupied ? 'disabled' : `onclick="selectTime('${h}')"`}>${h}${last}</button>`;
+  });
+ 
+  document.getElementById('slots').innerHTML = html;
+  document.getElementById('btnStep2').disabled = !S.hora;
 }
-
-function switchTab(tab) {
-  document.querySelectorAll('.admin-view').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
+ 
+function selectTime(h) {
+  S.hora = h;
+  renderSlots();
 }
-
-function doLogin() {
-  const pwd = document.getElementById('adminPassword').value;
-  if (pwd === config.password) {
-    document.getElementById('adminLogin').style.display = 'none';
-    document.getElementById('adminPanel').classList.add('active');
+ 
+/* ================= PASO 3: TIPO Y DATOS ================= */
+function selectType(t) {
+  S.tipo = t;
+  document.querySelectorAll('.type-opt').forEach(el =>
+    el.classList.toggle('selected', el.dataset.type === t));
+  document.getElementById('playersRow').classList.toggle('visible', t === 'persona');
+  renderSummary();
+}
+ 
+function changePlayers(delta) {
+  S.jugadores = Math.min(3, Math.max(1, S.jugadores + delta));
+  document.getElementById('playersN').textContent = S.jugadores;
+  document.getElementById('minusP').disabled = S.jugadores <= 1;
+  document.getElementById('plusP').disabled = S.jugadores >= 3;
+  renderSummary();
+}
+ 
+function calcTotal() {
+  const cfg = DB.config();
+  return S.tipo === 'completa' ? Number(cfg.precio_completa) : Number(cfg.precio_persona) * S.jugadores;
+}
+ 
+function renderSummary() {
+  if (!S.fecha || !S.hora) return;
+  const tipoTxt = S.tipo === 'completa' ? 'Cancha completa' : 'Por persona × ' + S.jugadores;
+  document.getElementById('summary').innerHTML = `
+    <div class="summary-row"><span class="k">Día</span><span class="v">${fmtNice(S.fecha)}</span></div>
+    <div class="summary-row"><span class="k">Hora</span><span class="v">${S.hora} – ${endHour(S.hora)}</span></div>
+    <div class="summary-row"><span class="k">Reserva</span><span class="v">${tipoTxt}</span></div>
+    <div class="summary-row total"><span class="k">Total a pagar en el club</span><span class="v">${money(calcTotal())}</span></div>`;
+}
+ 
+function validateForm(showHints) {
+  const nombre = document.getElementById('inputNombre').value.trim();
+  const apellido = document.getElementById('inputApellido').value.trim();
+  const tel = document.getElementById('inputTelefono').value.replace(/[^\d]/g, '');
+ 
+  const okN = nombre.length >= 2;
+  const okA = apellido.length >= 2;
+  const okT = tel.length >= 8;
+ 
+  if (showHints) {
+    document.getElementById('fNombre').classList.toggle('has-error', !okN);
+    document.getElementById('fApellido').classList.toggle('has-error', !okA);
+    document.getElementById('fTel').classList.toggle('has-error', !okT);
   } else {
-    document.getElementById('lockMsg').textContent = 'Contraseña incorrecta';
-    document.getElementById('lockMsg').classList.add('visible');
+    if (okN) document.getElementById('fNombre').classList.remove('has-error');
+    if (okA) document.getElementById('fApellido').classList.remove('has-error');
+    if (okT) document.getElementById('fTel').classList.remove('has-error');
+  }
+ 
+  document.getElementById('btnConfirm').disabled = !(okN && okA && okT);
+  return okN && okA && okT;
+}
+ 
+/* ================= NAVEGACIÓN ENTRE PASOS ================= */
+function goStep(n) {
+  S.step = n;
+  document.querySelectorAll('.bstep').forEach(el =>
+    el.classList.toggle('active', Number(el.dataset.bstep) === n));
+  const bars = document.querySelectorAll('#progress span');
+  bars.forEach((b, i) => b.classList.toggle('done', i < Math.min(n, 3)));
+ 
+  if (n === 2) renderSlots();
+  if (n === 3) { renderSummary(); validateForm(); }
+ 
+  document.querySelector('.booking-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+ 
+/* ================= CONFIRMAR RESERVA ================= */
+let saving = false;
+ 
+async function confirmReservation() {
+  if (saving) return;
+  if (!validateForm(true)) return;
+ 
+  await DB.refresh();
+  const cancha = freeCourt(S.fecha, S.hora);
+  if (cancha === null) {
+    showToast('Ese horario se acaba de ocupar. Elegí otro, por favor.');
+    goStep(2);
+    return;
+  }
+ 
+  const res = {
+    fecha: S.fecha,
+    hora: S.hora,
+    cancha: cancha,
+    nombre: document.getElementById('inputNombre').value.trim(),
+    apellido: document.getElementById('inputApellido').value.trim(),
+    telefono: document.getElementById('inputTelefono').value.trim(),
+    tipo: S.tipo,
+    jugadores: S.tipo === 'completa' ? 4 : S.jugadores,
+    total: calcTotal()
+  };
+ 
+  saving = true;
+  const btn = document.getElementById('btnConfirm');
+  btn.disabled = true;
+  btn.textContent = 'Guardando…';
+ 
+  try {
+    await DB.addReserva(res);
+  } catch (err) {
+    console.error(err);
+    showToast('No pudimos guardar la reserva. Probá de nuevo.');
+    btn.textContent = 'Confirmar reserva';
+    btn.disabled = false;
+    saving = false;
+    return;
+  }
+ 
+  saving = false;
+  btn.textContent = 'Confirmar reserva';
+ 
+  const tipoTxt = res.tipo === 'completa' ? 'Cancha completa' : 'Por persona × ' + res.jugadores;
+  document.getElementById('confirmSummary').innerHTML = `
+    <div class="summary-row"><span class="k">Cliente</span><span class="v">${esc(res.nombre)} ${esc(res.apellido)}</span></div>
+    <div class="summary-row"><span class="k">Día</span><span class="v">${fmtNice(res.fecha)}</span></div>
+    <div class="summary-row"><span class="k">Hora</span><span class="v">${res.hora} – ${endHour(res.hora)}</span></div>
+    <div class="summary-row"><span class="k">Cancha asignada</span><span class="v">Cancha ${res.cancha}</span></div>
+    <div class="summary-row total"><span class="k">Total (${tipoTxt})</span><span class="v">${money(res.total)}</span></div>`;
+ 
+  const msg = encodeURIComponent(
+    `Hola Padel Este! 🎾\n\nHice una reserva en la web:\n` +
+    `👤 ${res.nombre} ${res.apellido}\n` +
+    `📅 ${fmtNice(res.fecha)}\n` +
+    `⏰ ${res.hora} a ${endHour(res.hora)}\n` +
+    `🎾 Cancha ${res.cancha} · ${tipoTxt}\n` +
+    `💰 Total: ${money(res.total)}\n\n¡Gracias!`
+  );
+  document.getElementById('waBtn').href = `https://wa.me/${DB.config().whatsapp}?text=${msg}`;
+ 
+  goStep(4);
+  onDataChanged();
+}
+ 
+function resetBooking() {
+  S.fecha = null; S.hora = null; S.tipo = 'completa'; S.jugadores = 1;
+  ['inputNombre','inputApellido','inputTelefono'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('btnStep1').disabled = true;
+  document.getElementById('btnStep2').disabled = true;
+  document.getElementById('btnConfirm').disabled = true;
+  selectType('completa');
+  document.getElementById('playersN').textContent = '1';
+  renderDates();
+  goStep(1);
+}
+ 
+/* ================= TORNEO (PÚBLICO) ================= */
+function activeTorneo() {
+  // Público: solo muestra si el cierre no pasó
+  const today = fmtISO(new Date());
+  return DB.torneos().find(t => t.activo && t.cierre >= today) || null;
+}
+function activeTorneoAdmin() {
+  // Admin: cualquier torneo marcado activo, aunque ya haya vencido
+  return DB.torneos().find(t => t.activo) || null;
+}
+function inscDe(torneoId) {
+  return DB.insc().filter(i => i.torneo_id === torneoId);
+}
+ 
+function renderTorneoPublic() {
+  const t = activeTorneo();
+  const section = document.getElementById('torneo');
+  const pill = document.getElementById('torneoPill');
+ 
+  if (!t) {
+    section.classList.remove('visible');
+    pill.classList.remove('visible');
+    return;
+  }
+ 
+  section.classList.add('visible');
+  pill.classList.add('visible');
+  document.getElementById('torneoPillText').textContent = '🎾 ' + t.nombre + ' — inscribite';
+ 
+  const inscritos = inscDe(t.id).length;
+  const libres = Math.max(0, Number(t.cupo) - inscritos);
+ 
+  document.getElementById('tNombre').textContent = t.nombre;
+  document.getElementById('tDesc').textContent = t.descripcion || '';
+  document.getElementById('tDesc').style.display = t.descripcion ? '' : 'none';
+ 
+  document.getElementById('tMeta').innerHTML = `
+    <span class="tmeta">📅 ${fmtNice(t.fecha_torneo)}</span>
+    <span class="tmeta">⏳ Inscripciones hasta el ${fmtNice(t.cierre)}</span>
+    ${Number(t.precio) > 0 ? `<span class="tmeta">💰 ${money(t.precio)} por inscripto</span>` : ''}
+    <span class="tmeta ${libres <= 3 ? 'warn' : ''}">${libres > 0 ? '🔥 Quedan ' + libres + ' lugares' : 'Cupo completo'}</span>`;
+ 
+  const form = document.getElementById('tForm');
+  const full = document.getElementById('tFull');
+  if (libres <= 0) {
+    form.style.display = 'none';
+    full.style.display = '';
+    full.textContent = '¡Cupo completo! Escribinos por WhatsApp para entrar en lista de espera.';
+  } else {
+    form.style.display = '';
+    full.style.display = 'none';
   }
 }
-
-function closeAdmin() {
-  document.getElementById('adminModal').classList.remove('active');
-  document.getElementById('adminPassword').value = '';
-  document.getElementById('lockMsg').classList.remove('visible');
-  document.getElementById('adminPanel').classList.remove('active');
-  document.getElementById('adminLogin').style.display = 'block';
+ 
+function validateTorneoForm(showHints) {
+  const n = document.getElementById('tInputNombre').value.trim();
+  const a = document.getElementById('tInputApellido').value.trim();
+  const tel = document.getElementById('tInputTelefono').value.replace(/[^\d]/g, '');
+  const okN = n.length >= 2, okA = a.length >= 2, okT = tel.length >= 8;
+  if (showHints) {
+    document.getElementById('tfNombre').classList.toggle('has-error', !okN);
+    document.getElementById('tfApellido').classList.toggle('has-error', !okA);
+    document.getElementById('tfTel').classList.toggle('has-error', !okT);
+  } else {
+    if (okN) document.getElementById('tfNombre').classList.remove('has-error');
+    if (okA) document.getElementById('tfApellido').classList.remove('has-error');
+    if (okT) document.getElementById('tfTel').classList.remove('has-error');
+  }
+  document.getElementById('tBtnInscribir').disabled = !(okN && okA && okT);
+  return okN && okA && okT;
 }
-
-// Event listener para abrir admin (Ctrl+Shift+A o similar)
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-    document.getElementById('adminModal').classList.add('active');
+ 
+let inscribing = false;
+async function inscribirTorneo() {
+  if (inscribing) return;
+  if (!validateTorneoForm(true)) return;
+ 
+  await DB.refresh();
+  const t = activeTorneo();
+  if (!t) { renderTorneoPublic(); return; }
+  if (inscDe(t.id).length >= Number(t.cupo)) {
+    showToast('El cupo se acaba de completar.');
+    renderTorneoPublic();
+    return;
+  }
+ 
+  const insc = {
+    torneo_id: t.id,
+    nombre: document.getElementById('tInputNombre').value.trim(),
+    apellido: document.getElementById('tInputApellido').value.trim(),
+    telefono: document.getElementById('tInputTelefono').value.trim(),
+    pareja: document.getElementById('tInputPareja').value.trim()
+  };
+ 
+  inscribing = true;
+  const btn = document.getElementById('tBtnInscribir');
+  btn.disabled = true; btn.textContent = 'Guardando…';
+ 
+  try {
+    await DB.addInsc(insc);
+  } catch (e) {
+    console.error(e);
+    showToast('No pudimos guardar tu inscripción. Probá de nuevo.');
+    btn.textContent = 'Inscribirme al torneo'; btn.disabled = false; inscribing = false;
+    return;
+  }
+ 
+  inscribing = false;
+  btn.textContent = 'Inscribirme al torneo';
+  ['tInputNombre','tInputApellido','tInputTelefono','tInputPareja'].forEach(id => document.getElementById(id).value = '');
+ 
+  const msg = encodeURIComponent(
+    `Hola Padel Este! 🏆\n\nMe inscribí al torneo "${t.nombre}":\n` +
+    `👤 ${insc.nombre} ${insc.apellido}` +
+    (insc.pareja ? `\n👥 Pareja: ${insc.pareja}` : '') +
+    `\n📅 Torneo: ${fmtNice(t.fecha_torneo)}\n\n¡Nos vemos!`
+  );
+  window.open(`https://wa.me/${DB.config().whatsapp}?text=${msg}`, '_blank');
+ 
+  showToast('¡Inscripción guardada! Te abrimos WhatsApp para avisar al club.');
+  renderTorneoPublic();
+}
+ 
+/* ================= TOAST ================= */
+let toastTimer = null;
+function showToast(text) {
+  const t = document.getElementById('toast');
+  t.textContent = text;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+ 
+/* ================= ADMIN: SESIÓN ================= */
+let adminFilter = 'upcoming';
+let adminOpen = false;
+ 
+function checkAdminURL() {
+  if (window.location.hash === '#admin') openAdmin();
+}
+function openAdmin() {
+  adminOpen = true;
+  document.getElementById('adminModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (sessionStorage.getItem(K.session) === '1') {
+    showPanel();
+  } else {
+    setTimeout(() => document.getElementById('adminPassword').focus(), 100);
+  }
+}
+function closeAdmin() {
+  adminOpen = false;
+  document.getElementById('adminModal').classList.remove('active');
+  document.body.style.overflow = '';
+  document.getElementById('adminPassword').value = '';
+  if (window.location.hash === '#admin') history.pushState('', document.title, window.location.pathname);
+}
+function showPanel() {
+  document.getElementById('adminLogin').style.display = 'none';
+  document.getElementById('adminPanel').classList.add('active');
+  renderAdmin();
+  renderTorneoAdmin();
+  fillConfigForm();
+}
+function logoutAdmin() {
+  sessionStorage.removeItem(K.session);
+  document.getElementById('adminLogin').style.display = '';
+  document.getElementById('adminPanel').classList.remove('active');
+  closeAdmin();
+}
+ 
+async function doLogin() {
+  const lockEl = document.getElementById('lockMsg');
+  if (isLocked()) {
+    const mins = Math.ceil((getLock().until - Date.now()) / 60000);
+    lockEl.textContent = `Demasiados intentos. Probá de nuevo en ${mins} min.`;
+    lockEl.classList.add('visible');
+    return;
+  }
+  const pass = document.getElementById('adminPassword').value;
+  if (!pass) return;
+ 
+  let hash;
+  try { hash = await sha256(pass); } catch (e) { return; }
+ 
+  if (hash === DB.config().admin_hash) {
+    clearFails();
+    lockEl.classList.remove('visible');
+    sessionStorage.setItem(K.session, '1');
+    document.getElementById('adminPassword').value = '';
+    showPanel();
+  } else {
+    const lock = registerFail();
+    if (lock.until > Date.now()) {
+      lockEl.textContent = `Demasiados intentos. Bloqueado por ${LOCK_MINUTES} minutos.`;
+    } else {
+      lockEl.textContent = `Contraseña incorrecta. Te quedan ${MAX_ATTEMPTS - lock.n} intentos.`;
+    }
+    lockEl.classList.add('visible');
+  }
+}
+ 
+/* ================= ADMIN: TABS ================= */
+function setTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(el =>
+    el.classList.toggle('active', el.dataset.tab === tab));
+  document.querySelectorAll('.admin-view').forEach(el =>
+    el.classList.toggle('active', el.dataset.view === tab));
+  if (tab === 'reservas') renderAdmin();
+  if (tab === 'torneo') renderTorneoAdmin();
+  if (tab === 'ajustes') fillConfigForm();
+}
+ 
+/* ================= ADMIN: RESERVAS ================= */
+function setFilter(f) {
+  adminFilter = f;
+  document.querySelectorAll('.admin-filters .chip-btn').forEach(el =>
+    el.classList.toggle('active', el.dataset.f === f));
+  renderAdmin();
+}
+ 
+function renderAdmin() {
+  const all = [...DB.reservas()].sort((a, b) =>
+    a.fecha === b.fecha ? a.hora.localeCompare(b.hora) : a.fecha.localeCompare(b.fecha));
+ 
+  const today = fmtISO(new Date());
+  const week = new Date(); week.setDate(week.getDate() + 7);
+  const weekISO = fmtISO(week);
+ 
+  document.getElementById('stTotal').textContent = all.length;
+  document.getElementById('stToday').textContent = all.filter(r => r.fecha === today).length;
+  document.getElementById('stWeek').textContent = all.filter(r => r.fecha >= today && r.fecha <= weekISO).length;
+ 
+  let rows = all;
+  if (adminFilter === 'upcoming') rows = all.filter(r => r.fecha >= today);
+  if (adminFilter === 'today') rows = all.filter(r => r.fecha === today);
+  if (adminFilter === 'c1') rows = all.filter(r => Number(r.cancha) === 1);
+  if (adminFilter === 'c2') rows = all.filter(r => Number(r.cancha) === 2);
+ 
+  const list = document.getElementById('resList');
+  if (rows.length === 0) {
+    list.innerHTML = '<div class="admin-empty">No hay reservas para mostrar.<br>Las nuevas aparecen acá automáticamente.</div>';
+    return;
+  }
+ 
+  list.innerHTML = rows.map(r => {
+    const tel = String(r.telefono || '').replace(/[^\d]/g, '');
+    const tipoTxt = r.tipo === 'persona' ? `${r.jugadores} pers.` : 'Completa';
+    return `
+    <div class="res-card">
+      <div class="res-line1">
+        <span class="res-name">${esc(r.nombre)} ${esc(r.apellido)}</span>
+        <span class="res-court c${r.cancha}">Cancha ${r.cancha}</span>
+      </div>
+      <div class="res-line2">
+        <span class="res-meta">
+          <span>📅 ${fmtNice(r.fecha)}</span>
+          <span>⏰ ${r.hora}–${endHour(r.hora)}</span>
+          <span>${tipoTxt} · ${money(r.total)}</span>
+        </span>
+        <span class="res-actions">
+          <a class="mini-btn ok" title="Confirmar por WhatsApp" target="_blank" rel="noopener"
+             href="https://wa.me/${tel}?text=${encodeURIComponent(`Hola ${r.nombre}! 🎾 Te confirmamos tu reserva en Padel Este:\n📅 ${fmtNice(r.fecha)}\n⏰ ${r.hora} a ${endHour(r.hora)}\n🎾 Cancha ${r.cancha}\n📍 Tacuabé esq. Guyunusa, Maldonado\n¡Te esperamos!`)}">✓</a>
+          <button class="mini-btn del" title="Cancelar reserva" onclick="removeRes('${r.id}')">✕</button>
+        </span>
+      </div>
+    </div>`;
+  }).join('');
+}
+ 
+async function removeRes(id) {
+  if (!confirm('¿Cancelar esta reserva?')) return;
+  try {
+    await DB.removeReserva(id);
+    onDataChanged();
+    showToast('Reserva cancelada.');
+  } catch (e) {
+    showToast('No se pudo cancelar. Probá de nuevo.');
+  }
+}
+ 
+function clearAllAsk() {
+  if (!confirm('¿Borrar TODAS las reservas? Esta acción no se puede deshacer.')) return;
+  DB.clearReservas().then(() => { onDataChanged(); showToast('Reservas borradas.'); });
+}
+ 
+function exportCSV() {
+  const all = DB.reservas();
+  if (!all.length) { showToast('No hay reservas para exportar.'); return; }
+  const csv = [
+    ['Fecha','Hora','Cancha','Nombre','Apellido','Teléfono','Tipo','Jugadores','Total'],
+    ...all.map(r => [r.fecha, r.hora, r.cancha, r.nombre, r.apellido, r.telefono, r.tipo, r.jugadores, r.total])
+  ].map(row => row.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+  downloadCSV(csv, `reservas-padel-este-${fmtISO(new Date())}.csv`);
+}
+ 
+function downloadCSV(csv, filename) {
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+ 
+/* ================= ADMIN: TORNEO ================= */
+function renderTorneoAdmin() {
+  const t = activeTorneoAdmin() || null;
+  document.getElementById('torneoCreate').style.display = t ? 'none' : '';
+  document.getElementById('torneoManage').style.display = t ? '' : 'none';
+  if (!t) return;
+ 
+  const today = fmtISO(new Date());
+  const cerrado = t.cierre < today;
+  const inscritos = inscDe(t.id);
+  const libres = Math.max(0, Number(t.cupo) - inscritos.length);
+ 
+  document.getElementById('atNombre').textContent = t.nombre;
+  const st = document.getElementById('atStatus');
+  if (cerrado) { st.textContent = 'Inscripciones cerradas (pasó la fecha)'; st.className = 'torneo-status off'; }
+  else { st.textContent = 'Inscripciones abiertas'; st.className = 'torneo-status on'; }
+ 
+  document.getElementById('atFecha').textContent = '📅 Torneo: ' + fmtNice(t.fecha_torneo);
+  document.getElementById('atCierre').textContent = '⏳ Cierre: ' + fmtNice(t.cierre);
+  document.getElementById('atCupo').textContent = '👥 Cupo: ' + t.cupo;
+  document.getElementById('atPrecio').textContent = Number(t.precio) > 0 ? '💰 ' + money(t.precio) + ' c/u' : '💰 Gratis';
+ 
+  document.getElementById('atInscriptos').textContent = inscritos.length;
+  document.getElementById('atLibres').textContent = libres;
+ 
+  const list = document.getElementById('inscList');
+  if (!inscritos.length) {
+    list.innerHTML = '<div class="admin-empty">Todavía no hay inscriptos.<br>Aparecen acá apenas alguien se anota desde la página.</div>';
+    return;
+  }
+  list.innerHTML = inscritos.map((i, idx) => {
+    const tel = String(i.telefono || '').replace(/[^\d]/g, '');
+    return `
+    <div class="res-card">
+      <div class="res-line1">
+        <span class="res-name">${idx + 1}. ${esc(i.nombre)} ${esc(i.apellido)}</span>
+      </div>
+      <div class="res-line2">
+        <span class="res-meta">
+          <span>📱 ${esc(i.telefono)}</span>
+          ${i.pareja ? '<span>👥 ' + esc(i.pareja) + '</span>' : ''}
+        </span>
+        <span class="res-actions">
+          <a class="mini-btn ok" title="WhatsApp" target="_blank" rel="noopener" href="https://wa.me/${tel}">✓</a>
+          <button class="mini-btn del" title="Quitar inscripto" onclick="removeInscAdmin('${i.id}')">✕</button>
+        </span>
+      </div>
+    </div>`;
+  }).join('');
+}
+ 
+async function createTorneo() {
+  const nombre = document.getElementById('ntNombre').value.trim();
+  const desc = document.getElementById('ntDesc').value.trim();
+  const fecha = document.getElementById('ntFecha').value;
+  const cierre = document.getElementById('ntCierre').value;
+  const cupo = parseInt(document.getElementById('ntCupo').value);
+  const precio = parseInt(document.getElementById('ntPrecio').value) || 0;
+ 
+  const today = fmtISO(new Date());
+  if (nombre.length < 3) { showToast('Poné un nombre para el torneo.'); return; }
+  if (!fecha || !cierre) { showToast('Completá las dos fechas.'); return; }
+  if (cierre < today) { showToast('El cierre de inscripciones no puede ser una fecha pasada.'); return; }
+  if (cierre > fecha) { showToast('El cierre debe ser antes (o el mismo día) que el torneo.'); return; }
+  if (!cupo || cupo < 2) { showToast('Indicá un cupo de al menos 2.'); return; }
+ 
+  try {
+    await DB.addTorneo({ nombre, descripcion: desc, fecha_torneo: fecha, cierre, cupo, precio, activo: true });
+  } catch (e) {
+    console.error(e);
+    showToast('No se pudo crear el torneo. Probá de nuevo.');
+    return;
+  }
+ 
+  ['ntNombre','ntDesc','ntFecha','ntCierre','ntCupo','ntPrecio'].forEach(id => document.getElementById(id).value = '');
+  showToast('¡Torneo publicado! Ya se ve en la página.');
+  renderTorneoAdmin();
+  renderTorneoPublic();
+}
+ 
+async function endTorneo() {
+  const t = activeTorneoAdmin();
+  if (!t) return;
+  if (!confirm(`¿Finalizar "${t.nombre}"? La sección de torneo desaparece de la página. Los inscriptos quedan guardados (exportalos antes si los necesitás).`)) return;
+  try {
+    await DB.endTorneo(t.id);
+    showToast('Torneo finalizado.');
+    renderTorneoAdmin();
+    renderTorneoPublic();
+  } catch (e) {
+    showToast('No se pudo finalizar. Probá de nuevo.');
+  }
+}
+ 
+async function removeInscAdmin(id) {
+  if (!confirm('¿Quitar este inscripto?')) return;
+  try {
+    await DB.removeInsc(id);
+    renderTorneoAdmin();
+    renderTorneoPublic();
+    showToast('Inscripto quitado.');
+  } catch (e) {
+    showToast('No se pudo quitar. Probá de nuevo.');
+  }
+}
+ 
+function exportInscCSV() {
+  const t = DB.torneos().find(x => x.activo);
+  if (!t) return;
+  const rows = inscDe(t.id);
+  if (!rows.length) { showToast('No hay inscriptos para exportar.'); return; }
+  const csv = [
+    ['Torneo','Nombre','Apellido','Teléfono','Pareja'],
+    ...rows.map(i => [t.nombre, i.nombre, i.apellido, i.telefono, i.pareja || ''])
+  ].map(row => row.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+  downloadCSV(csv, `inscriptos-${t.nombre.toLowerCase().replace(/\s+/g, '-')}.csv`);
+}
+ 
+/* ================= ADMIN: AJUSTES ================= */
+function fillConfigForm() {
+  const cfg = DB.config();
+  document.getElementById('cfgPriceFull').value   = cfg.precio_completa;
+  document.getElementById('cfgPricePerson').value = cfg.precio_persona;
+  document.getElementById('cfgApertura').value    = cfg.apertura;
+  document.getElementById('cfgCierre').value      = cfg.cierre;
+  document.getElementById('cfgDuracion').value    = String(cfg.duracion || 90);
+  document.getElementById('cfgWhatsapp').value    = cfg.whatsapp;
+  document.getElementById('cfgNombreClub').value  = cfg.nombre_club || '';
+  document.getElementById('cfgSubtitulo').value   = cfg.subtitulo_club || '';
+  document.getElementById('cfgDireccion').value   = cfg.direccion || '';
+  document.getElementById('cfgHeroT1').value      = cfg.hero_titulo_1 || '';
+  document.getElementById('cfgHeroT2').value      = cfg.hero_titulo_2 || '';
+  document.getElementById('cfgHeroSub').value     = cfg.hero_subtitulo || '';
+  document.getElementById('cfgNumCanchas').value  = cfg.num_canchas || 2;
+  document.getElementById('cfgCanchasDesc').value = cfg.canchas_descripcion || '';
+}
+ 
+async function saveConfig() {
+  const pf  = parseInt(document.getElementById('cfgPriceFull').value);
+  const pp  = parseInt(document.getElementById('cfgPricePerson').value);
+  const ap  = parseInt(document.getElementById('cfgApertura').value);
+  const ci  = parseInt(document.getElementById('cfgCierre').value);
+  const dur = parseInt(document.getElementById('cfgDuracion').value);
+  const wa  = document.getElementById('cfgWhatsapp').value.replace(/[^\d]/g, '');
+  const nc  = document.getElementById('cfgNombreClub').value.trim();
+  const st  = document.getElementById('cfgSubtitulo').value.trim();
+  const dir = document.getElementById('cfgDireccion').value.trim();
+  const ht1 = document.getElementById('cfgHeroT1').value.trim();
+  const ht2 = document.getElementById('cfgHeroT2').value.trim();
+  const hs  = document.getElementById('cfgHeroSub').value.trim();
+  const nca = parseInt(document.getElementById('cfgNumCanchas').value);
+  const cad = document.getElementById('cfgCanchasDesc').value.trim();
+ 
+  if (!pf || pf < 0 || !pp || pp < 0) { showToast('Revisá los precios.'); return; }
+  if (isNaN(ap) || isNaN(ci) || ap >= ci || ap < 0 || ci > 23) { showToast('Revisá los horarios: la apertura debe ser antes del cierre (0–23).'); return; }
+  if (![60, 90].includes(dur)) { showToast('La duración debe ser 60 o 90 minutos.'); return; }
+  if (wa.length < 10) { showToast('Revisá el número de WhatsApp (con código de país, ej: 59892451182).'); return; }
+  if (!nc) { showToast('Escribí el nombre del club.'); return; }
+ 
+  try {
+    await DB.saveConfig({
+      precio_completa: pf, precio_persona: pp,
+      apertura: ap, cierre: ci, duracion: dur,
+      whatsapp: wa,
+      nombre_club: nc, subtitulo_club: st, direccion: dir,
+      hero_titulo_1: ht1, hero_titulo_2: ht2, hero_subtitulo: hs,
+      num_canchas: nca || 2, canchas_descripcion: cad
+    });
+    applyConfig();
+    if (S.step === 2 && S.fecha) renderSlots();
+    showToast('Cambios guardados y aplicados en la página.');
+  } catch (e) {
+    console.error(e);
+    showToast('No se pudieron guardar los cambios.');
+  }
+}
+ 
+async function changePassword() {
+  const np = document.getElementById('cfgNewPass').value;
+  if (np.length < 8) { showToast('La contraseña debe tener al menos 8 caracteres.'); return; }
+  try {
+    const hash = await sha256(np);
+    await DB.saveConfig({ admin_hash: hash });
+    document.getElementById('cfgNewPass').value = '';
+    clearFails();
+    showToast('Contraseña actualizada.');
+  } catch (e) {
+    console.error(e);
+    showToast('No se pudo actualizar la contraseña.');
+  }
+}
+ 
+/* ================= SINCRONIZACIÓN ================= */
+function onDataChanged() {
+  if (S.step === 2 && S.fecha) renderSlots();
+  renderTorneoPublic();
+  if (document.getElementById('adminPanel').classList.contains('active')) {
+    renderAdmin();
+    renderTorneoAdmin();
+  }
+}
+ 
+// Entre pestañas del mismo navegador (modo localStorage)
+window.addEventListener('storage', async e => {
+  if ([K.reservas, K.torneos, K.insc, K.config].includes(e.key)) {
+    await DB.refresh();
+    applyConfig();
+    onDataChanged();
   }
 });
-
-// Inicializar
-loadConfig();
+ 
+/* ================= INIT ================= */
+window.addEventListener('DOMContentLoaded', async () => {
+  renderDates();
+  await DB.init();
+  applyConfig();
+  renderTorneoPublic();
+  onDataChanged();
+  checkAdminURL();
+  window.addEventListener('hashchange', checkAdminURL);
+ 
+  document.getElementById('adminModal').addEventListener('click', e => {
+    if (e.target.id === 'adminModal') closeAdmin();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && adminOpen) closeAdmin();
+  });
+});
 </script>
+ 
 </body>
 </html>
